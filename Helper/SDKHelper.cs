@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography.X509Certificates;
 using System.Data.SQLite;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Xml.Linq;
 
 namespace StandaloneSDKDemo
 {    
@@ -740,7 +742,7 @@ namespace StandaloneSDKDemo
 
         #endregion
 
- #region UserMng
+        #region UserMng
 
         #region UserInfo
 
@@ -1345,6 +1347,13 @@ namespace StandaloneSDKDemo
             return 1;
         }
 
+
+        public bool sta_deleteUser( int EnrollNumber)
+        {
+            return axCZKEM1.DeleteUserInfoEx(GetMachineNumber(), EnrollNumber);
+        }
+
+
         public int sta_SetUserVerifyStyle(ListBox lblOutputInfo, ComboBox cbUserID7, ComboBox cbVerifyStyle)
         {
             if (GetConnectState() == false)
@@ -1511,6 +1520,7 @@ namespace StandaloneSDKDemo
                         index++;
                         xx = 0;
                         iFpCount++;
+                        break;
                     }
                     else
                     {
@@ -1527,6 +1537,42 @@ namespace StandaloneSDKDemo
                     index++;
                 }
 
+                //using (var connection = new SQLiteConnection(connectionString))
+                //{
+                //    connection.Open();
+                //    using (var cmd = new SQLiteCommand(insertQuery, connection))
+                //    {
+                //        cmd.Parameters.AddWithValue("@userID", sEnrollNumber);
+                //        cmd.Parameters.AddWithValue("@Enable", bEnabled);
+                //        cmd.Parameters.AddWithValue("@Name", sName);
+                //        cmd.Parameters.AddWithValue("@CardNo", sCardnumber);
+                //        cmd.Parameters.AddWithValue("@Password", sPassword);
+                //        cmd.Parameters.AddWithValue("@FingerIndex", idwFingerIndex);
+                //        cmd.Parameters.AddWithValue("@Flag", iFlag);
+                //        cmd.Parameters.AddWithValue("@FingerPrint", fingerprint);
+                //        cmd.Parameters.AddWithValue("@Privilege", iPrivilege);
+
+                //        try
+                //        {
+                //            cmd.ExecuteNonQuery();
+                //            Console.WriteLine("Data Inserted, Cols: " + a);
+                //            a++;
+                //        }
+                //        catch (SQLiteException ex)
+                //        {
+                //            if (ex.ErrorCode == ((int)SQLiteErrorCode.Constraint))
+                //            {                              
+                //                Console.WriteLine("Duplicate entry detected.");
+                //            }
+                //            else
+                //            {
+                //                Console.WriteLine("Error: " + ex.Message);
+                //            }
+                //        }
+                //    }
+                //    connection.Close();
+                //}
+                string deleteQuery = @"DELETE FROM Users WHERE userID = @userID";
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
@@ -1552,16 +1598,18 @@ namespace StandaloneSDKDemo
                         {
                             if (ex.ErrorCode == ((int)SQLiteErrorCode.Constraint))
                             {
-                                //using (var deleteCmd = new SQLiteCommand(connection))
-                                //{
-                                //    deleteCmd.CommandText = "DELETE FROM Users WHERE userID = @userID";
-                                //    deleteCmd.Parameters.AddWithValue("@userID", Int32.Parse(sEnrollNumber));
-                                //    deleteCmd.ExecuteNonQuery();
-                                //}
-
-                                //// Retry the insertion
+                                // Duplicate entry detected, delete the old one and insert the new one
+                                Console.WriteLine("Duplicate entry detected.");
+                                using (var delCmd = new SQLiteCommand(deleteQuery, connection))
+                                {
+                                    delCmd.Parameters.AddWithValue("@userID", sEnrollNumber);
+                                    delCmd.ExecuteNonQuery();
+                                    Console.WriteLine("Old entry deleted.");
+                                }
+                                // Retry the insert operation
                                 //cmd.ExecuteNonQuery();
-                                Console.WriteLine("Duplicate entry deleted and new data inserted.");
+                                Console.WriteLine("New entry inserted, Cols: " + a);
+                                a++;
                             }
                             else
                             {
@@ -1571,7 +1619,6 @@ namespace StandaloneSDKDemo
                     }
                     connection.Close();
                 }
-
 
 
                 num++;
@@ -1757,6 +1804,8 @@ namespace StandaloneSDKDemo
         #region UserFace
         public int sta_GetAllUserFaceInfo(ListBox lblOutputInfo, ProgressBar prgSta, ListView lvUserInfo)
         {
+            var connectionString = "Data Source=ZKTeco.db";
+
             if (GetConnectState() == false)
             {
                 lblOutputInfo.Items.Add("*Please connect first!");
@@ -1801,6 +1850,25 @@ namespace StandaloneSDKDemo
 
                     index++;
                     num++;
+
+
+
+                    using (var con = new SQLiteConnection(connectionString))
+                    {
+                        con.Open();
+                        using (var cmd = new SQLiteCommand(con))
+                        {
+                            cmd.CommandText = @"INSERT INTO facial(userID, Enable, Name, password, iPrivillege, iLength, Face) VALUES(@userID, @Enable, @Name, @password, @iPrivillege, @iLength, @Face)";
+                            cmd.Parameters.AddWithValue("@userID", sEnrollNumber);
+                            cmd.Parameters.AddWithValue("@Enable", bEnabled);
+                            cmd.Parameters.AddWithValue("@Name", sName);
+                            cmd.Parameters.AddWithValue("@password", sPassword);
+                            cmd.Parameters.AddWithValue("@iPrivillege", iPrivilege.ToString());
+                            cmd.Parameters.AddWithValue("@iLength", iLength.ToString());
+                            cmd.Parameters.AddWithValue("@Face", sTmpData);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
                 }
                 prgSta.Value = num % 100;
             }
@@ -3445,34 +3513,35 @@ namespace StandaloneSDKDemo
             int status = 0;
             if (result)
             {
-                string[] devinfo = devBuffer.Split(',');
-                for (int i = 0; i < devinfo.Length; i += 1)
+                string[] devinfo = devBuffer.Split(new[] { "sn=" }, StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i < devinfo.Length; i++)
                 {
+                    // Extract IP address, MAC address, and status
                     Regex tcpipRegex = new Regex(@"tcpip=(\S+)");
                     Regex macRegex = new Regex(@"mac=(\S+)");
                     Regex statusRegex = new Regex(@"status=(\d+)");
 
-                    // Match the regular expressions against the input string
                     Match tcpipMatch = tcpipRegex.Match(devinfo[i]);
                     Match macMatch = macRegex.Match(devinfo[i]);
                     Match statusMatch = statusRegex.Match(devinfo[i]);
 
-                    // Extract the values
-                    result_ip = tcpipMatch.Success ? tcpipMatch.Groups[1].Value : null;
-                    mac = macMatch.Success ? macMatch.Groups[1].Value : null;
-                    status = statusMatch.Success ? int.Parse(statusMatch.Groups[1].Value) : 0;
+                     result_ip = tcpipMatch.Success ? tcpipMatch.Groups[1].Value : null;
+                     mac = macMatch.Success ? macMatch.Groups[1].Value : null;
+                     status = statusMatch.Success ? int.Parse(statusMatch.Groups[1].Value) : 0;
 
-                    //string ip = devinfo[i];
-                    //string[] parts = devinfo[i].Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries); // split by whitespace or tabs
-                    //result_ip = parts[8].Substring(6);
+                    // Add extracted data to the DataTable
                     DataRow dr = dt_devlog.NewRow();
-                    dr["Sr No"] = (i+1).ToString();
+                    dr["Sr No"] = (i + 1).ToString();
                     dr["IP Address"] = result_ip;
                     dr["Mac Address"] = mac;
                     dr["Status"] = status;
-                    Console.WriteLine(result_ip + mac + status);
                     dt_devlog.Rows.Add(dr);
+                }
 
+                // Print the extracted data (optional)
+                foreach (DataRow row in dt_devlog.Rows)
+                {
+                    Console.WriteLine($"Sr No: {row["Sr No"]}, IP Address: {row["IP Address"]}, Mac Address: {row["Mac Address"]}, Status: {row["Status"]}");
                 }
             }
             else
@@ -3798,7 +3867,8 @@ namespace StandaloneSDKDemo
             }
         }
 
-   #endregion
+        #endregion
+
 
         public int sta_GetAllUserID(bool bEnable, ComboBox cbUserID, ComboBox cbUserID1, ComboBox cbUserID2, ComboBox cbUserID3, ComboBox cbUserID4, TextBox txtID2, ComboBox cbUserID7)
         {

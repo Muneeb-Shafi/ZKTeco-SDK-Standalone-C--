@@ -33,7 +33,6 @@
             this.tmUserID = new System.Windows.Forms.Timer(this.components);
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnUploadOneUserPhoto = new System.Windows.Forms.Button();
             this.btnDownloadOneUserPhoto = new System.Windows.Forms.Button();
             this.btnDeleteOneUserPhoto = new System.Windows.Forms.Button();
@@ -230,9 +229,13 @@
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -257,6 +260,7 @@
             this.tabPage11.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tmUserID
@@ -293,18 +297,6 @@
             this.groupBox4.TabIndex = 68;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "ByUserID";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(257, 79);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(119, 171);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 59;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "";
             // 
             // btnUploadOneUserPhoto
             // 
@@ -443,6 +435,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button5);
+            this.tabPage3.Controls.Add(this.button4);
             this.tabPage3.Controls.Add(this.listUserInfo);
             this.tabPage3.Controls.Add(this.btnSetAllUserFaceInfo);
             this.tabPage3.Controls.Add(this.btnGetAllUserFaceInfo);
@@ -513,7 +507,7 @@
             this.btnSetAllUserFaceInfo.Name = "btnSetAllUserFaceInfo";
             this.btnSetAllUserFaceInfo.Size = new System.Drawing.Size(126, 25);
             this.btnSetAllUserFaceInfo.TabIndex = 80;
-            this.btnSetAllUserFaceInfo.Text = "SetAllUserFaceInfo";
+            this.btnSetAllUserFaceInfo.Text = "Send to Device";
             this.btnSetAllUserFaceInfo.UseVisualStyleBackColor = true;
             this.btnSetAllUserFaceInfo.Click += new System.EventHandler(this.btnSetAllUserFaceInfo_Click);
             // 
@@ -523,12 +517,13 @@
             this.btnGetAllUserFaceInfo.Name = "btnGetAllUserFaceInfo";
             this.btnGetAllUserFaceInfo.Size = new System.Drawing.Size(126, 25);
             this.btnGetAllUserFaceInfo.TabIndex = 79;
-            this.btnGetAllUserFaceInfo.Text = "GetAllUserFaceInfo";
+            this.btnGetAllUserFaceInfo.Text = "Get From Device";
             this.btnGetAllUserFaceInfo.UseVisualStyleBackColor = true;
             this.btnGetAllUserFaceInfo.Click += new System.EventHandler(this.btnGetAllUserFaceInfo_Click);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.lvUserInfo);
             this.tabPage2.Controls.Add(this.cbBatchUpload);
@@ -865,6 +860,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.GetUserInfo);
             this.groupBox3.Controls.Add(this.txtUserID);
             this.groupBox3.Controls.Add(this.txtName);
@@ -886,7 +882,7 @@
             // 
             // GetUserInfo
             // 
-            this.GetUserInfo.Location = new System.Drawing.Point(239, 119);
+            this.GetUserInfo.Location = new System.Drawing.Point(193, 119);
             this.GetUserInfo.Name = "GetUserInfo";
             this.GetUserInfo.Size = new System.Drawing.Size(97, 25);
             this.GetUserInfo.TabIndex = 69;
@@ -940,7 +936,7 @@
             // 
             // btnSetUserInfo
             // 
-            this.btnSetUserInfo.Location = new System.Drawing.Point(117, 119);
+            this.btnSetUserInfo.Location = new System.Drawing.Point(71, 119);
             this.btnSetUserInfo.Name = "btnSetUserInfo";
             this.btnSetUserInfo.Size = new System.Drawing.Size(97, 25);
             this.btnSetUserInfo.TabIndex = 0;
@@ -2323,13 +2319,65 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(789, 358);
+            this.button1.Location = new System.Drawing.Point(702, 358);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 25);
             this.button1.TabIndex = 83;
             this.button1.Text = "Get From DataBase";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Location = new System.Drawing.Point(257, 79);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(119, 171);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 59;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(831, 358);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 25);
+            this.button2.TabIndex = 84;
+            this.button2.Text = "Clear";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(315, 119);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(97, 25);
+            this.button3.TabIndex = 70;
+            this.button3.Text = "Delete";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(675, 358);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(126, 25);
+            this.button4.TabIndex = 84;
+            this.button4.Text = "Get From Database";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(826, 358);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 25);
+            this.button5.TabIndex = 85;
+            this.button5.Text = "Clear";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // UserMngForm
             // 
@@ -2344,7 +2392,6 @@
             this.tabPage10.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -2380,6 +2427,7 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2586,5 +2634,9 @@
         private System.Windows.Forms.TextBox txtUserID1;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }

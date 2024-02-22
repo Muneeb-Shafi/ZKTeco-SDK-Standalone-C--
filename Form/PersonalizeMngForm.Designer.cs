@@ -109,6 +109,7 @@
             this.tb_adpicName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.lbWallpaperNotice = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.cb_wallpaper = new System.Windows.Forms.ComboBox();
             this.btn_uploadwallpaper = new System.Windows.Forms.Button();
@@ -116,7 +117,6 @@
             this.btn_wallPath = new System.Windows.Forms.Button();
             this.tb_wallName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbWallpaperNotice = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -138,7 +138,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(934, 385);
+            this.tabControl1.Size = new System.Drawing.Size(934, 417);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -149,16 +149,16 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(926, 359);
+            this.tabPage1.Size = new System.Drawing.Size(926, 391);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bell";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btn_getAllBell
             // 
-            this.btn_getAllBell.Location = new System.Drawing.Point(785, 223);
+            this.btn_getAllBell.Location = new System.Drawing.Point(785, 242);
             this.btn_getAllBell.Name = "btn_getAllBell";
-            this.btn_getAllBell.Size = new System.Drawing.Size(97, 21);
+            this.btn_getAllBell.Size = new System.Drawing.Size(97, 23);
             this.btn_getAllBell.TabIndex = 106;
             this.btn_getAllBell.Text = "GetAllBell";
             this.btn_getAllBell.UseVisualStyleBackColor = true;
@@ -191,9 +191,9 @@
             this.groupBox5.Controls.Add(this.comb_bellType);
             this.groupBox5.Controls.Add(this.tb_InerDelay);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(27, 238);
+            this.groupBox5.Location = new System.Drawing.Point(27, 258);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(872, 114);
+            this.groupBox5.Size = new System.Drawing.Size(872, 124);
             this.groupBox5.TabIndex = 105;
             this.groupBox5.TabStop = false;
             // 
@@ -201,27 +201,27 @@
             // 
             this.dt_time.CustomFormat = "HH:mm";
             this.dt_time.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_time.Location = new System.Drawing.Point(372, 16);
+            this.dt_time.Location = new System.Drawing.Point(372, 17);
             this.dt_time.Name = "dt_time";
             this.dt_time.ShowUpDown = true;
-            this.dt_time.Size = new System.Drawing.Size(71, 21);
+            this.dt_time.Size = new System.Drawing.Size(71, 20);
             this.dt_time.TabIndex = 111;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(683, 87);
+            this.label18.Location = new System.Drawing.Point(683, 94);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(47, 12);
+            this.label18.Size = new System.Drawing.Size(44, 13);
             this.label18.TabIndex = 103;
             this.label18.Text = "(1~999)";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(445, 87);
+            this.label17.Location = new System.Drawing.Point(445, 94);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(47, 12);
+            this.label17.Size = new System.Drawing.Size(44, 13);
             this.label17.TabIndex = 102;
             this.label17.Text = "(1~999)";
             // 
@@ -240,26 +240,26 @@
             "bell08.wav",
             "bell09.wav",
             "bell10.wav"});
-            this.comb_waveIndex.Location = new System.Drawing.Point(552, 16);
+            this.comb_waveIndex.Location = new System.Drawing.Point(552, 17);
             this.comb_waveIndex.Name = "comb_waveIndex";
-            this.comb_waveIndex.Size = new System.Drawing.Size(93, 20);
+            this.comb_waveIndex.Size = new System.Drawing.Size(93, 21);
             this.comb_waveIndex.TabIndex = 86;
             // 
             // cb_Sun
             // 
             this.cb_Sun.AutoSize = true;
-            this.cb_Sun.Location = new System.Drawing.Point(563, 50);
+            this.cb_Sun.Location = new System.Drawing.Point(563, 54);
             this.cb_Sun.Name = "cb_Sun";
-            this.cb_Sun.Size = new System.Drawing.Size(42, 16);
+            this.cb_Sun.Size = new System.Drawing.Size(45, 17);
             this.cb_Sun.TabIndex = 101;
             this.cb_Sun.Text = "Sun";
             this.cb_Sun.UseVisualStyleBackColor = true;
             // 
             // btn_addEditBell
             // 
-            this.btn_addEditBell.Location = new System.Drawing.Point(758, 87);
+            this.btn_addEditBell.Location = new System.Drawing.Point(758, 94);
             this.btn_addEditBell.Name = "btn_addEditBell";
-            this.btn_addEditBell.Size = new System.Drawing.Size(97, 21);
+            this.btn_addEditBell.Size = new System.Drawing.Size(97, 23);
             this.btn_addEditBell.TabIndex = 78;
             this.btn_addEditBell.Text = "Add/Edit";
             this.btn_addEditBell.UseVisualStyleBackColor = true;
@@ -268,9 +268,9 @@
             // cb_Sat
             // 
             this.cb_Sat.AutoSize = true;
-            this.cb_Sat.Location = new System.Drawing.Point(491, 50);
+            this.cb_Sat.Location = new System.Drawing.Point(491, 54);
             this.cb_Sat.Name = "cb_Sat";
-            this.cb_Sat.Size = new System.Drawing.Size(42, 16);
+            this.cb_Sat.Size = new System.Drawing.Size(42, 17);
             this.cb_Sat.TabIndex = 100;
             this.cb_Sat.Text = "Sat";
             this.cb_Sat.UseVisualStyleBackColor = true;
@@ -278,37 +278,37 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 18);
+            this.label5.Location = new System.Drawing.Point(20, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 79;
             this.label5.Text = "Bell ID ";
             // 
             // cb_Fri
             // 
             this.cb_Fri.AutoSize = true;
-            this.cb_Fri.Location = new System.Drawing.Point(424, 50);
+            this.cb_Fri.Location = new System.Drawing.Point(424, 54);
             this.cb_Fri.Name = "cb_Fri";
-            this.cb_Fri.Size = new System.Drawing.Size(42, 16);
+            this.cb_Fri.Size = new System.Drawing.Size(37, 17);
             this.cb_Fri.TabIndex = 99;
             this.cb_Fri.Text = "Fri";
             this.cb_Fri.UseVisualStyleBackColor = true;
             // 
             // tb_bellID
             // 
-            this.tb_bellID.Location = new System.Drawing.Point(79, 16);
+            this.tb_bellID.Location = new System.Drawing.Point(79, 17);
             this.tb_bellID.MaxLength = 5;
             this.tb_bellID.Name = "tb_bellID";
-            this.tb_bellID.Size = new System.Drawing.Size(69, 21);
+            this.tb_bellID.Size = new System.Drawing.Size(69, 20);
             this.tb_bellID.TabIndex = 80;
             this.tb_bellID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_bellID_KeyPress);
             // 
             // cb_Thu
             // 
             this.cb_Thu.AutoSize = true;
-            this.cb_Thu.Location = new System.Drawing.Point(349, 50);
+            this.cb_Thu.Location = new System.Drawing.Point(349, 54);
             this.cb_Thu.Name = "cb_Thu";
-            this.cb_Thu.Size = new System.Drawing.Size(42, 16);
+            this.cb_Thu.Size = new System.Drawing.Size(45, 17);
             this.cb_Thu.TabIndex = 98;
             this.cb_Thu.Text = "Thu";
             this.cb_Thu.UseVisualStyleBackColor = true;
@@ -316,18 +316,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(177, 19);
+            this.label6.Location = new System.Drawing.Point(177, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 81;
             this.label6.Text = "Status";
             // 
             // cb_Wed
             // 
             this.cb_Wed.AutoSize = true;
-            this.cb_Wed.Location = new System.Drawing.Point(270, 50);
+            this.cb_Wed.Location = new System.Drawing.Point(270, 54);
             this.cb_Wed.Name = "cb_Wed";
-            this.cb_Wed.Size = new System.Drawing.Size(42, 16);
+            this.cb_Wed.Size = new System.Drawing.Size(49, 17);
             this.cb_Wed.TabIndex = 97;
             this.cb_Wed.Text = "Wed";
             this.cb_Wed.UseVisualStyleBackColor = true;
@@ -335,9 +335,9 @@
             // cb_status
             // 
             this.cb_status.AutoSize = true;
-            this.cb_status.Location = new System.Drawing.Point(220, 18);
+            this.cb_status.Location = new System.Drawing.Point(220, 20);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(60, 16);
+            this.cb_status.Size = new System.Drawing.Size(59, 17);
             this.cb_status.TabIndex = 82;
             this.cb_status.Text = "Enable";
             this.cb_status.UseVisualStyleBackColor = true;
@@ -345,9 +345,9 @@
             // cb_Tue
             // 
             this.cb_Tue.AutoSize = true;
-            this.cb_Tue.Location = new System.Drawing.Point(195, 50);
+            this.cb_Tue.Location = new System.Drawing.Point(195, 54);
             this.cb_Tue.Name = "cb_Tue";
-            this.cb_Tue.Size = new System.Drawing.Size(42, 16);
+            this.cb_Tue.Size = new System.Drawing.Size(45, 17);
             this.cb_Tue.TabIndex = 96;
             this.cb_Tue.Text = "Tue";
             this.cb_Tue.UseVisualStyleBackColor = true;
@@ -355,18 +355,18 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(328, 19);
+            this.label7.Location = new System.Drawing.Point(328, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 83;
             this.label7.Text = "Time";
             // 
             // cb_Mon
             // 
             this.cb_Mon.AutoSize = true;
-            this.cb_Mon.Location = new System.Drawing.Point(118, 50);
+            this.cb_Mon.Location = new System.Drawing.Point(118, 54);
             this.cb_Mon.Name = "cb_Mon";
-            this.cb_Mon.Size = new System.Drawing.Size(42, 16);
+            this.cb_Mon.Size = new System.Drawing.Size(47, 17);
             this.cb_Mon.TabIndex = 95;
             this.cb_Mon.Text = "Mon";
             this.cb_Mon.UseVisualStyleBackColor = true;
@@ -374,45 +374,45 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(20, 51);
+            this.label14.Location = new System.Drawing.Point(20, 55);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 12);
+            this.label14.Size = new System.Drawing.Size(42, 13);
             this.label14.TabIndex = 94;
             this.label14.Text = "Repeat";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(479, 19);
+            this.label8.Location = new System.Drawing.Point(479, 21);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 12);
+            this.label8.Size = new System.Drawing.Size(62, 13);
             this.label8.TabIndex = 85;
             this.label8.Text = "WaveIndex";
             // 
             // tb_ExtDelay
             // 
-            this.tb_ExtDelay.Location = new System.Drawing.Point(642, 82);
+            this.tb_ExtDelay.Location = new System.Drawing.Point(642, 89);
             this.tb_ExtDelay.MaxLength = 3;
             this.tb_ExtDelay.Name = "tb_ExtDelay";
-            this.tb_ExtDelay.Size = new System.Drawing.Size(28, 21);
+            this.tb_ExtDelay.Size = new System.Drawing.Size(28, 20);
             this.tb_ExtDelay.TabIndex = 93;
             this.tb_ExtDelay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_ExtDelay_KeyPress);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 86);
+            this.label11.Location = new System.Drawing.Point(20, 93);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.Size = new System.Drawing.Size(48, 13);
             this.label11.TabIndex = 87;
             this.label11.Text = "BellType";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(523, 86);
+            this.label13.Location = new System.Drawing.Point(523, 93);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 12);
+            this.label13.Size = new System.Drawing.Size(86, 13);
             this.label13.TabIndex = 92;
             this.label13.Text = "External Delay(s)";
             // 
@@ -424,26 +424,26 @@
             "Internal Bell",
             "External Bell",
             "Internal and External Bell"});
-            this.comb_bellType.Location = new System.Drawing.Point(79, 83);
+            this.comb_bellType.Location = new System.Drawing.Point(79, 90);
             this.comb_bellType.Name = "comb_bellType";
-            this.comb_bellType.Size = new System.Drawing.Size(196, 20);
+            this.comb_bellType.Size = new System.Drawing.Size(196, 21);
             this.comb_bellType.TabIndex = 88;
             // 
             // tb_InerDelay
             // 
-            this.tb_InerDelay.Location = new System.Drawing.Point(411, 84);
+            this.tb_InerDelay.Location = new System.Drawing.Point(411, 91);
             this.tb_InerDelay.MaxLength = 3;
             this.tb_InerDelay.Name = "tb_InerDelay";
-            this.tb_InerDelay.Size = new System.Drawing.Size(28, 21);
+            this.tb_InerDelay.Size = new System.Drawing.Size(28, 20);
             this.tb_InerDelay.TabIndex = 91;
             this.tb_InerDelay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_InerDelay_KeyPress);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(298, 86);
+            this.label12.Location = new System.Drawing.Point(298, 93);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(107, 12);
+            this.label12.Size = new System.Drawing.Size(83, 13);
             this.label12.TabIndex = 90;
             this.label12.Text = "Internal Delay(s)";
             // 
@@ -470,7 +470,7 @@
             this.Column8,
             this.Column9});
             this.gv_BellInfo.Enabled = false;
-            this.gv_BellInfo.Location = new System.Drawing.Point(27, 7);
+            this.gv_BellInfo.Location = new System.Drawing.Point(27, 8);
             this.gv_BellInfo.MultiSelect = false;
             this.gv_BellInfo.Name = "gv_BellInfo";
             this.gv_BellInfo.ReadOnly = true;
@@ -478,7 +478,7 @@
             this.gv_BellInfo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.gv_BellInfo.RowTemplate.Height = 23;
             this.gv_BellInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gv_BellInfo.Size = new System.Drawing.Size(872, 210);
+            this.gv_BellInfo.Size = new System.Drawing.Size(872, 228);
             this.gv_BellInfo.TabIndex = 104;
             // 
             // UserID
@@ -489,7 +489,7 @@
             this.UserID.HeaderText = "ID";
             this.UserID.Name = "UserID";
             this.UserID.ReadOnly = true;
-            this.UserID.Width = 42;
+            this.UserID.Width = 43;
             // 
             // UserName
             // 
@@ -499,7 +499,7 @@
             this.UserName.HeaderText = "Enable";
             this.UserName.Name = "UserName";
             this.UserName.ReadOnly = true;
-            this.UserName.Width = 66;
+            this.UserName.Width = 65;
             // 
             // UserCard
             // 
@@ -508,7 +508,7 @@
             this.UserCard.HeaderText = "Time";
             this.UserCard.Name = "UserCard";
             this.UserCard.ReadOnly = true;
-            this.UserCard.Width = 54;
+            this.UserCard.Width = 55;
             // 
             // UserPasswd
             // 
@@ -518,7 +518,7 @@
             this.UserPasswd.HeaderText = "WaveIndex";
             this.UserPasswd.Name = "UserPasswd";
             this.UserPasswd.ReadOnly = true;
-            this.UserPasswd.Width = 84;
+            this.UserPasswd.Width = 87;
             // 
             // UserPrivilege
             // 
@@ -528,7 +528,7 @@
             this.UserPrivilege.HeaderText = "BellType";
             this.UserPrivilege.Name = "UserPrivilege";
             this.UserPrivilege.ReadOnly = true;
-            this.UserPrivilege.Width = 78;
+            this.UserPrivilege.Width = 73;
             // 
             // Column1
             // 
@@ -537,7 +537,7 @@
             this.Column1.HeaderText = "InerDelay";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 84;
+            this.Column1.Width = 77;
             // 
             // Column2
             // 
@@ -546,7 +546,7 @@
             this.Column2.HeaderText = "ExtDelay";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 78;
+            this.Column2.Width = 74;
             // 
             // Column3
             // 
@@ -555,7 +555,7 @@
             this.Column3.HeaderText = "Mon";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 48;
+            this.Column3.Width = 53;
             // 
             // Column4
             // 
@@ -564,7 +564,7 @@
             this.Column4.HeaderText = "Tue";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 48;
+            this.Column4.Width = 51;
             // 
             // Column5
             // 
@@ -573,7 +573,7 @@
             this.Column5.HeaderText = "Wed";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 48;
+            this.Column5.Width = 55;
             // 
             // Column6
             // 
@@ -582,7 +582,7 @@
             this.Column6.HeaderText = "Thu";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            this.Column6.Width = 48;
+            this.Column6.Width = 51;
             // 
             // Column7
             // 
@@ -591,7 +591,7 @@
             this.Column7.HeaderText = "Fri";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Width = 48;
+            this.Column7.Width = 43;
             // 
             // Column8
             // 
@@ -609,7 +609,7 @@
             this.Column9.HeaderText = "Sun";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
-            this.Column9.Width = 48;
+            this.Column9.Width = 51;
             // 
             // tabPage2
             // 
@@ -623,7 +623,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(926, 359);
+            this.tabPage2.Size = new System.Drawing.Size(926, 391);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ShortcutKey";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -650,9 +650,9 @@
             this.panel_punchStateConf.Controls.Add(this.checkBox_Sat);
             this.panel_punchStateConf.Controls.Add(this.checkBox_Thu);
             this.panel_punchStateConf.Controls.Add(this.checkBox_Fri);
-            this.panel_punchStateConf.Location = new System.Drawing.Point(88, 71);
+            this.panel_punchStateConf.Location = new System.Drawing.Point(88, 77);
             this.panel_punchStateConf.Name = "panel_punchStateConf";
-            this.panel_punchStateConf.Size = new System.Drawing.Size(568, 245);
+            this.panel_punchStateConf.Size = new System.Drawing.Size(568, 265);
             this.panel_punchStateConf.TabIndex = 119;
             this.panel_punchStateConf.Visible = false;
             // 
@@ -660,130 +660,130 @@
             // 
             this.dt_Sun.CustomFormat = "HH:mm";
             this.dt_Sun.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Sun.Location = new System.Drawing.Point(89, 204);
+            this.dt_Sun.Location = new System.Drawing.Point(89, 221);
             this.dt_Sun.Name = "dt_Sun";
             this.dt_Sun.ShowUpDown = true;
-            this.dt_Sun.Size = new System.Drawing.Size(71, 21);
+            this.dt_Sun.Size = new System.Drawing.Size(71, 20);
             this.dt_Sun.TabIndex = 110;
             // 
             // dt_Sat
             // 
             this.dt_Sat.CustomFormat = "HH:mm";
             this.dt_Sat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Sat.Location = new System.Drawing.Point(89, 183);
+            this.dt_Sat.Location = new System.Drawing.Point(89, 198);
             this.dt_Sat.Name = "dt_Sat";
             this.dt_Sat.ShowUpDown = true;
-            this.dt_Sat.Size = new System.Drawing.Size(71, 21);
+            this.dt_Sat.Size = new System.Drawing.Size(71, 20);
             this.dt_Sat.TabIndex = 110;
             // 
             // dt_Fri
             // 
             this.dt_Fri.CustomFormat = "HH:mm";
             this.dt_Fri.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Fri.Location = new System.Drawing.Point(89, 162);
+            this.dt_Fri.Location = new System.Drawing.Point(89, 176);
             this.dt_Fri.Name = "dt_Fri";
             this.dt_Fri.ShowUpDown = true;
-            this.dt_Fri.Size = new System.Drawing.Size(71, 21);
+            this.dt_Fri.Size = new System.Drawing.Size(71, 20);
             this.dt_Fri.TabIndex = 110;
             // 
             // dt_Thu
             // 
             this.dt_Thu.CustomFormat = "HH:mm";
             this.dt_Thu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Thu.Location = new System.Drawing.Point(89, 140);
+            this.dt_Thu.Location = new System.Drawing.Point(89, 152);
             this.dt_Thu.Name = "dt_Thu";
             this.dt_Thu.ShowUpDown = true;
-            this.dt_Thu.Size = new System.Drawing.Size(71, 21);
+            this.dt_Thu.Size = new System.Drawing.Size(71, 20);
             this.dt_Thu.TabIndex = 110;
             // 
             // dt_Wed
             // 
             this.dt_Wed.CustomFormat = "HH:mm";
             this.dt_Wed.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Wed.Location = new System.Drawing.Point(89, 119);
+            this.dt_Wed.Location = new System.Drawing.Point(89, 129);
             this.dt_Wed.Name = "dt_Wed";
             this.dt_Wed.ShowUpDown = true;
-            this.dt_Wed.Size = new System.Drawing.Size(71, 21);
+            this.dt_Wed.Size = new System.Drawing.Size(71, 20);
             this.dt_Wed.TabIndex = 110;
             // 
             // dt_Tue
             // 
             this.dt_Tue.CustomFormat = "HH:mm";
             this.dt_Tue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Tue.Location = new System.Drawing.Point(89, 99);
+            this.dt_Tue.Location = new System.Drawing.Point(89, 107);
             this.dt_Tue.Name = "dt_Tue";
             this.dt_Tue.ShowUpDown = true;
-            this.dt_Tue.Size = new System.Drawing.Size(71, 21);
+            this.dt_Tue.Size = new System.Drawing.Size(71, 20);
             this.dt_Tue.TabIndex = 110;
             // 
             // dt_Mon
             // 
             this.dt_Mon.CustomFormat = "HH:mm";
             this.dt_Mon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Mon.Location = new System.Drawing.Point(89, 77);
+            this.dt_Mon.Location = new System.Drawing.Point(89, 83);
             this.dt_Mon.Name = "dt_Mon";
             this.dt_Mon.ShowUpDown = true;
-            this.dt_Mon.Size = new System.Drawing.Size(71, 21);
+            this.dt_Mon.Size = new System.Drawing.Size(71, 20);
             this.dt_Mon.TabIndex = 110;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 15);
+            this.label9.Location = new System.Drawing.Point(9, 16);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 12);
+            this.label9.Size = new System.Drawing.Size(96, 13);
             this.label9.TabIndex = 0;
             this.label9.Text = "Punch State Value";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(10, 48);
+            this.label16.Location = new System.Drawing.Point(10, 52);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(143, 12);
+            this.label16.Size = new System.Drawing.Size(127, 13);
             this.label16.TabIndex = 0;
             this.label16.Text = "Punch State Switch Time";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(288, 16);
+            this.label15.Location = new System.Drawing.Point(288, 17);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(101, 12);
+            this.label15.Size = new System.Drawing.Size(97, 13);
             this.label15.TabIndex = 0;
             this.label15.Text = "Punch State Name";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(220, 15);
+            this.label10.Location = new System.Drawing.Point(220, 16);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 12);
+            this.label10.Size = new System.Drawing.Size(44, 13);
             this.label10.TabIndex = 0;
             this.label10.Text = "(0~250)";
             // 
             // tb_statekeyValue
             // 
-            this.tb_statekeyValue.Location = new System.Drawing.Point(122, 13);
+            this.tb_statekeyValue.Location = new System.Drawing.Point(122, 14);
             this.tb_statekeyValue.MaxLength = 3;
             this.tb_statekeyValue.Name = "tb_statekeyValue";
-            this.tb_statekeyValue.Size = new System.Drawing.Size(92, 21);
+            this.tb_statekeyValue.Size = new System.Drawing.Size(92, 20);
             this.tb_statekeyValue.TabIndex = 2;
             this.tb_statekeyValue.TextChanged += new System.EventHandler(this.tb_statekeyValue_TextChanged);
             // 
             // tb_statekeyName
             // 
-            this.tb_statekeyName.Location = new System.Drawing.Point(391, 13);
+            this.tb_statekeyName.Location = new System.Drawing.Point(391, 14);
             this.tb_statekeyName.Name = "tb_statekeyName";
-            this.tb_statekeyName.Size = new System.Drawing.Size(100, 21);
+            this.tb_statekeyName.Size = new System.Drawing.Size(100, 20);
             this.tb_statekeyName.TabIndex = 2;
             // 
             // checkBox_Mon
             // 
             this.checkBox_Mon.AutoSize = true;
-            this.checkBox_Mon.Location = new System.Drawing.Point(30, 79);
+            this.checkBox_Mon.Location = new System.Drawing.Point(30, 86);
             this.checkBox_Mon.Name = "checkBox_Mon";
-            this.checkBox_Mon.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_Mon.Size = new System.Drawing.Size(47, 17);
             this.checkBox_Mon.TabIndex = 103;
             this.checkBox_Mon.Text = "Mon";
             this.checkBox_Mon.UseVisualStyleBackColor = true;
@@ -791,9 +791,9 @@
             // checkBox_Tue
             // 
             this.checkBox_Tue.AutoSize = true;
-            this.checkBox_Tue.Location = new System.Drawing.Point(30, 102);
+            this.checkBox_Tue.Location = new System.Drawing.Point(30, 111);
             this.checkBox_Tue.Name = "checkBox_Tue";
-            this.checkBox_Tue.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_Tue.Size = new System.Drawing.Size(45, 17);
             this.checkBox_Tue.TabIndex = 104;
             this.checkBox_Tue.Text = "Tue";
             this.checkBox_Tue.UseVisualStyleBackColor = true;
@@ -801,9 +801,9 @@
             // checkBox_Sun
             // 
             this.checkBox_Sun.AutoSize = true;
-            this.checkBox_Sun.Location = new System.Drawing.Point(30, 207);
+            this.checkBox_Sun.Location = new System.Drawing.Point(30, 224);
             this.checkBox_Sun.Name = "checkBox_Sun";
-            this.checkBox_Sun.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_Sun.Size = new System.Drawing.Size(45, 17);
             this.checkBox_Sun.TabIndex = 109;
             this.checkBox_Sun.Text = "Sun";
             this.checkBox_Sun.UseVisualStyleBackColor = true;
@@ -811,9 +811,9 @@
             // checkBox_Wed
             // 
             this.checkBox_Wed.AutoSize = true;
-            this.checkBox_Wed.Location = new System.Drawing.Point(30, 122);
+            this.checkBox_Wed.Location = new System.Drawing.Point(30, 132);
             this.checkBox_Wed.Name = "checkBox_Wed";
-            this.checkBox_Wed.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_Wed.Size = new System.Drawing.Size(49, 17);
             this.checkBox_Wed.TabIndex = 105;
             this.checkBox_Wed.Text = "Wed";
             this.checkBox_Wed.UseVisualStyleBackColor = true;
@@ -821,9 +821,9 @@
             // checkBox_Sat
             // 
             this.checkBox_Sat.AutoSize = true;
-            this.checkBox_Sat.Location = new System.Drawing.Point(30, 186);
+            this.checkBox_Sat.Location = new System.Drawing.Point(30, 202);
             this.checkBox_Sat.Name = "checkBox_Sat";
-            this.checkBox_Sat.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_Sat.Size = new System.Drawing.Size(42, 17);
             this.checkBox_Sat.TabIndex = 108;
             this.checkBox_Sat.Text = "Sat";
             this.checkBox_Sat.UseVisualStyleBackColor = true;
@@ -831,9 +831,9 @@
             // checkBox_Thu
             // 
             this.checkBox_Thu.AutoSize = true;
-            this.checkBox_Thu.Location = new System.Drawing.Point(30, 143);
+            this.checkBox_Thu.Location = new System.Drawing.Point(30, 155);
             this.checkBox_Thu.Name = "checkBox_Thu";
-            this.checkBox_Thu.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_Thu.Size = new System.Drawing.Size(45, 17);
             this.checkBox_Thu.TabIndex = 106;
             this.checkBox_Thu.Text = "Thu";
             this.checkBox_Thu.UseVisualStyleBackColor = true;
@@ -841,18 +841,19 @@
             // checkBox_Fri
             // 
             this.checkBox_Fri.AutoSize = true;
-            this.checkBox_Fri.Location = new System.Drawing.Point(30, 164);
+            this.checkBox_Fri.Location = new System.Drawing.Point(30, 178);
             this.checkBox_Fri.Name = "checkBox_Fri";
-            this.checkBox_Fri.Size = new System.Drawing.Size(42, 16);
+            this.checkBox_Fri.Size = new System.Drawing.Size(37, 17);
             this.checkBox_Fri.TabIndex = 107;
             this.checkBox_Fri.Text = "Fri";
             this.checkBox_Fri.UseVisualStyleBackColor = true;
             // 
             // btn_setShortKey
             // 
-            this.btn_setShortKey.Location = new System.Drawing.Point(764, 45);
+            this.btn_setShortKey.Enabled = false;
+            this.btn_setShortKey.Location = new System.Drawing.Point(764, 49);
             this.btn_setShortKey.Name = "btn_setShortKey";
-            this.btn_setShortKey.Size = new System.Drawing.Size(75, 21);
+            this.btn_setShortKey.Size = new System.Drawing.Size(75, 23);
             this.btn_setShortKey.TabIndex = 117;
             this.btn_setShortKey.Text = "Set";
             this.btn_setShortKey.UseVisualStyleBackColor = true;
@@ -860,9 +861,10 @@
             // 
             // btn_GetShortkey
             // 
-            this.btn_GetShortkey.Location = new System.Drawing.Point(665, 45);
+            this.btn_GetShortkey.Enabled = false;
+            this.btn_GetShortkey.Location = new System.Drawing.Point(665, 49);
             this.btn_GetShortkey.Name = "btn_GetShortkey";
-            this.btn_GetShortkey.Size = new System.Drawing.Size(75, 21);
+            this.btn_GetShortkey.Size = new System.Drawing.Size(75, 23);
             this.btn_GetShortkey.TabIndex = 118;
             this.btn_GetShortkey.Text = "Get";
             this.btn_GetShortkey.UseVisualStyleBackColor = true;
@@ -871,38 +873,40 @@
             // cb_function
             // 
             this.cb_function.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_function.Enabled = false;
             this.cb_function.FormattingEnabled = true;
-            this.cb_function.Location = new System.Drawing.Point(435, 47);
+            this.cb_function.Location = new System.Drawing.Point(435, 51);
             this.cb_function.Name = "cb_function";
-            this.cb_function.Size = new System.Drawing.Size(144, 20);
+            this.cb_function.Size = new System.Drawing.Size(144, 21);
             this.cb_function.TabIndex = 116;
             this.cb_function.SelectedIndexChanged += new System.EventHandler(this.cb_function_SelectedIndexChanged);
             // 
             // cb_stkeyName
             // 
             this.cb_stkeyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_stkeyName.Enabled = false;
             this.cb_stkeyName.FormattingEnabled = true;
-            this.cb_stkeyName.Location = new System.Drawing.Point(210, 45);
+            this.cb_stkeyName.Location = new System.Drawing.Point(210, 49);
             this.cb_stkeyName.Name = "cb_stkeyName";
-            this.cb_stkeyName.Size = new System.Drawing.Size(121, 20);
+            this.cb_stkeyName.Size = new System.Drawing.Size(121, 21);
             this.cb_stkeyName.TabIndex = 115;
             this.cb_stkeyName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cb_stkeyName_MouseClick);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(362, 50);
+            this.label4.Location = new System.Drawing.Point(362, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 113;
             this.label4.Text = "Function";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 50);
+            this.label3.Location = new System.Drawing.Point(96, 54);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 12);
+            this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 114;
             this.label3.Text = "Shortcut Key Name";
             // 
@@ -917,7 +921,7 @@
             this.tabPage5.Controls.Add(this.label2);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(926, 359);
+            this.tabPage5.Size = new System.Drawing.Size(926, 391);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Advertise";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -925,9 +929,9 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(28, 36);
+            this.label21.Location = new System.Drawing.Point(28, 39);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(59, 12);
+            this.label21.Size = new System.Drawing.Size(63, 13);
             this.label21.TabIndex = 72;
             this.label21.Text = "AdPicName";
             // 
@@ -944,16 +948,16 @@
             "ad_pic6.png",
             "ad_pic7.png",
             "ad_pic8.png"});
-            this.cb_adpic.Location = new System.Drawing.Point(113, 33);
+            this.cb_adpic.Location = new System.Drawing.Point(113, 36);
             this.cb_adpic.Name = "cb_adpic";
-            this.cb_adpic.Size = new System.Drawing.Size(121, 20);
+            this.cb_adpic.Size = new System.Drawing.Size(121, 21);
             this.cb_adpic.TabIndex = 71;
             // 
             // btn_uploadAdvertise
             // 
-            this.btn_uploadAdvertise.Location = new System.Drawing.Point(293, 307);
+            this.btn_uploadAdvertise.Location = new System.Drawing.Point(293, 333);
             this.btn_uploadAdvertise.Name = "btn_uploadAdvertise";
-            this.btn_uploadAdvertise.Size = new System.Drawing.Size(320, 21);
+            this.btn_uploadAdvertise.Size = new System.Drawing.Size(320, 23);
             this.btn_uploadAdvertise.TabIndex = 64;
             this.btn_uploadAdvertise.Text = "UploadAdvertisePicture";
             this.btn_uploadAdvertise.UseVisualStyleBackColor = true;
@@ -963,18 +967,18 @@
             // 
             this.pictureBoxAd.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBoxAd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxAd.Location = new System.Drawing.Point(293, 78);
+            this.pictureBoxAd.Location = new System.Drawing.Point(293, 84);
             this.pictureBoxAd.Name = "pictureBoxAd";
-            this.pictureBoxAd.Size = new System.Drawing.Size(320, 201);
+            this.pictureBoxAd.Size = new System.Drawing.Size(320, 218);
             this.pictureBoxAd.TabIndex = 63;
             this.pictureBoxAd.TabStop = false;
             this.pictureBoxAd.Tag = "";
             // 
             // btn_adpicturepath
             // 
-            this.btn_adpicturepath.Location = new System.Drawing.Point(731, 33);
+            this.btn_adpicturepath.Location = new System.Drawing.Point(731, 36);
             this.btn_adpicturepath.Name = "btn_adpicturepath";
-            this.btn_adpicturepath.Size = new System.Drawing.Size(36, 21);
+            this.btn_adpicturepath.Size = new System.Drawing.Size(36, 23);
             this.btn_adpicturepath.TabIndex = 62;
             this.btn_adpicturepath.Text = "...";
             this.btn_adpicturepath.UseVisualStyleBackColor = true;
@@ -982,18 +986,18 @@
             // 
             // tb_adpicName
             // 
-            this.tb_adpicName.Location = new System.Drawing.Point(388, 34);
+            this.tb_adpicName.Location = new System.Drawing.Point(388, 37);
             this.tb_adpicName.Name = "tb_adpicName";
             this.tb_adpicName.ReadOnly = true;
-            this.tb_adpicName.Size = new System.Drawing.Size(320, 21);
+            this.tb_adpicName.Size = new System.Drawing.Size(320, 20);
             this.tb_adpicName.TabIndex = 61;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(291, 38);
+            this.label2.Location = new System.Drawing.Point(291, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 12);
+            this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 60;
             this.label2.Text = "Select Picture";
             // 
@@ -1009,17 +1013,29 @@
             this.tabPage6.Controls.Add(this.label1);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(926, 359);
+            this.tabPage6.Size = new System.Drawing.Size(926, 391);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Wallpaper";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // lbWallpaperNotice
+            // 
+            this.lbWallpaperNotice.AutoSize = true;
+            this.lbWallpaperNotice.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbWallpaperNotice.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lbWallpaperNotice.Location = new System.Drawing.Point(700, 84);
+            this.lbWallpaperNotice.Name = "lbWallpaperNotice";
+            this.lbWallpaperNotice.Size = new System.Drawing.Size(155, 60);
+            this.lbWallpaperNotice.TabIndex = 72;
+            this.lbWallpaperNotice.Text = "recommend picture size:\r\n\r\n3inch screen:     400x218\r\n3.5inch screen:   320x218\r\n" +
+    "4.3inch screen:   480x240";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(24, 36);
+            this.label20.Location = new System.Drawing.Point(24, 39);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(83, 12);
+            this.label20.Size = new System.Drawing.Size(83, 13);
             this.label20.TabIndex = 71;
             this.label20.Text = "WallpaperName";
             // 
@@ -1034,16 +1050,16 @@
             "wallpaper4.png",
             "wallpaper5.png",
             "wallpaper6.png"});
-            this.cb_wallpaper.Location = new System.Drawing.Point(113, 33);
+            this.cb_wallpaper.Location = new System.Drawing.Point(113, 36);
             this.cb_wallpaper.Name = "cb_wallpaper";
-            this.cb_wallpaper.Size = new System.Drawing.Size(121, 20);
+            this.cb_wallpaper.Size = new System.Drawing.Size(121, 21);
             this.cb_wallpaper.TabIndex = 70;
             // 
             // btn_uploadwallpaper
             // 
-            this.btn_uploadwallpaper.Location = new System.Drawing.Point(293, 307);
+            this.btn_uploadwallpaper.Location = new System.Drawing.Point(293, 333);
             this.btn_uploadwallpaper.Name = "btn_uploadwallpaper";
-            this.btn_uploadwallpaper.Size = new System.Drawing.Size(320, 21);
+            this.btn_uploadwallpaper.Size = new System.Drawing.Size(320, 23);
             this.btn_uploadwallpaper.TabIndex = 69;
             this.btn_uploadwallpaper.Text = "UploadWallpaperPicture";
             this.btn_uploadwallpaper.UseVisualStyleBackColor = true;
@@ -1054,18 +1070,18 @@
             this.pictureBoxWall.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBoxWall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxWall.Enabled = false;
-            this.pictureBoxWall.Location = new System.Drawing.Point(293, 78);
+            this.pictureBoxWall.Location = new System.Drawing.Point(293, 84);
             this.pictureBoxWall.Name = "pictureBoxWall";
-            this.pictureBoxWall.Size = new System.Drawing.Size(320, 201);
+            this.pictureBoxWall.Size = new System.Drawing.Size(320, 218);
             this.pictureBoxWall.TabIndex = 68;
             this.pictureBoxWall.TabStop = false;
             this.pictureBoxWall.Tag = "";
             // 
             // btn_wallPath
             // 
-            this.btn_wallPath.Location = new System.Drawing.Point(731, 33);
+            this.btn_wallPath.Location = new System.Drawing.Point(731, 36);
             this.btn_wallPath.Name = "btn_wallPath";
-            this.btn_wallPath.Size = new System.Drawing.Size(36, 21);
+            this.btn_wallPath.Size = new System.Drawing.Size(36, 23);
             this.btn_wallPath.TabIndex = 67;
             this.btn_wallPath.Text = "...";
             this.btn_wallPath.UseVisualStyleBackColor = true;
@@ -1073,38 +1089,26 @@
             // 
             // tb_wallName
             // 
-            this.tb_wallName.Location = new System.Drawing.Point(388, 34);
+            this.tb_wallName.Location = new System.Drawing.Point(388, 37);
             this.tb_wallName.Name = "tb_wallName";
             this.tb_wallName.ReadOnly = true;
-            this.tb_wallName.Size = new System.Drawing.Size(320, 21);
+            this.tb_wallName.Size = new System.Drawing.Size(320, 20);
             this.tb_wallName.TabIndex = 66;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(291, 38);
+            this.label1.Location = new System.Drawing.Point(291, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 12);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 65;
             this.label1.Text = "Select Picture";
             // 
-            // lbWallpaperNotice
-            // 
-            this.lbWallpaperNotice.AutoSize = true;
-            this.lbWallpaperNotice.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbWallpaperNotice.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lbWallpaperNotice.Location = new System.Drawing.Point(700, 78);
-            this.lbWallpaperNotice.Name = "lbWallpaperNotice";
-            this.lbWallpaperNotice.Size = new System.Drawing.Size(155, 60);
-            this.lbWallpaperNotice.TabIndex = 72;
-            this.lbWallpaperNotice.Text = "recommend picture size:\r\n\r\n3inch screen:     400x218\r\n3.5inch screen:   320x218\r\n" +
-                "4.3inch screen:   480x240";
-            // 
             // PersonalizeMngForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 392);
+            this.ClientSize = new System.Drawing.Size(934, 425);
             this.Controls.Add(this.tabControl1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

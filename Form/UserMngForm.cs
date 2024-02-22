@@ -2012,6 +2012,82 @@ namespace StandaloneSDKDemo
             }
             Cursor = Cursors.Default;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lvUserInfo.Items.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (UserMng.SDK.sta_deleteUser(Int32.Parse(txtUserID.Text)))
+            {
+                MessageBox.Show("User Deleted");
+            }
+            else
+            {
+                MessageBox.Show("User Not Deleted");
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            listUserInfo.Items.Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            var connectionString = "Data Source=ZKTeco.db";
+            lvUserInfo.Items.Clear();
+            int index = 0;
+            bool enabled = false;
+            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM Users";
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int userID = reader.GetInt32(reader.GetOrdinal("userID"));
+                            int enable = reader.GetInt32(reader.GetOrdinal("Enable"));
+                            string name = reader.GetString(reader.GetOrdinal("Name"));
+                            string password = reader.GetString(reader.GetOrdinal("Password"));
+                            int? privilege = reader.IsDBNull(reader.GetOrdinal("iPrivilege")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("Privilege"));
+                            int? length = reader.IsDBNull(reader.GetOrdinal("iLength")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("iLength"));
+                            string face = reader.IsDBNull(reader.GetOrdinal("Face"))
+                                                ? null
+                                                : reader.GetString(reader.GetOrdinal("Face"));
+
+                            lvUserInfo.Items.Add(userID.ToString());
+
+                            if (enable == 1)
+                            {
+                                enabled = true;
+                            }
+                            else
+                            {
+                                enabled = false;
+                            }
+                            lvUserInfo.Items[index].SubItems.Add(enabled.ToString());
+                            lvUserInfo.Items[index].SubItems.Add(name);
+                            lvUserInfo.Items[index].SubItems.Add(password);
+                            lvUserInfo.Items[index].SubItems.Add(privilege.ToString());
+                            lvUserInfo.Items[index].SubItems.Add(length.ToString());
+                            lvUserInfo.Items[index].SubItems.Add(face);
+                            index++;
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            Cursor = Cursors.Default;
+        }
     }
     
 }

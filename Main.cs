@@ -197,7 +197,7 @@ namespace StandaloneSDKDemo
             pnlAccess.Visible = false;
             pnlOther.Visible = false;
 
-            this.PnlMiddle.Controls.Add(labAD);
+            //this.PnlMiddle.Controls.Add(labAD);
         }
 
         private void lbSysOutputInfo_DrawItem(object sender, DrawItemEventArgs e)

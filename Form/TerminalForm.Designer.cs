@@ -616,6 +616,7 @@
             // 
             // txtCommKey1
             // 
+            this.txtCommKey1.Enabled = false;
             this.txtCommKey1.Location = new System.Drawing.Point(153, 46);
             this.txtCommKey1.MaxLength = 6;
             this.txtCommKey1.Name = "txtCommKey1";
@@ -646,6 +647,7 @@
             // 
             // txtPort
             // 
+            this.txtPort.Enabled = false;
             this.txtPort.ImeMode = System.Windows.Forms.ImeMode.Close;
             this.txtPort.Location = new System.Drawing.Point(201, 10);
             this.txtPort.MaxLength = 5;

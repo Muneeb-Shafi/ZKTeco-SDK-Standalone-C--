@@ -18,7 +18,7 @@ namespace StandaloneSDKDemo
 
         private Color activeColor = Color.White;
         private Color defaultColor = Color.Transparent;
-        private Image mouseEnterImage = Properties.Resources.FirstMenuM;
+        //private Image mouseEnterImage = Properties.Resources.FirstMenuM;
         private Color defaultForeColor = Color.Black;
         private Color textColor = Color.White;
         public FirstMenu()
@@ -121,7 +121,7 @@ namespace StandaloneSDKDemo
 
         private void label1_MouseEnter(object sender, EventArgs e)
         {
-            this.BackgroundImage = mouseEnterImage;
+            //this.BackgroundImage = mouseEnterImage;
         }
 
         public void label1_MouseLeave(object sender, EventArgs e)
