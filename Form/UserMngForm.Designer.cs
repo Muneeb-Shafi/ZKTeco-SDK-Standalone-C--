@@ -229,6 +229,7 @@
             this.txtSMSID2 = new System.Windows.Forms.TextBox();
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -528,6 +529,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.lvUserInfo);
             this.tabPage2.Controls.Add(this.cbBatchUpload);
             this.tabPage2.Controls.Add(this.btnSetAllUserFPInfo);
@@ -537,7 +539,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(926, 391);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "FingerPrints";
+            this.tabPage2.Text = "FingerPrints Import / Export";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // lvUserInfo
@@ -610,6 +612,7 @@
             // cbBatchUpload
             // 
             this.cbBatchUpload.AutoSize = true;
+            this.cbBatchUpload.Enabled = false;
             this.cbBatchUpload.Location = new System.Drawing.Point(262, 363);
             this.cbBatchUpload.Name = "cbBatchUpload";
             this.cbBatchUpload.Size = new System.Drawing.Size(80, 17);
@@ -623,7 +626,7 @@
             this.btnSetAllUserFPInfo.Name = "btnSetAllUserFPInfo";
             this.btnSetAllUserFPInfo.Size = new System.Drawing.Size(115, 25);
             this.btnSetAllUserFPInfo.TabIndex = 79;
-            this.btnSetAllUserFPInfo.Text = "SetAllUserFPInfo";
+            this.btnSetAllUserFPInfo.Text = "Send To Device";
             this.btnSetAllUserFPInfo.UseVisualStyleBackColor = true;
             this.btnSetAllUserFPInfo.Click += new System.EventHandler(this.btnSetAllUserFPInfo_Click);
             // 
@@ -633,7 +636,7 @@
             this.btnGetAllUserFPInfo.Name = "btnGetAllUserFPInfo";
             this.btnGetAllUserFPInfo.Size = new System.Drawing.Size(109, 25);
             this.btnGetAllUserFPInfo.TabIndex = 78;
-            this.btnGetAllUserFPInfo.Text = "GetAllUserFPInfo";
+            this.btnGetAllUserFPInfo.Text = "Get From Device";
             this.btnGetAllUserFPInfo.UseVisualStyleBackColor = true;
             this.btnGetAllUserFPInfo.Click += new System.EventHandler(this.btnGetAllUserFPInfo_Click);
             // 
@@ -1390,7 +1393,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(926, 391);
             this.tabPage4.TabIndex = 11;
-            this.tabPage4.Text = "Import / Export";
+            this.tabPage4.Text = "User List Import / Export";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabControl3
@@ -2318,6 +2321,16 @@
             this.btnClearSMS.UseVisualStyleBackColor = true;
             this.btnClearSMS.Click += new System.EventHandler(this.btnClearSMS_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(789, 358);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 25);
+            this.button1.TabIndex = 83;
+            this.button1.Text = "Get From DataBase";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // UserMngForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2572,5 +2585,6 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox txtUserID1;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button button1;
     }
 }

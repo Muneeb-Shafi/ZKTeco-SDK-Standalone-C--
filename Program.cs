@@ -38,48 +38,7 @@ namespace StandaloneSDKDemo
                 //    Console.WriteLine("All data in the 'Users' table has been deleted.");
                 //}
 
-
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = "SELECT * FROM Users";
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            int userID = reader.GetInt32(reader.GetOrdinal("userID"));
-                            int enable = reader.GetInt32(reader.GetOrdinal("Enable"));
-                            string name = reader.GetString(reader.GetOrdinal("Name"));
-                            string cardNo = reader.GetString(reader.GetOrdinal("CardNo"));
-                            string password = reader.GetString(reader.GetOrdinal("Password"));
-                            int fingerIndex = reader.GetInt32(reader.GetOrdinal("FingerIndex"));
-                            int? flag = reader.IsDBNull(reader.GetOrdinal("Flag")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("Flag"));
-                            string fingerPrint = reader.IsDBNull(reader.GetOrdinal("FingerPrint"))
-                                                ? null
-                                                : reader.GetString(reader.GetOrdinal("FingerPrint")); 
-                            int? privilege = reader.IsDBNull(reader.GetOrdinal("Privilege")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("Privilege"));
-
-
-                            Console.WriteLine($"User ID: {userID}");
-                            Console.WriteLine($"Enable: {enable}");
-                            Console.WriteLine($"Name: {name}");
-                            Console.WriteLine($"Card No: {cardNo}");
-                            Console.WriteLine($"Password: {password}");
-                            Console.WriteLine($"Finger Index: {fingerIndex}");
-                            Console.WriteLine($"Flag: {flag}");
-                            Console.WriteLine($"Fingerprint: {fingerPrint}");
-                            Console.WriteLine($"Privilege: {privilege}");
-                            Console.WriteLine();
-                        }
-                    }
-                }
-
-
-
-
-
-
-                }
+            }
 
 
             Application.EnableVisualStyles();

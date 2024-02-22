@@ -1447,6 +1447,9 @@ namespace StandaloneSDKDemo
         VALUES (@Enable, @Name, @CardNo, @Password, @FingerIndex, @Flag, @FingerPrint, @Privilege)";
 
             int a = 1;
+
+            string fingerprint = "";
+            int fingerprintindex = 0;
             axCZKEM1.EnableDevice(iMachineNumber, false);
             axCZKEM1.ReadAllUserID(iMachineNumber);//read all the user information to the memory  except fingerprint Templates
             axCZKEM1.ReadAllTemplate(iMachineNumber);//read all the users' fingerprint templates to the memory
@@ -1468,14 +1471,14 @@ namespace StandaloneSDKDemo
                 lvUserInfo.Items[index].SubItems.Add(sName);
                 lvUserInfo.Items[index].SubItems.Add(sCardnumber);
                 lvUserInfo.Items[index].SubItems.Add(sPassword);
-                string fingerprint = "";
+                
                 i = 0;
                 xx = 1;
                 for (idwFingerIndex = 0; idwFingerIndex < 10; idwFingerIndex++)
                 {
                     if (axCZKEM1.GetUserTmpExStr(iMachineNumber, sEnrollNumber, idwFingerIndex, out iFlag, out sFPTmpData, out iFPTmpLength))//get the corresponding templates string and length from the memory
                     {
-                        fingerprint = sFPTmpData;
+                        
                         if (xx == 1)
                         {
                             lvUserInfo.Items[index].SubItems.Add(idwFingerIndex.ToString());
@@ -1498,12 +1501,13 @@ namespace StandaloneSDKDemo
                             lvUserInfo.Items[index].SubItems.Add(sName);
                             lvUserInfo.Items[index].SubItems.Add(sCardnumber);
                             lvUserInfo.Items[index].SubItems.Add(sPassword);
-                            lvUserInfo.Items[index].SubItems.Add(idwFingerIndex.ToString());
+                            lvUserInfo.Items[index].SubItems.Add(fingerprintindex.ToString());
                             lvUserInfo.Items[index].SubItems.Add(iFlag.ToString());
                             lvUserInfo.Items[index].SubItems.Add(sFPTmpData);
                             lvUserInfo.Items[index].SubItems.Add(iPrivilege.ToString());
                         }
-
+                        fingerprint = sFPTmpData;
+                        fingerprintindex = idwFingerIndex;
                         index++;
                         xx = 0;
                         iFpCount++;
@@ -1528,6 +1532,7 @@ namespace StandaloneSDKDemo
                     connection.Open();
                     using (var cmd = new SQLiteCommand(insertQuery, connection))
                     {
+                        cmd.Parameters.AddWithValue("@userID", sEnrollNumber);
                         cmd.Parameters.AddWithValue("@Enable", bEnabled);
                         cmd.Parameters.AddWithValue("@Name", sName);
                         cmd.Parameters.AddWithValue("@CardNo", sCardnumber);
@@ -1536,12 +1541,38 @@ namespace StandaloneSDKDemo
                         cmd.Parameters.AddWithValue("@Flag", iFlag);
                         cmd.Parameters.AddWithValue("@FingerPrint", fingerprint);
                         cmd.Parameters.AddWithValue("@Privilege", iPrivilege);
-                        cmd.ExecuteNonQuery();
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            Console.WriteLine("Data Inserted, Cols: " + a);
+                            a++;
+                        }
+                        catch (SQLiteException ex)
+                        {
+                            if (ex.ErrorCode == ((int)SQLiteErrorCode.Constraint))
+                            {
+                                //using (var deleteCmd = new SQLiteCommand(connection))
+                                //{
+                                //    deleteCmd.CommandText = "DELETE FROM Users WHERE userID = @userID";
+                                //    deleteCmd.Parameters.AddWithValue("@userID", Int32.Parse(sEnrollNumber));
+                                //    deleteCmd.ExecuteNonQuery();
+                                //}
+
+                                //// Retry the insertion
+                                //cmd.ExecuteNonQuery();
+                                Console.WriteLine("Duplicate entry deleted and new data inserted.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: " + ex.Message);
+                            }
+                        }
                     }
                     connection.Close();
-                    Console.WriteLine("Data Inserted, Cols : " + a);
-                    a++;
                 }
+
+
 
                 num++;
                 prgSta.Value = num % 100;
@@ -1587,7 +1618,7 @@ namespace StandaloneSDKDemo
             {
                 sEnrollNumber = lvUserInfo.Items[i].SubItems[0].Text;
                 sEnabled = lvUserInfo.Items[i].SubItems[1].Text;
-                if (sEnabled == "true")
+                if (sEnabled == "true" || sEnabled == "True")
                 {
                     bEnabled = true;
                 }

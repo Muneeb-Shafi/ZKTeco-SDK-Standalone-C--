@@ -1956,6 +1956,62 @@ namespace StandaloneSDKDemo
 
             Cursor = Cursors.Default;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            var connectionString = "Data Source=ZKTeco.db";
+            lvUserInfo.Items.Clear();
+            int index = 0;
+            bool enabled = false;
+            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM Users";
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int userID = reader.GetInt32(reader.GetOrdinal("userID"));
+                            int enable = reader.GetInt32(reader.GetOrdinal("Enable"));
+                            string name = reader.GetString(reader.GetOrdinal("Name"));
+                            string cardNo = reader.GetString(reader.GetOrdinal("CardNo"));
+                            string password = reader.GetString(reader.GetOrdinal("Password"));
+                            int fingerIndex = reader.GetInt32(reader.GetOrdinal("FingerIndex"));
+                            int? flag = reader.IsDBNull(reader.GetOrdinal("Flag")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("Flag"));
+                            string fingerPrint = reader.IsDBNull(reader.GetOrdinal("FingerPrint"))
+                                                ? null
+                                                : reader.GetString(reader.GetOrdinal("FingerPrint"));
+                            int? privilege = reader.IsDBNull(reader.GetOrdinal("Privilege")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("Privilege"));
+                            lvUserInfo.Items.Add(userID.ToString());
+
+                            if(enable == 1)
+                            {
+                                enabled = true;
+                            }
+                            else
+                            {
+                                enabled = false;
+                            }
+                            lvUserInfo.Items[index].SubItems.Add(enabled.ToString());
+                            lvUserInfo.Items[index].SubItems.Add(name);
+                            lvUserInfo.Items[index].SubItems.Add(cardNo);
+                            lvUserInfo.Items[index].SubItems.Add(password);
+                            lvUserInfo.Items[index].SubItems.Add(fingerIndex.ToString());
+                            lvUserInfo.Items[index].SubItems.Add(flag.ToString());
+                            lvUserInfo.Items[index].SubItems.Add(fingerPrint);
+                            lvUserInfo.Items[index].SubItems.Add(privilege.ToString());
+                            index++;
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            Cursor = Cursors.Default;
+        }
     }
     
 }
