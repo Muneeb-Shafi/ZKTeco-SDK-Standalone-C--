@@ -13,6 +13,7 @@ TestResults
 *.suo
 *.user
 *.sln.docstates
+*.vsidx
 
 # Build results
 [Dd]ebug/
