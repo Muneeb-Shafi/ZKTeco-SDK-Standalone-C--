@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Drawing;
 namespace StandaloneSDKDemo
 {
     static class Program
@@ -32,15 +33,14 @@ namespace StandaloneSDKDemo
         FingerPrint TEXT UNIQUE,
         Privilege INTEGER NULL
     );
-
     CREATE TABLE IF NOT EXISTS facial (
-        userID TEXT,
+        userID TEXT PRIMARY KEY,
         Enable BOOLEAN,
         Name TEXT,
         password TEXT,
         iPrivillege INTEGER,
         iLength INTEGER,
-        Face TEXT
+        Face TEXT UNIQUE
     );";
 
                 using (var command = connection.CreateCommand())
@@ -51,11 +51,24 @@ namespace StandaloneSDKDemo
                 Console.WriteLine("Table 'Users' and 'Facial' created successfully!");
 
 
-                //using (var command = new SQLiteCommand("DELETE FROM Users", connection))
+                //using (var command = new SQLiteCommand("DELETE FROM facial", connection))
                 //{
                 //    command.ExecuteNonQuery();
                 //    Console.WriteLine("All data in the 'Users' table has been deleted.");
                 //}
+                string stm = "SELECT * FROM facial";
+                using (var cmd = new SQLiteCommand(stm, connection))
+                {
+                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                    {
+
+                        while (rdr.Read())
+                        {
+                            Console.WriteLine($"userID: {rdr["userID"]}, Enable: {rdr["Enable"]}, Name: {rdr["Name"]}, password: {rdr["password"]}, iPrivillege: {rdr["iPrivillege"]}, iLength: {rdr["iLength"]}, Face: {rdr["Face"]}");
+                        }
+                    }
+                }
+        
 
             }
 

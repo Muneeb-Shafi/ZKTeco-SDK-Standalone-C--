@@ -2040,7 +2040,7 @@ namespace StandaloneSDKDemo
         {
             Cursor = Cursors.WaitCursor;
             var connectionString = "Data Source=ZKTeco.db";
-            lvUserInfo.Items.Clear();
+            listUserInfo.Items.Clear();
             int index = 0;
             bool enabled = false;
             using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
@@ -2048,40 +2048,32 @@ namespace StandaloneSDKDemo
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM Users";
+                    command.CommandText = "SELECT * FROM facial";
 
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            int userID = reader.GetInt32(reader.GetOrdinal("userID"));
+                            string userID = reader.GetString(reader.GetOrdinal("userID"));
                             int enable = reader.GetInt32(reader.GetOrdinal("Enable"));
                             string name = reader.GetString(reader.GetOrdinal("Name"));
                             string password = reader.GetString(reader.GetOrdinal("Password"));
                             int? privilege = reader.IsDBNull(reader.GetOrdinal("iPrivilege")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("Privilege"));
                             int? length = reader.IsDBNull(reader.GetOrdinal("iLength")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("iLength"));
-                            string face = reader.IsDBNull(reader.GetOrdinal("Face"))
-                                                ? null
-                                                : reader.GetString(reader.GetOrdinal("Face"));
+                            string face = reader.IsDBNull(reader.GetOrdinal("Face")) ? null : reader.GetString(reader.GetOrdinal("Face"));
 
-                            lvUserInfo.Items.Add(userID.ToString());
+                            ListViewItem item = new ListViewItem(userID);
+                            item.SubItems.Add(enable == 1 ? "true" : "false");
+                            item.SubItems.Add(name);
+                            item.SubItems.Add(password);
+                            item.SubItems.Add(privilege?.ToString());
+                            item.SubItems.Add(length?.ToString());
+                            item.SubItems.Add(face);
 
-                            if (enable == 1)
-                            {
-                                enabled = true;
-                            }
-                            else
-                            {
-                                enabled = false;
-                            }
-                            lvUserInfo.Items[index].SubItems.Add(enabled.ToString());
-                            lvUserInfo.Items[index].SubItems.Add(name);
-                            lvUserInfo.Items[index].SubItems.Add(password);
-                            lvUserInfo.Items[index].SubItems.Add(privilege.ToString());
-                            lvUserInfo.Items[index].SubItems.Add(length.ToString());
-                            lvUserInfo.Items[index].SubItems.Add(face);
-                            index++;
+                            listUserInfo.Items.Add(item);
+                            Console.WriteLine(item);
                         }
+
                     }
                 }
                 connection.Close();

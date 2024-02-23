@@ -1863,10 +1863,25 @@ namespace StandaloneSDKDemo
                             cmd.Parameters.AddWithValue("@Enable", bEnabled);
                             cmd.Parameters.AddWithValue("@Name", sName);
                             cmd.Parameters.AddWithValue("@password", sPassword);
-                            cmd.Parameters.AddWithValue("@iPrivillege", iPrivilege.ToString());
+                            cmd.Parameters.AddWithValue("@iPrivillege", iPrivilege);
                             cmd.Parameters.AddWithValue("@iLength", iLength.ToString());
                             cmd.Parameters.AddWithValue("@Face", sTmpData);
-                            cmd.ExecuteNonQuery();
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                                Console.WriteLine("Data Inserted, Cols: " + index);
+                            }
+                            catch (SQLiteException ex)
+                            {
+                                if (ex.ErrorCode == ((int)SQLiteErrorCode.Constraint))
+                                {
+                                    Console.WriteLine("Duplicate entry detected.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Error: " + ex.Message);
+                                }
+                            }
                         }
                     }
                 }
@@ -1920,7 +1935,14 @@ namespace StandaloneSDKDemo
                 }
                 sName = lvUserInfo.Items[i].SubItems[2].Text;
                 sPassword = lvUserInfo.Items[i].SubItems[3].Text;
-                iPrivilege = Convert.ToInt32(lvUserInfo.Items[i].SubItems[4].Text);
+                if (lvUserInfo.Items[i].SubItems[4].Text == "")
+                {
+                    iPrivilege = 0;
+                }
+                else
+                {
+                    iPrivilege = Convert.ToInt32(lvUserInfo.Items[i].SubItems[4].Text);
+                }
                 iLength = Convert.ToInt32(lvUserInfo.Items[i].SubItems[5].Text);
                 sTmpData = lvUserInfo.Items[i].SubItems[6].Text;
 
@@ -4326,7 +4348,14 @@ namespace StandaloneSDKDemo
                     dr["User Name"] = strName;
                     dr["Attendance Time"] = idwMonth + "-" + idwDay + " " + idwHour + ":" + idwMinute + ":" + idwSecond;
                     dr["Verify Type"] = idwVerifyMode;
-                    dr["Verify State"] = idwInOutMode;
+                    if (idwInOutMode == 1)
+                    {
+                        dr["Verify State"] = "Check Out";
+                    }
+                    else if( idwInOutMode == 0)
+                    {
+                        dr["Verify State"] = "Check In";
+                    }
                     dr["WorkCode"] = idwWorkcode;
                     dt_log.Rows.Add(dr);
                 }

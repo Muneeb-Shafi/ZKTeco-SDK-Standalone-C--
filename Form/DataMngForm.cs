@@ -78,7 +78,7 @@ namespace StandaloneSDKDemo
                 dt_period.Columns.Add("User Name", System.Type.GetType("System.String"));
                 dt_period.Columns.Add("Attendance Time", System.Type.GetType("System.String"));
                 dt_period.Columns.Add("Verify Type", System.Type.GetType("System.Int32"));
-                dt_period.Columns.Add("Verify State", System.Type.GetType("System.Int32"));
+                dt_period.Columns.Add("Verify State", System.Type.GetType("System.String"));
                 dt_period.Columns.Add("WorkCode", System.Type.GetType("System.Int32"));
                 gv_Attlog.DataSource = dt_period;
 
