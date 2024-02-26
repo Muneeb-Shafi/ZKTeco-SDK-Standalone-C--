@@ -33,6 +33,7 @@
             this.tmUserID = new System.Windows.Forms.Timer(this.components);
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnUploadOneUserPhoto = new System.Windows.Forms.Button();
             this.btnDownloadOneUserPhoto = new System.Windows.Forms.Button();
             this.btnDeleteOneUserPhoto = new System.Windows.Forms.Button();
@@ -48,6 +49,8 @@
             this.txtAllPhotoPath = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.listUserInfo = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,6 +62,8 @@
             this.btnSetAllUserFaceInfo = new System.Windows.Forms.Button();
             this.btnGetAllUserFaceInfo = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.lvUserInfo = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -228,14 +233,9 @@
             this.txtSMSID2 = new System.Windows.Forms.TextBox();
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -260,7 +260,6 @@
             this.tabPage11.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tmUserID
@@ -297,6 +296,18 @@
             this.groupBox4.TabIndex = 68;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "ByUserID";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Location = new System.Drawing.Point(257, 79);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(119, 171);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 59;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "";
             // 
             // btnUploadOneUserPhoto
             // 
@@ -447,6 +458,26 @@
             this.tabPage3.Text = "Facials";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(826, 358);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 25);
+            this.button5.TabIndex = 85;
+            this.button5.Text = "Clear";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(675, 358);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(126, 25);
+            this.button4.TabIndex = 84;
+            this.button4.Text = "Get From Database";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // listUserInfo
             // 
             this.listUserInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -534,8 +565,28 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(926, 391);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "FingerPrints Import / Export";
+            this.tabPage2.Text = "FingerPrints";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(831, 358);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 25);
+            this.button2.TabIndex = 84;
+            this.button2.Text = "Clear";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(702, 358);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 25);
+            this.button1.TabIndex = 83;
+            this.button1.Text = "Get From DataBase";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lvUserInfo
             // 
@@ -783,7 +834,7 @@
             this.groupBox7.Controls.Add(this.cbBackupDE);
             this.groupBox7.Location = new System.Drawing.Point(5, 182);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(467, 160);
+            this.groupBox7.Size = new System.Drawing.Size(408, 160);
             this.groupBox7.TabIndex = 89;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Delete Enrolled Data";
@@ -818,7 +869,7 @@
             // 
             // btnDeleteEnrollData
             // 
-            this.btnDeleteEnrollData.Location = new System.Drawing.Point(331, 129);
+            this.btnDeleteEnrollData.Location = new System.Drawing.Point(287, 129);
             this.btnDeleteEnrollData.Name = "btnDeleteEnrollData";
             this.btnDeleteEnrollData.Size = new System.Drawing.Size(115, 25);
             this.btnDeleteEnrollData.TabIndex = 15;
@@ -831,9 +882,9 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(173, 138);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(81, 13);
+            this.label24.Size = new System.Drawing.Size(38, 13);
             this.label24.TabIndex = 19;
-            this.label24.Text = "BackupNumber";
+            this.label24.Text = "Option";
             // 
             // cbBackupDE
             // 
@@ -853,14 +904,13 @@
             "10",
             "11",
             "12"});
-            this.cbBackupDE.Location = new System.Drawing.Point(264, 129);
+            this.cbBackupDE.Location = new System.Drawing.Point(220, 129);
             this.cbBackupDE.Name = "cbBackupDE";
             this.cbBackupDE.Size = new System.Drawing.Size(48, 21);
             this.cbBackupDE.TabIndex = 17;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.GetUserInfo);
             this.groupBox3.Controls.Add(this.txtUserID);
             this.groupBox3.Controls.Add(this.txtName);
@@ -882,7 +932,7 @@
             // 
             // GetUserInfo
             // 
-            this.GetUserInfo.Location = new System.Drawing.Point(193, 119);
+            this.GetUserInfo.Location = new System.Drawing.Point(325, 119);
             this.GetUserInfo.Name = "GetUserInfo";
             this.GetUserInfo.Size = new System.Drawing.Size(97, 25);
             this.GetUserInfo.TabIndex = 69;
@@ -936,7 +986,7 @@
             // 
             // btnSetUserInfo
             // 
-            this.btnSetUserInfo.Location = new System.Drawing.Point(71, 119);
+            this.btnSetUserInfo.Location = new System.Drawing.Point(203, 119);
             this.btnSetUserInfo.Name = "btnSetUserInfo";
             this.btnSetUserInfo.Size = new System.Drawing.Size(97, 25);
             this.btnSetUserInfo.TabIndex = 0;
@@ -1389,7 +1439,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(926, 391);
             this.tabPage4.TabIndex = 11;
-            this.tabPage4.Text = "User List Import / Export";
+            this.tabPage4.Text = "UserList";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabControl3
@@ -2317,68 +2367,6 @@
             this.btnClearSMS.UseVisualStyleBackColor = true;
             this.btnClearSMS.Click += new System.EventHandler(this.btnClearSMS_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(702, 358);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 25);
-            this.button1.TabIndex = 83;
-            this.button1.Text = "Get From DataBase";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(257, 79);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(119, 171);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 59;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(831, 358);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 25);
-            this.button2.TabIndex = 84;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(315, 119);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(97, 25);
-            this.button3.TabIndex = 70;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(675, 358);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 25);
-            this.button4.TabIndex = 84;
-            this.button4.Text = "Get From Database";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(826, 358);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(92, 25);
-            this.button5.TabIndex = 85;
-            this.button5.Text = "Clear";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // UserMngForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2392,6 +2380,7 @@
             this.tabPage10.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -2427,7 +2416,6 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2635,7 +2623,6 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
     }

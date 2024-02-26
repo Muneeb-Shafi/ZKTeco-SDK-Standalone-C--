@@ -30,6 +30,13 @@ namespace StandaloneSDKDemo
             UserMng.SDK.biometricTypes.Add("Palm Vein");
             SDKHelper.onMessage += SDKHelper_onMessage;
         }
+
+        public UserMngForm()
+        {
+            InitializeComponent();
+            SDKHelper.onMessage += SDKHelper_onMessage;
+        }
+
         private Main UserMng;
         void SDKHelper_onMessage(string msg)
         {
@@ -117,7 +124,7 @@ namespace StandaloneSDKDemo
 
         private void tmUserID_Tick(object sender, EventArgs e)
         {
-            UserMng.SDK.sta_GetAllUserID(false, cbUserID, cbUserID1, cbUserID2, cbUserID3, cbUserID4, txtID2, cbUserID7);
+            //UserMng.SDK.sta_GetAllUserID(false, cbUserID, cbUserID1, cbUserID2, cbUserID3, cbUserID4, txtID2, cbUserID7);
         }
 
         private void RefreshUserIDMenuItem_Click(object sender, EventArgs e)
@@ -224,7 +231,7 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.Default;
         }
 
-        private void btnSetAllUserFPInfo_Click(object sender, EventArgs e)
+        public void btnSetAllUserFPInfo_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
 
@@ -242,7 +249,7 @@ namespace StandaloneSDKDemo
         #endregion
 
         #region UserFace
-        private void btnGetAllUserFaceInfo_Click(object sender, EventArgs e)
+        public void btnGetAllUserFaceInfo_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
 
@@ -251,7 +258,7 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.Default;
         }
 
-        private void btnSetAllUserFaceInfo_Click(object sender, EventArgs e)
+        public void btnSetAllUserFaceInfo_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
 
@@ -1957,7 +1964,7 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.Default;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             var connectionString = "Data Source=ZKTeco.db";
@@ -2018,25 +2025,13 @@ namespace StandaloneSDKDemo
             lvUserInfo.Items.Clear();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (UserMng.SDK.sta_deleteUser(Int32.Parse(txtUserID.Text)))
-            {
-                MessageBox.Show("User Deleted");
-            }
-            else
-            {
-                MessageBox.Show("User Not Deleted");
-            }
-
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
             listUserInfo.Items.Clear();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        public void button4_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             var connectionString = "Data Source=ZKTeco.db";

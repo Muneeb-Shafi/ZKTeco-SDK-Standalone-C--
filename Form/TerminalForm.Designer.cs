@@ -121,6 +121,7 @@
             this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             this.TabTerminal.SuspendLayout();
             this.pDeviceInfo.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -527,6 +528,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button2);
             this.tabPage5.Controls.Add(this.gv_devlog);
             this.tabPage5.Controls.Add(this.button1);
             this.tabPage5.Controls.Add(this.txtCommKey1);
@@ -1051,6 +1053,16 @@
             this.dataGridViewTextBoxColumn10.HeaderText = "Value";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(292, 10);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 23);
+            this.button2.TabIndex = 99;
+            this.button2.Text = "Sync All Devices";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // TerminalForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1131,7 +1143,7 @@
         private System.Windows.Forms.ComboBox cbSerialPort;
         private System.Windows.Forms.Label labSerialPort;
         private System.Windows.Forms.TextBox txtPort;
-        private System.Windows.Forms.TextBox txtIP;
+        public System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label31;
@@ -1178,5 +1190,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn VType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Button button2;
     }
 }

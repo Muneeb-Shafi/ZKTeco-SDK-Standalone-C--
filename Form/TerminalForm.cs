@@ -77,7 +77,7 @@ namespace StandaloneSDKDemo
             txtFaceCnt.Text = faceCnt.ToString();
         }
 
-        private void btnTCPConnect_Click(object sender, EventArgs e)
+        public void btnTCPConnect_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             int ret = Terminal.SDK.sta_ConnectTCP(Terminal.lbSysOutputInfo, txtIP.Text.Trim(), txtPort.Text.Trim(), txtCommKey1.Text.Trim());
@@ -286,6 +286,53 @@ namespace StandaloneSDKDemo
                 this.txtIP.Text = ipAddress;
                 Console.WriteLine(ipAddress);
             }
+        }
+
+        public DataGridView iterateMachineforAtt(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+            return gv_devlog;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+            UserMngForm userdata = new UserMngForm(Terminal);
+            Cursor = Cursors.WaitCursor;
+            int i = 1;
+            foreach(DataGridViewRow row in gv_devlog.Rows)
+            {
+                if(i < gv_devlog.Rows.Count)
+                {
+                    row.Selected = true;
+                    string ipAddress = row.Cells["IP Address"].Value.ToString();
+                    this.txtIP.Text = ipAddress;
+                    //Connect With Device
+                    btnTCPConnect_Click(sender, e);
+                    //Get Data From DataBase 
+                    userdata.Show();
+                    userdata.button1_Click(sender, e);
+                    Thread.Sleep(10000);
+                    //Send FingerPrint Data to Device
+                    userdata.btnSetAllUserFPInfo_Click(sender, e);
+                    //Get Face Data From Device
+                    userdata.button4_Click(sender, e);
+                    //Send Face Data To Device
+                    userdata.btnSetAllUserFaceInfo_Click(sender, e);
+                    //Close The Window
+                    userdata.Hide();
+                    //Disconnect
+                    btnTCPConnect_Click(sender, e);
+                    i++;
+                }
+                else
+                {
+                    break;
+                }             
+            }
+            Cursor = Cursors.Default;
+            userdata.Close();   
+            MessageBox.Show("ALL DEVICES ARE SYNCED, THANK YOU FOR YOUR PATIENCE");
         }
     }
 }

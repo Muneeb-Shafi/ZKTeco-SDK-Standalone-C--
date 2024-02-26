@@ -8,6 +8,7 @@ namespace StandaloneSDKDemo
 {
     static class Program
     {
+        public static NotifyIcon notifyIcon;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -54,6 +55,11 @@ namespace StandaloneSDKDemo
                 //using (var command = new SQLiteCommand("DELETE FROM facial", connection))
                 //{
                 //    command.ExecuteNonQuery();
+                //    Console.WriteLine("All data in the 'Facial' table has been deleted.");
+                //}                
+                //using (var command = new SQLiteCommand("DELETE FROM Users", connection))
+                //{
+                //    command.ExecuteNonQuery();
                 //    Console.WriteLine("All data in the 'Users' table has been deleted.");
                 //}
                 string stm = "SELECT * FROM facial";
@@ -68,14 +74,14 @@ namespace StandaloneSDKDemo
                         }
                     }
                 }
-        
-
             }
 
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
+
+            
         }
     }
 }

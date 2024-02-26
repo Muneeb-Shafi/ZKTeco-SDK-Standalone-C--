@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace StandaloneSDKDemo
 {
@@ -47,6 +48,27 @@ namespace StandaloneSDKDemo
                 btn_deloldlog.Enabled = false;
             }
         }
+
+
+        public void readAttendace(object sender, EventArgs e, DataTable dt_periodLog)
+        {
+            System.DateTime currentTime = System.DateTime.Now;
+            string toTime = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
+            string fromTime = currentTime.ToString("yyyy-MM-dd") + "19:00:00";
+
+            gv_Attlog.AutoGenerateColumns = true;
+            gv_Attlog.Columns.Clear();
+            dt_periodLog.Columns.Add("User ID", System.Type.GetType("System.String"));
+            dt_periodLog.Columns.Add("User Name", System.Type.GetType("System.String"));
+            dt_periodLog.Columns.Add("Attendance Time", System.Type.GetType("System.String"));
+            dt_periodLog.Columns.Add("Verify Type", System.Type.GetType("System.Int32"));
+            dt_periodLog.Columns.Add("Verify State", System.Type.GetType("System.Int32"));
+            dt_periodLog.Columns.Add("WorkCode", System.Type.GetType("System.Int32"));
+            gv_Attlog.DataSource = dt_periodLog;
+
+            DataMng.SDK.sta_readLogByPeriod(DataMng.lbSysOutputInfo, dt_periodLog, fromTime, toTime);
+        }
+
 
         private void btn_readAttLog_Click(object sender, EventArgs e)
         {

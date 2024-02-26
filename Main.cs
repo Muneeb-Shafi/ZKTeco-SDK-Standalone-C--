@@ -7,19 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows;
+using System.Reflection;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.IO;
 
 namespace StandaloneSDKDemo
 {
     public partial class Main : Form
     {
-        String demoVersion = "1.1.15";//Please set correct demo version when code be changed; 
+        String demoVersion = "1.9";//Please set correct demo version when code be changed; 
+        bool notifyCheck = false;
+        private NotifyIcon notifyIcon = new NotifyIcon();
 
         public Main()
         {
             InitializeComponent();
             string ver = null;
             SDK.axCZKEM1.GetSDKVersion(ref ver);
-            lbVer.Text = "Demo Version:" + demoVersion + "  SDK Version:" + ver;
+            lbVer.Text = "Software Version:" + demoVersion + "  SDK Version:" + ver;
         }
 
         //public bool connected = false;
@@ -350,6 +355,105 @@ namespace StandaloneSDKDemo
         private void labAD_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void firstMenu1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void notificationTimer_Tick(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now; 
+            TimeSpan startTime = new TimeSpan(18, 29, 0);
+            TimeSpan endTime = new TimeSpan(18, 31, 0); 
+
+            if (currentTime.TimeOfDay >= startTime && currentTime.TimeOfDay <= endTime && notifyCheck == false)
+            {
+                Cursor= Cursors.WaitCursor;
+                notifyCheck = true;
+
+                getAttLogs(sender, e);
+
+                notifyIcon.Icon = SystemIcons.Information;
+                notifyIcon.Text = "WinForms Balloon App";
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(500000, "ALERT", "These Students have not Check'ed In Yet", ToolTipIcon.Warning);
+                Cursor = Cursors.Default;
+            }
+
+            TimeSpan startTime2 = new TimeSpan(09, 01, 0); 
+            TimeSpan endTime2 = new TimeSpan(17, 0, 0); 
+
+            if (currentTime.TimeOfDay >= startTime2 && currentTime.TimeOfDay <= endTime2 && notifyCheck == true)
+            {
+                notifyCheck = false;
+            }
+
+        }
+
+        private void getAttLogs(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable("dt");
+            DataMngForm attFrom = new DataMngForm(this);
+            
+            TerminalForm terminal = new TerminalForm(this);
+            DataGridView dg = terminal.iterateMachineforAtt(sender, e);
+
+            foreach (DataGridViewRow row in dg.Rows)
+            {
+                row.Selected = true;
+                string ipAddress = row.Cells["IP Address"].Value.ToString();
+                terminal.txtIP.Text = ipAddress;
+                terminal.btnTCPConnect_Click(sender, e);
+                attFrom.readAttendace(sender, e, dt);
+                terminal.btnTCPConnect_Click(sender, e);
+            }
+
+
+
+
+
+
+
+
+            List<int> students = new List<int>();
+            foreach (DataRow row in dt.Rows)
+            {
+                int userID = (int)row["User ID"];
+                string verifyState = (string)row["Verify State"];
+                DateTime attendanceTime = (DateTime)row["Attendance Time"];
+
+                if (verifyState == "Check Out")
+                {
+                    if (!students.Contains(userID))
+                    {
+                        students.Add(userID);
+                    }
+                }
+                else if (verifyState == "Check In")
+                {
+                    if (students.Contains(userID))
+                    {
+                        students.Remove(userID);
+                    }
+                }
+            }
+
+            string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+            string fileName = currentDate + "StudentList.csv";
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, fileName);
+
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                sw.WriteLine("Student ID,User Name,Attendance Time,Verify Type,Verify State,WorkCode");
+                foreach (int student in students)
+                {
+                    DataRow row = dt.Rows.Find(student);
+                    sw.WriteLine(string.Join(",", row.ItemArray));
+                }
+            }
         }
     }
 }

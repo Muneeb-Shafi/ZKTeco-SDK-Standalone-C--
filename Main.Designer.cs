@@ -55,8 +55,9 @@ namespace StandaloneSDKDemo
             this.pnlAccess = new System.Windows.Forms.Panel();
             this.pnlData = new System.Windows.Forms.Panel();
             this.pnlTerminal = new System.Windows.Forms.Panel();
-            this.propertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.propertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificationTimer = new System.Windows.Forms.Timer(this.components);
             this.firstMenu6 = new StandaloneSDKDemo.FirstMenu();
             this.firstMenu5 = new StandaloneSDKDemo.FirstMenu();
             this.firstMenu4 = new StandaloneSDKDemo.FirstMenu();
@@ -303,12 +304,6 @@ namespace StandaloneSDKDemo
             this.pnlTerminal.Size = new System.Drawing.Size(16, 17);
             this.pnlTerminal.TabIndex = 1;
             // 
-            // propertyToolStripMenuItem
-            // 
-            this.propertyToolStripMenuItem.Name = "propertyToolStripMenuItem";
-            this.propertyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.propertyToolStripMenuItem.Text = "Property";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -318,6 +313,18 @@ namespace StandaloneSDKDemo
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            // 
+            // propertyToolStripMenuItem
+            // 
+            this.propertyToolStripMenuItem.Name = "propertyToolStripMenuItem";
+            this.propertyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.propertyToolStripMenuItem.Text = "Property";
+            // 
+            // notificationTimer
+            // 
+            this.notificationTimer.Enabled = true;
+            this.notificationTimer.Interval = 20000;
+            this.notificationTimer.Tick += new System.EventHandler(this.notificationTimer_Tick);
             // 
             // firstMenu6
             // 
@@ -421,6 +428,7 @@ namespace StandaloneSDKDemo
             this.firstMenu1.TabIndex = 3;
             this.firstMenu1.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstMenu1.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu1_MouseSelected);
+            this.firstMenu1.Load += new System.EventHandler(this.firstMenu1_Load);
             // 
             // Main
             // 
@@ -485,6 +493,7 @@ namespace StandaloneSDKDemo
         private System.Windows.Forms.ContextMenuStrip cmsDeviceRTEvent;
         private System.Windows.Forms.ToolStripMenuItem ClearInfoMenuItem1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Timer notificationTimer;
     }
 }
 
