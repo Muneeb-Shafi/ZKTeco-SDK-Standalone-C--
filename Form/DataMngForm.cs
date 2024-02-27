@@ -50,20 +50,39 @@ namespace StandaloneSDKDemo
         }
 
 
+
+        private bool ColumnExists(DataTable table, string columnName)
+        {
+            return table.Columns.Contains(columnName);
+        }
+
+        // Add the column only if it does not exist
+        private void AddColumnIfNotExists(DataTable table, string columnName, Type dataType)
+        {
+            if (!ColumnExists(table, columnName))
+            {
+                table.Columns.Add(columnName, dataType);
+            }
+        }
+
+
+
         public void readAttendace(object sender, EventArgs e, DataTable dt_periodLog)
         {
             System.DateTime currentTime = System.DateTime.Now;
             string toTime = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
-            string fromTime = currentTime.ToString("yyyy-MM-dd") + "19:00:00";
+            string fromTime = currentTime.ToString("yyyy-MM-dd ") + "08:00:00";
 
             gv_Attlog.AutoGenerateColumns = true;
             gv_Attlog.Columns.Clear();
-            dt_periodLog.Columns.Add("User ID", System.Type.GetType("System.String"));
-            dt_periodLog.Columns.Add("User Name", System.Type.GetType("System.String"));
-            dt_periodLog.Columns.Add("Attendance Time", System.Type.GetType("System.String"));
-            dt_periodLog.Columns.Add("Verify Type", System.Type.GetType("System.Int32"));
-            dt_periodLog.Columns.Add("Verify State", System.Type.GetType("System.Int32"));
-            dt_periodLog.Columns.Add("WorkCode", System.Type.GetType("System.Int32"));
+
+            AddColumnIfNotExists(dt_periodLog, "User ID", System.Type.GetType("System.String"));
+            AddColumnIfNotExists(dt_periodLog, "User Name", System.Type.GetType("System.String"));
+            AddColumnIfNotExists(dt_periodLog, "Attendance Time", System.Type.GetType("System.String"));
+            AddColumnIfNotExists(dt_periodLog, "Verify Type", System.Type.GetType("System.Int32"));
+            AddColumnIfNotExists(dt_periodLog, "Verify State", System.Type.GetType("System.Int32"));
+            AddColumnIfNotExists(dt_periodLog, "WorkCode", System.Type.GetType("System.Int32"));
+            
             gv_Attlog.DataSource = dt_periodLog;
 
             DataMng.SDK.sta_readLogByPeriod(DataMng.lbSysOutputInfo, dt_periodLog, fromTime, toTime);

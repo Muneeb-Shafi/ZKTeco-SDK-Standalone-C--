@@ -365,79 +365,68 @@ namespace StandaloneSDKDemo
         private void notificationTimer_Tick(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now; 
-            TimeSpan startTime = new TimeSpan(18, 29, 0);
-            TimeSpan endTime = new TimeSpan(18, 31, 0); 
-
+            TimeSpan startTime = new TimeSpan(18, 00, 0);
+            TimeSpan endTime = new TimeSpan(18, 05, 0); 
             if (currentTime.TimeOfDay >= startTime && currentTime.TimeOfDay <= endTime && notifyCheck == false)
             {
-                Cursor= Cursors.WaitCursor;
-                notifyCheck = true;
-
-                getAttLogs(sender, e);
-
-                notifyIcon.Icon = SystemIcons.Information;
-                notifyIcon.Text = "WinForms Balloon App";
-                notifyIcon.Visible = true;
-                notifyIcon.ShowBalloonTip(500000, "ALERT", "These Students have not Check'ed In Yet", ToolTipIcon.Warning);
-                Cursor = Cursors.Default;
+                startProcess(sender, e);
             }
-
             TimeSpan startTime2 = new TimeSpan(09, 01, 0); 
             TimeSpan endTime2 = new TimeSpan(17, 0, 0); 
-
             if (currentTime.TimeOfDay >= startTime2 && currentTime.TimeOfDay <= endTime2 && notifyCheck == true)
             {
                 notifyCheck = false;
             }
+        }
 
+        private void startProcess(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            notifyCheck = true;
+            getAttLogs(sender, e);
+            notifyIcon.Icon = SystemIcons.Information;
+            notifyIcon.Text = "WinForms Balloon App";
+            notifyIcon.Visible = true;
+            notifyIcon.ShowBalloonTip(500000, "ALERT", "These Students have not Check'ed In Yet", ToolTipIcon.Warning);
+            Cursor = Cursors.Default;
         }
 
         private void getAttLogs(object sender, EventArgs e)
         {
             DataTable dt = new DataTable("dt");
-            DataMngForm attFrom = new DataMngForm(this);
-            
+            DataMngForm attFrom = new DataMngForm(this);        
             TerminalForm terminal = new TerminalForm(this);
             DataGridView dg = terminal.iterateMachineforAtt(sender, e);
+            int i = 1;
 
             foreach (DataGridViewRow row in dg.Rows)
             {
-                row.Selected = true;
-                string ipAddress = row.Cells["IP Address"].Value.ToString();
-                terminal.txtIP.Text = ipAddress;
-                terminal.btnTCPConnect_Click(sender, e);
-                attFrom.readAttendace(sender, e, dt);
-                terminal.btnTCPConnect_Click(sender, e);
+                if (i < dg.RowCount)
+                {
+                    row.Selected = true;
+                    string ipAddress = row.Cells["IP Address"].Value.ToString();
+                    terminal.txtIP.Text = ipAddress;
+                    terminal.btnTCPConnect_Click(sender, e);
+                    attFrom.readAttendace(sender, e, dt);
+                    terminal.btnTCPConnect_Click(sender, e);
+                    i++;
+                }
+                
             }
-
-
-
-
-
-
-
-
-            List<int> students = new List<int>();
+            List<string> students = new List<string>();
             foreach (DataRow row in dt.Rows)
             {
-                int userID = (int)row["User ID"];
-                string verifyState = (string)row["Verify State"];
-                DateTime attendanceTime = (DateTime)row["Attendance Time"];
+                string userID = (string)row["User ID"];
+                //DateTime attendanceTime = (DateTime)row["Attendance Time"];
 
-                if (verifyState == "Check Out")
+                if (!students.Contains(userID))
                 {
-                    if (!students.Contains(userID))
-                    {
-                        students.Add(userID);
-                    }
+                    students.Add(userID);
                 }
-                else if (verifyState == "Check In")
+                else if (students.Contains(userID))
                 {
-                    if (students.Contains(userID))
-                    {
-                        students.Remove(userID);
-                    }
-                }
+                    students.Remove(userID);
+                }               
             }
 
             string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
@@ -448,12 +437,14 @@ namespace StandaloneSDKDemo
             using (StreamWriter sw = new StreamWriter(filePath))
             {
                 sw.WriteLine("Student ID,User Name,Attendance Time,Verify Type,Verify State,WorkCode");
-                foreach (int student in students)
+                foreach (string student in students)
                 {
-                    DataRow row = dt.Rows.Find(student);
-                    sw.WriteLine(string.Join(",", row.ItemArray));
+                    string searchExpression = "[User ID] LIKE '%" + student + "%'";
+                    DataRow[] row = dt.Select(searchExpression);
+                    sw.WriteLine(string.Join(",", row[0].ItemArray));
                 }
             }
         }
+
     }
 }
