@@ -42,6 +42,13 @@ namespace StandaloneSDKDemo
         iPrivillege INTEGER,
         iLength INTEGER,
         Face TEXT UNIQUE
+    );
+    CREATE TABLE IF NOT EXISTS user (
+        userID TEXT PRIMARY KEY,
+        Name TEXT,
+        cnic TEXT,
+        Hostel TEXT,
+        Degree TEXT
     );";
 
                 using (var command = connection.CreateCommand())
@@ -56,13 +63,13 @@ namespace StandaloneSDKDemo
                 //{
                 //    command.ExecuteNonQuery();
                 //    Console.WriteLine("All data in the 'Facial' table has been deleted.");
-                //}                
-                //using (var command = new SQLiteCommand("DELETE FROM Users", connection))
+                //}
+                //using (var command = new SQLiteCommand("DELETE FROM user", connection))
                 //{
                 //    command.ExecuteNonQuery();
                 //    Console.WriteLine("All data in the 'Users' table has been deleted.");
                 //}
-                string stm = "SELECT * FROM facial";
+                string stm = "SELECT * FROM user";
                 using (var cmd = new SQLiteCommand(stm, connection))
                 {
                     using (SQLiteDataReader rdr = cmd.ExecuteReader())
@@ -70,7 +77,7 @@ namespace StandaloneSDKDemo
 
                         while (rdr.Read())
                         {
-                            Console.WriteLine($"userID: {rdr["userID"]}, Enable: {rdr["Enable"]}, Name: {rdr["Name"]}, password: {rdr["password"]}, iPrivillege: {rdr["iPrivillege"]}, iLength: {rdr["iLength"]}, Face: {rdr["Face"]}");
+                            Console.WriteLine($"userID: {rdr["userID"]}, Name: {rdr["Name"]}, CNIC: {rdr["cnic"]}, Hostel: {rdr["Hostel"]}, Degree: {rdr["Degree"]}");
                         }
                     }
                 }

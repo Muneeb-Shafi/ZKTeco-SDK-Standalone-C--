@@ -746,7 +746,7 @@ namespace StandaloneSDKDemo
 
         #region UserInfo
 
-        public int sta_DeleteEnrollData(ListBox lblOutputInfo, ComboBox cbUseID, ComboBox cbBackupDE)
+        public int sta_DeleteEnrollData(ListBox lblOutputInfo, string cbUseID, ComboBox cbBackupDE)
         {
             if (GetConnectState() == false)
             {
@@ -754,14 +754,14 @@ namespace StandaloneSDKDemo
                 return -1024;
             }
 
-            if (cbUseID.Text.Trim() == "" || cbBackupDE.Text.Trim() == "")
+            if (cbUseID.Trim() == "" || cbBackupDE.Text.Trim() == "")
             {
                 lblOutputInfo.Items.Add("*Please input data first!");
                 return -1023;
             }
 
             int idwErrorCode = 0;
-            string sUserID = cbUseID.Text.Trim();
+            string sUserID = cbUseID.Trim();
             int iBackupNumber = Convert.ToInt32(cbBackupDE.Text.Trim());
 
             if (axCZKEM1.SSR_DeleteEnrollData(iMachineNumber, sUserID, iBackupNumber))
@@ -775,7 +775,12 @@ namespace StandaloneSDKDemo
                 if (idwErrorCode == 0 && iBackupNumber == 11)
                     lblOutputInfo.Items.Add("SSR_DeleteEnrollData,UserID=" + sUserID + " BackupNumber=" + iBackupNumber.ToString());
                 else
+                {
+                    if (idwErrorCode.ToString() == "0")
+                        lblOutputInfo.Items.Add("*Operation failed, User Not Found, ErrorCode=" + idwErrorCode.ToString());
                     lblOutputInfo.Items.Add("*Operation failed,ErrorCode=" + idwErrorCode.ToString());
+                }
+                    
             }
 
             return 1;

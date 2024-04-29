@@ -385,9 +385,9 @@ namespace StandaloneSDKDemo
             notifyCheck = true;
             getAttLogs(sender, e);
             notifyIcon.Icon = SystemIcons.Information;
-            notifyIcon.Text = "WinForms Balloon App";
+            notifyIcon.Text = "Students Attendance Report";
             notifyIcon.Visible = true;
-            notifyIcon.ShowBalloonTip(500000, "ALERT", "These Students have not Check'ed In Yet", ToolTipIcon.Warning);
+            notifyIcon.ShowBalloonTip(500000, "ALERT", "These Students have not Checked In Yet", ToolTipIcon.Warning);
             Cursor = Cursors.Default;
         }
 

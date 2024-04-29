@@ -83,6 +83,12 @@
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.btnStartEnroll = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
             this.cbFlag = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
             this.cbFingerIndex = new System.Windows.Forms.ComboBox();
@@ -92,23 +98,9 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.cbUserID2 = new System.Windows.Forms.ComboBox();
             this.btnDeleteEnrollData = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.cbBackupDE = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.GetUserInfo = new System.Windows.Forms.Button();
-            this.txtUserID = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnSetUserInfo = new System.Windows.Forms.Button();
-            this.cbPrivilege = new System.Windows.Forms.ComboBox();
-            this.txtCardnumber = new System.Windows.Forms.TextBox();
-            this.Privilege = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -233,6 +225,28 @@
             this.txtSMSID2 = new System.Windows.Forms.TextBox();
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
+            this.cnictext = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.cbPrivilege = new System.Windows.Forms.ComboBox();
+            this.txtCardnumber = new System.Windows.Forms.TextBox();
+            this.Privilege = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.degreetext = new System.Windows.Forms.TextBox();
+            this.hosteltext = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbUserID2 = new System.Windows.Forms.ComboBox();
+            this.GetUserInfo = new System.Windows.Forms.Button();
+            this.btnSetUserInfo = new System.Windows.Forms.Button();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -243,8 +257,8 @@
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -260,6 +274,7 @@
             this.tabPage11.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tmUserID
@@ -609,6 +624,7 @@
             this.lvUserInfo.TabIndex = 82;
             this.lvUserInfo.UseCompatibleStateImageBehavior = false;
             this.lvUserInfo.View = System.Windows.Forms.View.Details;
+            this.lvUserInfo.SelectedIndexChanged += new System.EventHandler(this.lvUserInfo_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -709,6 +725,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.GetUserInfo);
+            this.tabPage5.Controls.Add(this.btnSetUserInfo);
             this.tabPage5.Controls.Add(this.groupBox13);
             this.tabPage5.Controls.Add(this.groupBox7);
             this.tabPage5.Controls.Add(this.groupBox3);
@@ -730,9 +748,9 @@
             this.groupBox13.Controls.Add(this.label32);
             this.groupBox13.Controls.Add(this.txtUserID1);
             this.groupBox13.Controls.Add(this.label30);
-            this.groupBox13.Location = new System.Drawing.Point(6, 14);
+            this.groupBox13.Location = new System.Drawing.Point(6, 6);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(392, 162);
+            this.groupBox13.Size = new System.Drawing.Size(407, 170);
             this.groupBox13.TabIndex = 89;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Online Enroll";
@@ -755,6 +773,75 @@
             this.label33.Size = new System.Drawing.Size(109, 26);
             this.label33.TabIndex = 72;
             this.label33.Text = "0/1:Normal fingerprint\r\n3:Duress fingerprint";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.degreetext);
+            this.groupBox3.Controls.Add(this.hosteltext);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.cbPrivilege);
+            this.groupBox3.Controls.Add(this.txtCardnumber);
+            this.groupBox3.Controls.Add(this.Privilege);
+            this.groupBox3.Controls.Add(this.label55);
+            this.groupBox3.Controls.Add(this.cnictext);
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.txtUserID);
+            this.groupBox3.Controls.Add(this.txtName);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.txtPassword);
+            this.groupBox3.Controls.Add(this.label90);
+            this.groupBox3.Location = new System.Drawing.Point(427, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(479, 170);
+            this.groupBox3.TabIndex = 81;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Upload the Card Number(part of users information)";
+            // 
+            // txtUserID
+            // 
+            this.txtUserID.Location = new System.Drawing.Point(72, 25);
+            this.txtUserID.MaxLength = 24;
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(142, 20);
+            this.txtUserID.TabIndex = 56;
+            this.txtUserID.TextChanged += new System.EventHandler(this.txtUserID_TextChanged);
+            this.txtUserID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(308, 25);
+            this.txtName.MaxLength = 24;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(114, 20);
+            this.txtName.TabIndex = 57;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(8, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "User ID";
+            // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(237, 30);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(47, 18);
+            this.label26.TabIndex = 64;
+            this.label26.Text = "Name *";
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(8, 65);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(53, 13);
+            this.label90.TabIndex = 68;
+            this.label90.Text = "Password";
             // 
             // cbFlag
             // 
@@ -826,6 +913,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.textBox1);
             this.groupBox7.Controls.Add(this.label5);
             this.groupBox7.Controls.Add(this.label25);
             this.groupBox7.Controls.Add(this.cbUserID2);
@@ -857,15 +945,6 @@
             this.label25.Size = new System.Drawing.Size(40, 13);
             this.label25.TabIndex = 18;
             this.label25.Text = "UserID";
-            // 
-            // cbUserID2
-            // 
-            this.cbUserID2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUserID2.FormattingEnabled = true;
-            this.cbUserID2.Location = new System.Drawing.Point(58, 129);
-            this.cbUserID2.Name = "cbUserID2";
-            this.cbUserID2.Size = new System.Drawing.Size(94, 21);
-            this.cbUserID2.TabIndex = 16;
             // 
             // btnDeleteEnrollData
             // 
@@ -908,142 +987,6 @@
             this.cbBackupDE.Name = "cbBackupDE";
             this.cbBackupDE.Size = new System.Drawing.Size(48, 21);
             this.cbBackupDE.TabIndex = 17;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.GetUserInfo);
-            this.groupBox3.Controls.Add(this.txtUserID);
-            this.groupBox3.Controls.Add(this.txtName);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.txtPassword);
-            this.groupBox3.Controls.Add(this.btnSetUserInfo);
-            this.groupBox3.Controls.Add(this.cbPrivilege);
-            this.groupBox3.Controls.Add(this.txtCardnumber);
-            this.groupBox3.Controls.Add(this.Privilege);
-            this.groupBox3.Controls.Add(this.label55);
-            this.groupBox3.Controls.Add(this.label90);
-            this.groupBox3.Location = new System.Drawing.Point(467, 21);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(429, 155);
-            this.groupBox3.TabIndex = 81;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Upload the Card Number(part of users information)";
-            // 
-            // GetUserInfo
-            // 
-            this.GetUserInfo.Location = new System.Drawing.Point(325, 119);
-            this.GetUserInfo.Name = "GetUserInfo";
-            this.GetUserInfo.Size = new System.Drawing.Size(97, 25);
-            this.GetUserInfo.TabIndex = 69;
-            this.GetUserInfo.Text = "GetUserInfo";
-            this.GetUserInfo.UseVisualStyleBackColor = true;
-            this.GetUserInfo.Click += new System.EventHandler(this.GetUserInfo_Click);
-            // 
-            // txtUserID
-            // 
-            this.txtUserID.Location = new System.Drawing.Point(72, 25);
-            this.txtUserID.MaxLength = 24;
-            this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Size = new System.Drawing.Size(142, 20);
-            this.txtUserID.TabIndex = 56;
-            this.txtUserID.TextChanged += new System.EventHandler(this.txtUserID_TextChanged);
-            this.txtUserID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(308, 25);
-            this.txtName.MaxLength = 24;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(114, 20);
-            this.txtName.TabIndex = 57;
-            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(8, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 20);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "User ID";
-            // 
-            // label26
-            // 
-            this.label26.Location = new System.Drawing.Point(237, 30);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(36, 18);
-            this.label26.TabIndex = 64;
-            this.label26.Text = "Name";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(72, 90);
-            this.txtPassword.MaxLength = 8;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(67, 20);
-            this.txtPassword.TabIndex = 58;
-            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
-            // 
-            // btnSetUserInfo
-            // 
-            this.btnSetUserInfo.Location = new System.Drawing.Point(203, 119);
-            this.btnSetUserInfo.Name = "btnSetUserInfo";
-            this.btnSetUserInfo.Size = new System.Drawing.Size(97, 25);
-            this.btnSetUserInfo.TabIndex = 0;
-            this.btnSetUserInfo.Text = "SetUserInfo";
-            this.btnSetUserInfo.UseVisualStyleBackColor = true;
-            this.btnSetUserInfo.Click += new System.EventHandler(this.btnSetUserInfo_Click);
-            // 
-            // cbPrivilege
-            // 
-            this.cbPrivilege.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPrivilege.FormattingEnabled = true;
-            this.cbPrivilege.Items.AddRange(new object[] {
-            "0-Normal",
-            "1-Enroll",
-            "2-Admin",
-            "3-Super Admin",
-            "4-User Defined Role3",
-            "5-Undefine"});
-            this.cbPrivilege.Location = new System.Drawing.Point(72, 57);
-            this.cbPrivilege.Name = "cbPrivilege";
-            this.cbPrivilege.Size = new System.Drawing.Size(142, 21);
-            this.cbPrivilege.TabIndex = 59;
-            // 
-            // txtCardnumber
-            // 
-            this.txtCardnumber.Location = new System.Drawing.Point(308, 56);
-            this.txtCardnumber.MaxLength = 24;
-            this.txtCardnumber.Name = "txtCardnumber";
-            this.txtCardnumber.Size = new System.Drawing.Size(114, 20);
-            this.txtCardnumber.TabIndex = 61;
-            this.txtCardnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCardnumber_KeyPress);
-            // 
-            // Privilege
-            // 
-            this.Privilege.Location = new System.Drawing.Point(8, 64);
-            this.Privilege.Name = "Privilege";
-            this.Privilege.Size = new System.Drawing.Size(61, 21);
-            this.Privilege.TabIndex = 65;
-            this.Privilege.Text = "Privilege";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(237, 65);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(66, 13);
-            this.label55.TabIndex = 66;
-            this.label55.Text = "CardNumber";
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(8, 93);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(53, 13);
-            this.label90.TabIndex = 68;
-            this.label90.Text = "Password";
             // 
             // tabPage8
             // 
@@ -1418,6 +1361,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -2367,6 +2311,199 @@
             this.btnClearSMS.UseVisualStyleBackColor = true;
             this.btnClearSMS.Click += new System.EventHandler(this.btnClearSMS_Click);
             // 
+            // cnictext
+            // 
+            this.cnictext.Location = new System.Drawing.Point(239, 61);
+            this.cnictext.MaxLength = 20;
+            this.cnictext.Name = "cnictext";
+            this.cnictext.Size = new System.Drawing.Size(183, 20);
+            this.cnictext.TabIndex = 72;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(197, 64);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(39, 13);
+            this.label28.TabIndex = 73;
+            this.label28.Text = "CNIC *";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(72, 62);
+            this.txtPassword.MaxLength = 8;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(67, 20);
+            this.txtPassword.TabIndex = 58;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
+            // 
+            // cbPrivilege
+            // 
+            this.cbPrivilege.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPrivilege.FormattingEnabled = true;
+            this.cbPrivilege.Items.AddRange(new object[] {
+            "0-Normal",
+            "1-Enroll",
+            "2-Admin",
+            "3-Super Admin",
+            "4-User Defined Role3",
+            "5-Undefine"});
+            this.cbPrivilege.Location = new System.Drawing.Point(72, 94);
+            this.cbPrivilege.Name = "cbPrivilege";
+            this.cbPrivilege.Size = new System.Drawing.Size(142, 21);
+            this.cbPrivilege.TabIndex = 74;
+            // 
+            // txtCardnumber
+            // 
+            this.txtCardnumber.Location = new System.Drawing.Point(308, 93);
+            this.txtCardnumber.MaxLength = 24;
+            this.txtCardnumber.Name = "txtCardnumber";
+            this.txtCardnumber.Size = new System.Drawing.Size(114, 20);
+            this.txtCardnumber.TabIndex = 75;
+            // 
+            // Privilege
+            // 
+            this.Privilege.Location = new System.Drawing.Point(8, 98);
+            this.Privilege.Name = "Privilege";
+            this.Privilege.Size = new System.Drawing.Size(61, 21);
+            this.Privilege.TabIndex = 76;
+            this.Privilege.Text = "Privilege";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(237, 97);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(66, 13);
+            this.label55.TabIndex = 77;
+            this.label55.Text = "CardNumber";
+            // 
+            // degreetext
+            // 
+            this.degreetext.Location = new System.Drawing.Point(72, 129);
+            this.degreetext.MaxLength = 24;
+            this.degreetext.Name = "degreetext";
+            this.degreetext.Size = new System.Drawing.Size(142, 20);
+            this.degreetext.TabIndex = 78;
+            // 
+            // hosteltext
+            // 
+            this.hosteltext.Location = new System.Drawing.Point(308, 129);
+            this.hosteltext.MaxLength = 24;
+            this.hosteltext.Name = "hosteltext";
+            this.hosteltext.Size = new System.Drawing.Size(114, 20);
+            this.hosteltext.TabIndex = 79;
+            // 
+            // label29
+            // 
+            this.label29.Location = new System.Drawing.Point(8, 131);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(62, 20);
+            this.label29.TabIndex = 80;
+            this.label29.Text = "Degree *";
+            this.label29.Click += new System.EventHandler(this.label29_Click);
+            // 
+            // label31
+            // 
+            this.label31.Location = new System.Drawing.Point(237, 134);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(47, 18);
+            this.label31.TabIndex = 81;
+            this.label31.Text = "Hostel";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(55, 135);
+            this.textBox1.MaxLength = 24;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(51, 20);
+            this.textBox1.TabIndex = 74;
+            this.textBox1.Text = "1";
+            // 
+            // cbUserID2
+            // 
+            this.cbUserID2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUserID2.FormattingEnabled = true;
+            this.cbUserID2.Location = new System.Drawing.Point(308, 19);
+            this.cbUserID2.Name = "cbUserID2";
+            this.cbUserID2.Size = new System.Drawing.Size(94, 21);
+            this.cbUserID2.TabIndex = 16;
+            this.cbUserID2.Visible = false;
+            // 
+            // GetUserInfo
+            // 
+            this.GetUserInfo.Location = new System.Drawing.Point(799, 182);
+            this.GetUserInfo.Name = "GetUserInfo";
+            this.GetUserInfo.Size = new System.Drawing.Size(97, 25);
+            this.GetUserInfo.TabIndex = 91;
+            this.GetUserInfo.Text = "GetUserInfo";
+            this.GetUserInfo.UseVisualStyleBackColor = true;
+            this.GetUserInfo.Click += new System.EventHandler(this.GetUserInfo_Click_1);
+            // 
+            // btnSetUserInfo
+            // 
+            this.btnSetUserInfo.Location = new System.Drawing.Point(677, 182);
+            this.btnSetUserInfo.Name = "btnSetUserInfo";
+            this.btnSetUserInfo.Size = new System.Drawing.Size(97, 25);
+            this.btnSetUserInfo.TabIndex = 90;
+            this.btnSetUserInfo.Text = "SetUserInfo";
+            this.btnSetUserInfo.UseVisualStyleBackColor = true;
+            this.btnSetUserInfo.Click += new System.EventHandler(this.btnSetUserInfo_Click);
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.listView1);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(926, 391);
+            this.tabPage9.TabIndex = 12;
+            this.tabPage9.Text = "Users";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader13,
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21,
+            this.columnHeader22});
+            this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
+            this.listView1.LabelEdit = true;
+            this.listView1.Location = new System.Drawing.Point(17, 23);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(892, 344);
+            this.listView1.TabIndex = 83;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "UserID";
+            this.columnHeader13.Width = 70;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Name";
+            this.columnHeader19.Width = 270;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "CNIC";
+            this.columnHeader20.Width = 293;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Degree";
+            this.columnHeader21.Width = 128;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Hostel";
+            this.columnHeader22.Width = 120;
+            // 
             // UserMngForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2391,10 +2528,10 @@
             this.tabPage5.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
@@ -2416,6 +2553,7 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2469,17 +2607,10 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button GetUserInfo;
         private System.Windows.Forms.TextBox txtUserID;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnSetUserInfo;
-        private System.Windows.Forms.ComboBox cbPrivilege;
-        private System.Windows.Forms.TextBox txtCardnumber;
-        private System.Windows.Forms.Label Privilege;
-        private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.GroupBox groupBox12;
@@ -2552,7 +2683,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox cbUserID2;
         private System.Windows.Forms.Button btnDeleteEnrollData;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox cbBackupDE;
@@ -2625,5 +2755,27 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox cnictext;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox degreetext;
+        private System.Windows.Forms.TextBox hosteltext;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ComboBox cbPrivilege;
+        private System.Windows.Forms.TextBox txtCardnumber;
+        private System.Windows.Forms.Label Privilege;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cbUserID2;
+        private System.Windows.Forms.Button GetUserInfo;
+        private System.Windows.Forms.Button btnSetUserInfo;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
     }
 }

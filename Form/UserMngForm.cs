@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Data.SQLite;
+using System.Reflection;
 
 
 namespace StandaloneSDKDemo
@@ -29,6 +32,8 @@ namespace StandaloneSDKDemo
             UserMng.SDK.biometricTypes.Add("FingerVein");
             UserMng.SDK.biometricTypes.Add("Palm Vein");
             SDKHelper.onMessage += SDKHelper_onMessage;
+            groupBox3.Enabled = false;
+
         }
 
         public UserMngForm()
@@ -50,7 +55,7 @@ namespace StandaloneSDKDemo
 
         private void btnDeleteEnrollData_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnDelUserTmp_Click(object sender, EventArgs e)
@@ -64,17 +69,45 @@ namespace StandaloneSDKDemo
 
         private void btnSetUserInfo_Click(object sender, EventArgs e)
         {
+            if (txtName.Text == "" || cnictext.Text == "" || degreetext.Text == "" || cbPrivilege.Text.Trim() == "")
+            {
+                return;
+            }
+
             Cursor = Cursors.WaitCursor;
 
             UserMng.SDK.sta_SetUserInfo(UserMng.lbSysOutputInfo, txtUserID, txtName, cbPrivilege, txtCardnumber, txtPassword);
             UserMng.SDK.sta_GetAllUserID(true, cbUserID, cbUserID1, cbUserID2, cbUserID3, cbUserID4, txtID2, cbUserID7);
 
+            var connectionString = "Data Source=ZKTeco.db";
+            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                // Create a table if it doesn't exist
+                var insertDataQuery = @"INSERT INTO user (userID, Name, cnic, Hostel, Degree) 
+                            VALUES (@userID, @Name, @cnic, @Hostel, @Degree);";
+
+                using (var command = new System.Data.SQLite.SQLiteCommand(insertDataQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@userID", txtUserID.Text);
+                    command.Parameters.AddWithValue("@Name", txtName.Text);
+                    command.Parameters.AddWithValue("@cnic", cnictext.Text);
+                    command.Parameters.AddWithValue("@Hostel", hosteltext.Text);
+                    command.Parameters.AddWithValue("@Degree", degreetext.Text);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+
             Cursor = Cursors.Default;
+
+            groupBox3.Enabled = false;
         }
 
         private void btnStartEnroll_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnGetHIDEventCardNumAsStr_Click(object sender, EventArgs e)
@@ -492,7 +525,7 @@ namespace StandaloneSDKDemo
 
         private void txtSMSID_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar!='\b' && !Char.IsDigit(e.KeyChar))
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -500,7 +533,7 @@ namespace StandaloneSDKDemo
 
         private void txtValidMins_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar!='\b' && !Char.IsDigit(e.KeyChar))
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -508,7 +541,7 @@ namespace StandaloneSDKDemo
 
         private void txtSMSID1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar!='\b' && !Char.IsDigit(e.KeyChar))
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -516,7 +549,7 @@ namespace StandaloneSDKDemo
 
         private void txtSMSID2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar!='\b' && !Char.IsDigit(e.KeyChar))
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -562,7 +595,7 @@ namespace StandaloneSDKDemo
 
         private void txtWorkcodeID_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar!='\b' && !Char.IsDigit(e.KeyChar))
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -1349,7 +1382,7 @@ namespace StandaloneSDKDemo
             {
                 if (iAppState[i] == 1)
                 {
-                    clbMenu.SetItemCheckState(i,CheckState.Checked);
+                    clbMenu.SetItemCheckState(i, CheckState.Checked);
                 }
                 else
                 {
@@ -1361,7 +1394,7 @@ namespace StandaloneSDKDemo
             {
                 if (iFunUserMng[i] == 1)
                 {
-                    clbUserMgt.SetItemCheckState(i, CheckState.Checked);     
+                    clbUserMgt.SetItemCheckState(i, CheckState.Checked);
                 }
                 else
                 {
@@ -1373,7 +1406,7 @@ namespace StandaloneSDKDemo
             {
                 if (iFunAccess[i] == 1)
                 {
-                    clbAccessControl.SetItemCheckState(i, CheckState.Checked); 
+                    clbAccessControl.SetItemCheckState(i, CheckState.Checked);
                 }
                 else
                 {
@@ -1385,7 +1418,7 @@ namespace StandaloneSDKDemo
             {
                 if (iFunICCard[i] == 1)
                 {
-                    clbICCard.SetItemCheckState(i, CheckState.Checked); 
+                    clbICCard.SetItemCheckState(i, CheckState.Checked);
                 }
                 else
                 {
@@ -1397,7 +1430,7 @@ namespace StandaloneSDKDemo
             {
                 if (iFunComm[i] == 1)
                 {
-                    clbComm.SetItemCheckState(i, CheckState.Checked); 
+                    clbComm.SetItemCheckState(i, CheckState.Checked);
                 }
                 else
                 {
@@ -1409,7 +1442,7 @@ namespace StandaloneSDKDemo
             {
                 if (iFunSystem[i] == 1)
                 {
-                    clbSystem.SetItemCheckState(i, CheckState.Checked); 
+                    clbSystem.SetItemCheckState(i, CheckState.Checked);
                 }
                 else
                 {
@@ -1457,7 +1490,7 @@ namespace StandaloneSDKDemo
             {
                 if (iFunAttSearch[i] == 1)
                 {
-                    clbAttendanceSearch.SetItemCheckState(i, CheckState.Checked); 
+                    clbAttendanceSearch.SetItemCheckState(i, CheckState.Checked);
                 }
                 else
                 {
@@ -1747,7 +1780,7 @@ namespace StandaloneSDKDemo
         #region UserBio
 
         //vs2008版本过低只能通过调用自己所写的接口实现string类的IsNullOrWhiteSpace
-        public static bool IsNullOrWhiteSpace(string value) 
+        public static bool IsNullOrWhiteSpace(string value)
         {
             if (value != null)
             {
@@ -1761,61 +1794,61 @@ namespace StandaloneSDKDemo
             }
             return true;
         }
-/*
-        private void btnConnect_Click(object sender, EventArgs e)
-        {
-            if (sdk == null) return;
-
-            if (Convert.ToInt32(btnConnect.Tag) == 0)
-            {
-                //Connect to device
-                string ip = txtIP.Text;
-                int port = Convert.ToInt32(txtPort.Text);
-                int commKey = 0;
-                if (!IsNullOrWhiteSpace(txtCommKey.Text)) commKey = Convert.ToInt32(txtCommKey.Text);
-
-                sdk.connectDevice(ip, port, commKey);
-
-                if (sdk.isConnected)
+        /*
+                private void btnConnect_Click(object sender, EventArgs e)
                 {
-                    btnConnect.Tag = 1;
-                    btnConnect.Text = "Disconnect";
-                    cmbBiometricType.Items.Clear();
-                    for (int i = 0; i < sdk.biometricType.Length; i++)
+                    if (sdk == null) return;
+
+                    if (Convert.ToInt32(btnConnect.Tag) == 0)
                     {
-                        if (sdk.biometricType[i] == '1')
+                        //Connect to device
+                        string ip = txtIP.Text;
+                        int port = Convert.ToInt32(txtPort.Text);
+                        int commKey = 0;
+                        if (!IsNullOrWhiteSpace(txtCommKey.Text)) commKey = Convert.ToInt32(txtCommKey.Text);
+
+                        sdk.connectDevice(ip, port, commKey);
+
+                        if (sdk.isConnected)
                         {
-                            cmbBiometricType.Items.Add(new BioType() { name = biometricTypes[i], value = i });
+                            btnConnect.Tag = 1;
+                            btnConnect.Text = "Disconnect";
+                            cmbBiometricType.Items.Clear();
+                            for (int i = 0; i < sdk.biometricType.Length; i++)
+                            {
+                                if (sdk.biometricType[i] == '1')
+                                {
+                                    cmbBiometricType.Items.Add(new BioType() { name = biometricTypes[i], value = i });
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //Disconnect device
+                        if (sdk.isConnected)
+                        {
+                            sdk.disconnectDevice();
+                            btnConnect.Tag = 0;
+                            btnConnect.Text = "Connect";
+                            cmbBiometricType.Items.Clear();
                         }
                     }
                 }
-            }
-            else
-            {
-                //Disconnect device
-                if (sdk.isConnected)
-                {
-                    sdk.disconnectDevice();
-                    btnConnect.Tag = 0;
-                    btnConnect.Text = "Connect";
-                    cmbBiometricType.Items.Clear();
-                }
-            }
-        }
-*/
+        */
         private void btnDownloadUser_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             if (UserMng.SDK == null) return;
-       
+
             if (UserMng.SDK.GetConnectState())
-            {  
+            {
                 cmbBiometricType.Items.Clear();
                 for (int i = 0; i < UserMng.SDK.biometricType.Length; i++)
                 {
                     if (UserMng.SDK.biometricType[i] == '1')
                     {
-                        cmbBiometricType.Items.Add(new SDKHelper.BioType() { name = UserMng.SDK.biometricTypes[i],value = i });
+                        cmbBiometricType.Items.Add(new SDKHelper.BioType() { name = UserMng.SDK.biometricTypes[i], value = i });
                     }
                 }
                 UserMng.SDK.employeeList = UserMng.SDK.sta_getEmployees();
@@ -1848,7 +1881,7 @@ namespace StandaloneSDKDemo
             if (UserMng.SDK == null) return;
             if (UserMng.SDK.GetConnectState())
             {
-                if (cmbBiometricType.SelectedItem != null)       
+                if (cmbBiometricType.SelectedItem != null)
                 {
                     SDKHelper.BioType bioType = cmbBiometricType.SelectedItem as SDKHelper.BioType;
                     List<SDKHelper.BioTemplate> newTemplates = new List<SDKHelper.BioTemplate>();
@@ -1907,7 +1940,7 @@ namespace StandaloneSDKDemo
         private void btnClear_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-//          UserMng.SDK.bioTemplateList.Clear();
+            //          UserMng.SDK.bioTemplateList.Clear();
             lstBiometric.Items.Clear();     //modify 2017/11/23
             Cursor = Cursors.Default;
         }
@@ -1950,18 +1983,22 @@ namespace StandaloneSDKDemo
         {
             Cursor = Cursors.WaitCursor;
 
-            UserMng.SDK.sta_DeleteEnrollData(UserMng.lbSysOutputInfo, cbUserID2, cbBackupDE);
+            UserMng.SDK.sta_DeleteEnrollData(UserMng.lbSysOutputInfo, textBox1.Text, cbBackupDE);
 
             Cursor = Cursors.Default;
         }
 
         private void btnStartEnroll_Click_2(object sender, EventArgs e)
         {
+            groupBox3.Enabled = true;
+
             Cursor = Cursors.WaitCursor;
 
             UserMng.SDK.sta_OnlineEnroll(UserMng.lbSysOutputInfo, txtUserID1, cbFingerIndex, cbFlag);
 
             Cursor = Cursors.Default;
+
+            txtUserID.Text = txtUserID1.Text;
         }
 
         public void button1_Click(object sender, EventArgs e)
@@ -1995,7 +2032,7 @@ namespace StandaloneSDKDemo
                             int? privilege = reader.IsDBNull(reader.GetOrdinal("Privilege")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("Privilege"));
                             lvUserInfo.Items.Add(userID.ToString());
 
-                            if(enable == 1)
+                            if (enable == 1)
                             {
                                 enabled = true;
                             }
@@ -2075,6 +2112,63 @@ namespace StandaloneSDKDemo
             }
             Cursor = Cursors.Default;
         }
+
+        private void label29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GetUserInfo_Click_1(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+
+            UserMng.SDK.sta_GetUserInfo(UserMng.lbSysOutputInfo, txtUserID, txtName, cbPrivilege, txtCardnumber, txtPassword);
+
+            Cursor = Cursors.Default;
+
+            groupBox3.Enabled = true;
+        }
+
+        private void lvUserInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage9_Click(object sender, EventArgs e)
+        {
+            int index = 0;
+
+            var connectionString = "Data Source=ZKTeco.db";
+            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string stm = "SELECT * FROM user";
+                using (var cmd = new SQLiteCommand(stm, connection))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            string userID = reader.GetString(reader.GetOrdinal("userID"));
+                            string name = reader.GetString(reader.GetOrdinal("Name"));
+                            string cardNo = reader.GetString(reader.GetOrdinal("cnic"));
+                            string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
+                            string degree  = reader.GetString(reader.GetOrdinal("Degree"));
+
+                            listView1.Items.Add(userID.ToString());
+
+                            listView1.Items[index].SubItems.Add(userID);
+                            listView1.Items[index].SubItems.Add(name);
+                            listView1.Items[index].SubItems.Add(cardNo);
+                            listView1.Items[index].SubItems.Add(hostel);
+                            listView1.Items[index].SubItems.Add(degree);
+                            index++;
+                        }
+
+                    }
+                }
+            }
+        }
     }
-    
 }
