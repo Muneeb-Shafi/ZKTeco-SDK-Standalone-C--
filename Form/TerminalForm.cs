@@ -298,6 +298,7 @@ namespace StandaloneSDKDemo
         {
             button1_Click(sender, e);
             UserMngForm userdata = new UserMngForm(Terminal);
+            DataMngForm attData = new DataMngForm(Terminal);
             Cursor = Cursors.WaitCursor;
             int i = 1;
             foreach(DataGridViewRow row in gv_devlog.Rows)
@@ -321,6 +322,9 @@ namespace StandaloneSDKDemo
                     userdata.btnSetAllUserFaceInfo_Click(sender, e);
                     //Close The Window
                     userdata.Hide();
+                    attData.Show();
+                    attData.btn_readAttLog_Click(sender, e);
+                    attData.Hide();
                     //Disconnect
                     btnTCPConnect_Click(sender, e);
                     i++;

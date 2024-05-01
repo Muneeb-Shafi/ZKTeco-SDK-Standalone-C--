@@ -30,6 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox_timePeriod = new System.Windows.Forms.CheckBox();
             this.btn_readnewlog = new System.Windows.Forms.Button();
             this.btn_deloldlog = new System.Windows.Forms.Button();
@@ -113,11 +117,7 @@
             this.btn_clearAllFp = new System.Windows.Forms.Button();
             this.btn_clearAllLogs = new System.Windows.Forms.Button();
             this.btn_clearAdmin = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Workcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_Attlog)).BeginInit();
@@ -151,6 +151,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.checkBox_timePeriod);
             this.tabPage1.Controls.Add(this.btn_readnewlog);
             this.tabPage1.Controls.Add(this.btn_deloldlog);
@@ -169,6 +174,44 @@
             this.tabPage1.Text = "AttMng";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 193);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.TabIndex = 110;
+            this.button1.Text = "Attendance Records";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(116, 138);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 109;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(83, 141);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 13);
+            this.label2.TabIndex = 108;
+            this.label2.Text = "For";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(49, 110);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(62, 17);
+            this.checkBox1.TabIndex = 107;
+            this.checkBox1.Text = "User ID";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
             // checkBox_timePeriod
             // 
             this.checkBox_timePeriod.AutoSize = true;
@@ -182,7 +225,7 @@
             // 
             // btn_readnewlog
             // 
-            this.btn_readnewlog.Location = new System.Drawing.Point(49, 224);
+            this.btn_readnewlog.Location = new System.Drawing.Point(49, 319);
             this.btn_readnewlog.Name = "btn_readnewlog";
             this.btn_readnewlog.Size = new System.Drawing.Size(154, 23);
             this.btn_readnewlog.TabIndex = 105;
@@ -193,7 +236,7 @@
             // btn_deloldlog
             // 
             this.btn_deloldlog.Enabled = false;
-            this.btn_deloldlog.Location = new System.Drawing.Point(49, 263);
+            this.btn_deloldlog.Location = new System.Drawing.Point(49, 358);
             this.btn_deloldlog.Name = "btn_deloldlog";
             this.btn_deloldlog.Size = new System.Drawing.Size(154, 23);
             this.btn_deloldlog.TabIndex = 104;
@@ -203,7 +246,7 @@
             // 
             // btn_delAttLog
             // 
-            this.btn_delAttLog.Location = new System.Drawing.Point(49, 181);
+            this.btn_delAttLog.Location = new System.Drawing.Point(49, 276);
             this.btn_delAttLog.Name = "btn_delAttLog";
             this.btn_delAttLog.Size = new System.Drawing.Size(154, 23);
             this.btn_delAttLog.TabIndex = 103;
@@ -213,11 +256,11 @@
             // 
             // btn_readAttLog
             // 
-            this.btn_readAttLog.Location = new System.Drawing.Point(49, 140);
+            this.btn_readAttLog.Location = new System.Drawing.Point(49, 235);
             this.btn_readAttLog.Name = "btn_readAttLog";
             this.btn_readAttLog.Size = new System.Drawing.Size(154, 23);
             this.btn_readAttLog.TabIndex = 102;
-            this.btn_readAttLog.Text = "ReadAttLog";
+            this.btn_readAttLog.Text = "ReadAttLog From Device";
             this.btn_readAttLog.UseVisualStyleBackColor = true;
             this.btn_readAttLog.Click += new System.EventHandler(this.btn_readAttLog_Click);
             // 
@@ -267,12 +310,6 @@
             this.gv_Attlog.BackgroundColor = System.Drawing.SystemColors.Window;
             this.gv_Attlog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gv_Attlog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gv_Attlog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Date,
-            this.VType,
-            this.VState,
-            this.Workcode});
             this.gv_Attlog.Location = new System.Drawing.Point(335, 16);
             this.gv_Attlog.MultiSelect = false;
             this.gv_Attlog.Name = "gv_Attlog";
@@ -821,7 +858,7 @@
             this.tabPage8.Controls.Add(this.dataGridView_diskFiles);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(918, 363);
+            this.tabPage8.Size = new System.Drawing.Size(918, 365);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Record Mangement";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -978,53 +1015,15 @@
             this.btn_clearAdmin.UseVisualStyleBackColor = true;
             this.btn_clearAdmin.Click += new System.EventHandler(this.btn_clearAdmin_Click);
             // 
-            // ID
+            // button2
             // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ID.DataPropertyName = "ID";
-            this.ID.FillWeight = 80F;
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "User ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Date.DataPropertyName = "Date";
-            this.Date.Frozen = true;
-            this.Date.HeaderText = "Verify Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // VType
-            // 
-            this.VType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.VType.DataPropertyName = "VType";
-            this.VType.FillWeight = 80F;
-            this.VType.Frozen = true;
-            this.VType.HeaderText = "Verify Type";
-            this.VType.Name = "VType";
-            this.VType.ReadOnly = true;
-            // 
-            // VState
-            // 
-            this.VState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.VState.DataPropertyName = "VState";
-            this.VState.FillWeight = 80F;
-            this.VState.Frozen = true;
-            this.VState.HeaderText = "Verify State";
-            this.VState.Name = "VState";
-            this.VState.ReadOnly = true;
-            // 
-            // Workcode
-            // 
-            this.Workcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Workcode.DataPropertyName = "Workcode";
-            this.Workcode.FillWeight = 80F;
-            this.Workcode.HeaderText = "WorkCode";
-            this.Workcode.Name = "Workcode";
-            this.Workcode.ReadOnly = true;
+            this.button2.Location = new System.Drawing.Point(134, 193);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 23);
+            this.button2.TabIndex = 111;
+            this.button2.Text = "Absents Check";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // DataMngForm
             // 
@@ -1146,10 +1145,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Workcode;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

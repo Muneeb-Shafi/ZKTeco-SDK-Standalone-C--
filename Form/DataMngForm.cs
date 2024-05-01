@@ -9,6 +9,10 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Security.Cryptography.X509Certificates;
+using System.Data.SQLite;
 
 namespace StandaloneSDKDemo
 {
@@ -49,7 +53,17 @@ namespace StandaloneSDKDemo
             }
         }
 
-
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                textBox1.Enabled = true;
+            }
+            else
+            {
+                textBox1.Enabled = false;
+            }
+        }
 
         private bool ColumnExists(DataTable table, string columnName)
         {
@@ -89,8 +103,11 @@ namespace StandaloneSDKDemo
         }
 
 
-        private void btn_readAttLog_Click(object sender, EventArgs e)
+        public void btn_readAttLog_Click(object sender, EventArgs e)
         {
+
+            gv_Attlog.DataSource = null;
+            gv_Attlog.Rows.Clear();
             Cursor = Cursors.WaitCursor;
             if (checkBox_timePeriod.Checked == true)
             {
@@ -104,11 +121,19 @@ namespace StandaloneSDKDemo
                 dt_periodLog.Columns.Add("User Name", System.Type.GetType("System.String"));
                 dt_periodLog.Columns.Add("Attendance Time", System.Type.GetType("System.String"));
                 dt_periodLog.Columns.Add("Verify Type", System.Type.GetType("System.Int32"));
-                dt_periodLog.Columns.Add("Verify State", System.Type.GetType("System.Int32"));
+                dt_periodLog.Columns.Add("Verify State", System.Type.GetType("System.String"));
                 dt_periodLog.Columns.Add("WorkCode", System.Type.GetType("System.Int32"));
                 gv_Attlog.DataSource = dt_periodLog;
 
-                DataMng.SDK.sta_readLogByPeriod(DataMng.lbSysOutputInfo, dt_periodLog, fromTime, toTime);
+                if (checkBox1.Checked == true)
+                {
+                    DataMng.SDK.sta_readLogByPeriod(DataMng.lbSysOutputInfo, dt_periodLog, fromTime, toTime, textBox1.Text);
+                }
+                else
+                {
+                    DataMng.SDK.sta_readLogByPeriod(DataMng.lbSysOutputInfo, dt_periodLog, fromTime, toTime);
+                }
+
             }
             else
             {
@@ -123,7 +148,15 @@ namespace StandaloneSDKDemo
                 dt_period.Columns.Add("WorkCode", System.Type.GetType("System.Int32"));
                 gv_Attlog.DataSource = dt_period;
 
-                DataMng.SDK.sta_readAttLog(DataMng.lbSysOutputInfo, dt_period);
+                if (checkBox1.Checked == true)
+                {
+                    DataMng.SDK.sta_readAttLog(DataMng.lbSysOutputInfo, dt_period, textBox1.Text);
+                }
+                else
+                {
+                    DataMng.SDK.sta_readAttLog(DataMng.lbSysOutputInfo, dt_period);
+                }
+
             }
             Cursor = Cursors.Default;
         }
@@ -1248,5 +1281,150 @@ namespace StandaloneSDKDemo
 
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            string connectionString = @"Data Source=ZKTeco.db;Version=3;";
+            string query;
+            string stime_lo = stime_log.Value.ToString("yyyy-M-d HH:mm:ss");
+            string etime_lo = etime_log.Value.ToString("yyyy-M-d HH:mm:ss");
+
+            if (checkBox1.Checked == true)
+            {
+                if (checkBox_timePeriod.Checked == true)
+                {
+                    query = $"SELECT * FROM Attendance where UserID = {textBox1.Text} AND AttendanceTime BETWEEN '{stime_lo}' AND '{etime_lo}' order by 'AttendanceTime' ";
+                }
+
+                else
+                {
+                    query = $"SELECT * FROM Attendance where UserID = {textBox1.Text}";
+                }
+            }
+            else
+            {
+                if (checkBox_timePeriod.Checked == true)
+                {
+                    query = $"SELECT * FROM Attendance where AttendanceTime BETWEEN '{stime_lo}' AND '{etime_lo}';";
+                }
+                else
+                {
+                    query = $"SELECT * FROM Attendance";
+                }
+            }
+
+
+            // Create a DataTable to hold the retrieved data
+            DataTable dataTable = new DataTable();
+
+
+
+
+
+            // Create a SQLiteDataAdapter to execute the query and fill the DataTable
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+                {
+                    try
+                    {
+                        // Open connection
+                        connection.Open();
+
+                        // Fill the DataTable
+                        adapter.Fill(dataTable);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions
+                        Console.WriteLine("An error occurred: " + ex.Message);
+                        return;
+                    }
+                }
+            }
+
+            // Bind the DataTable to the DataGridView
+            gv_Attlog.DataSource = dataTable;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            if(checkBox_timePeriod.Checked != true)
+            {
+                MessageBox.Show("Check Date First");
+                return;
+            }
+            checkBox_timePeriod.Checked = false;
+
+            var connectionString = "Data Source=ZKTeco.db";
+            DateTime currentDate = stime_log.Value.Date;
+            DateTime startTime = currentDate.AddHours(8);
+            DateTime endTime = currentDate.AddHours(20);
+            string query = $"SELECT * FROM Attendance WHERE AttendanceTime BETWEEN '{startTime.ToString("yyyy-M-d HH:mm:ss")}' AND '{endTime.ToString("yyyy-M-d HH:mm:ss")}';";
+            Dictionary<string, List<DateTime>> userLogs = new Dictionary<string, List<DateTime>>();
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    gv_Attlog.DataSource = null;
+                    gv_Attlog.Rows.Clear();
+                    gv_Attlog.Columns.Clear();
+                    gv_Attlog.Columns.Add("UserID", "User ID");
+                    gv_Attlog.Columns.Add("Name", "Name");
+                    gv_Attlog.Columns.Add("LastCheckout", "Last Checkout");
+                    try
+                    {
+                        connection.Open();
+                        DataTable dataTable = new DataTable();
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            string userID = row["UserID"].ToString();
+                            DateTime attendanceTime = System.DateTime.Parse(row["AttendanceTime"].ToString());
+
+                            if (!userLogs.ContainsKey(userID))
+                            {
+                                userLogs[userID] = new List<DateTime>();
+                            }
+
+                            userLogs[userID].Add(attendanceTime);
+                        }
+                        foreach (var kvp in userLogs)
+                        {
+                            string userID = kvp.Key;
+                            List<DateTime> logs = kvp.Value;
+
+                            bool isCheckedIn = logs.Count % 2 == 0;
+                            Console.WriteLine($"User {userID} logs {logs.Count}");
+                            if (!isCheckedIn && logs[logs.Count - 1].TimeOfDay < endTime.TimeOfDay)
+                            {
+                                string name = GetUserName(userID, dataTable);
+                                gv_Attlog.Rows.Add(userID, name, kvp.Value.Last());
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("An error occurred: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        static string GetUserName(string userID, DataTable userDataTable)
+        {
+            foreach (DataRow row in userDataTable.Rows)
+            {
+                if (row["UserID"].ToString() == userID)
+                {
+                    return row["UserName"].ToString();
+                }
+            }
+            return string.Empty;
+        }
     }
 }

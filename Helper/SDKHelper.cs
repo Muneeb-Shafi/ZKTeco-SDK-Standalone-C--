@@ -4344,25 +4344,61 @@ namespace StandaloneSDKDemo
             bool bEnabled = false;
             if (axCZKEM1.ReadGeneralLogData(GetMachineNumber()))
             {
+                string connectionString = @"Data Source=ZKTeco.db;Version=3;";
+                string query = @"INSERT OR IGNORE INTO Attendance (Identifier, UserID, UserName, AttendanceTime, VerifyType, VerifyState, WorkCode) 
+                         VALUES (@Identifier, @UserID, @UserName, @AttendanceTime, @VerifyType, @VerifyState, @WorkCode)";
+
+
                 while (axCZKEM1.SSR_GetGeneralLogData(GetMachineNumber(), out sdwEnrollNumber, out idwVerifyMode,
                             out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))//get records from the memory
                 {
                     axCZKEM1.SSR_GetUserInfo(GetMachineNumber(), sdwEnrollNumber, out strName, out strPassword, out iPrivilege, out bEnabled);
-                    DataRow dr = dt_log.NewRow();
-                    dr["User ID"] = sdwEnrollNumber;
-                    dr["User Name"] = strName;
-                    dr["Attendance Time"] = idwMonth + "-" + idwDay + " " + idwHour + ":" + idwMinute + ":" + idwSecond;
-                    dr["Verify Type"] = idwVerifyMode;
-                    if (idwInOutMode == 1)
+                    //DataRow dr = dt_log.NewRow();
+                    //dr["User ID"] = sdwEnrollNumber;
+                    //dr["User Name"] = strName;
+                    //dr["Attendance Time"] = idwMonth + "-" + idwDay + " " + idwHour + ":" + idwMinute + ":" + idwSecond;
+                    //dr["Verify Type"] = idwVerifyMode;
+                    //if (idwInOutMode == 1)
+                    //{
+                    //    dr["Verify State"] = "Check Out";
+                    //}
+                    //else if (idwInOutMode == 0)
+                    //{
+                    //    dr["Verify State"] = "Check In";
+                    //}
+                    //dr["WorkCode"] = idwWorkcode;
+                    //dt_log.Rows.Add(dr);
+                
+                    // Create connection and command
+                    using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                     {
-                        dr["Verify State"] = "Check Out";
+                        using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@Identifier", sdwEnrollNumber + "_" + idwMonth + "-" + idwDay + " " + idwHour + ":" + idwMinute + ":" + idwSecond);
+                            command.Parameters.AddWithValue("@UserID", sdwEnrollNumber);
+                            command.Parameters.AddWithValue("@UserName", strName);
+                            command.Parameters.AddWithValue("@AttendanceTime", $"{idwYear}-{idwMonth}-{idwDay} {idwHour}:{idwMinute}:{idwSecond}");
+                            command.Parameters.AddWithValue("@VerifyType", idwVerifyMode);
+                            command.Parameters.AddWithValue("@VerifyState", idwInOutMode == 1 ? "Check Out" : "Check In");
+                            command.Parameters.AddWithValue("@WorkCode", idwWorkcode);
+
+                            // Open connection
+                            connection.Open();
+
+                            // Execute command
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            // Check if rows were affected
+                            if (rowsAffected > 0)
+                            {
+                                Console.WriteLine("Data inserted successfully.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("No rows inserted.");
+                            }
+                        }
                     }
-                    else if( idwInOutMode == 0)
-                    {
-                        dr["Verify State"] = "Check In";
-                    }
-                    dr["WorkCode"] = idwWorkcode;
-                    dt_log.Rows.Add(dr);
                 }
                 ret = 1;
             }
@@ -4385,6 +4421,81 @@ namespace StandaloneSDKDemo
 
             return ret;
         }
+
+        public int sta_readAttLog(ListBox lblOutputInfo, DataTable dt_log, string userId)
+        {
+            if (GetConnectState() == false)
+            {
+                lblOutputInfo.Items.Add("*Please connect first!");
+                return -1024;
+            }
+
+            int ret = 0;
+
+            axCZKEM1.EnableDevice(GetMachineNumber(), false);//disable the device
+
+            string sdwEnrollNumber = "";
+            int idwVerifyMode = 0;
+            int idwInOutMode = 0;
+            int idwYear = 0;
+            int idwMonth = 0;
+            int idwDay = 0;
+            int idwHour = 0;
+            int idwMinute = 0;
+            int idwSecond = 0;
+            int idwWorkcode = 0;
+            int iPrivilege = 0;
+            string strName = "";
+            string strCardno = "";
+            string strPassword = "";
+            bool bEnabled = false;
+            if (axCZKEM1.ReadGeneralLogData(GetMachineNumber()))
+            {
+                while (axCZKEM1.SSR_GetGeneralLogData(GetMachineNumber(), out sdwEnrollNumber, out idwVerifyMode,
+                            out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))//get records from the memory
+                {
+                    axCZKEM1.SSR_GetUserInfo(GetMachineNumber(), sdwEnrollNumber, out strName, out strPassword, out iPrivilege, out bEnabled);
+                    DataRow dr = dt_log.NewRow();
+                    dr["User ID"] = sdwEnrollNumber;
+                    dr["User Name"] = strName;
+                    dr["Attendance Time"] = idwMonth + "-" + idwDay + " " + idwHour + ":" + idwMinute + ":" + idwSecond;
+                    dr["Verify Type"] = idwVerifyMode;
+                    if (idwInOutMode == 1)
+                    {
+                        dr["Verify State"] = "Check Out";
+                    }
+                    else if (idwInOutMode == 0)
+                    {
+                        dr["Verify State"] = "Check In";
+                    }
+                    dr["WorkCode"] = idwWorkcode;
+                    if(userId == sdwEnrollNumber)
+                    {
+                        dt_log.Rows.Add(dr);
+                    }
+                }
+                ret = 1;
+            }
+            else
+            {
+                axCZKEM1.GetLastError(ref idwErrorCode);
+                ret = idwErrorCode;
+
+                if (idwErrorCode != 0)
+                {
+                    lblOutputInfo.Items.Add("*Read attlog failed,ErrorCode: " + idwErrorCode.ToString());
+                }
+                else
+                {
+                    lblOutputInfo.Items.Add("No data from terminal returns!");
+                }
+            }
+
+            axCZKEM1.EnableDevice(GetMachineNumber(), true);//enable the device
+
+            return ret;
+        }
+
 
         public int sta_readLogByPeriod(ListBox lblOutputInfo, DataTable dt_logPeriod, string fromTime, string toTime)
         {
@@ -4453,6 +4564,87 @@ namespace StandaloneSDKDemo
 
             return ret;
         }
+
+        public int sta_readLogByPeriod(ListBox lblOutputInfo, DataTable dt_logPeriod, string fromTime, string toTime, string userID)
+        {
+            if (GetConnectState() == false)
+            {
+                lblOutputInfo.Items.Add("*Please connect first!");
+                return -1024;
+            }
+
+            int ret = 0;
+
+            axCZKEM1.EnableDevice(GetMachineNumber(), false);//disable the device
+
+            string sdwEnrollNumber = "";
+            int idwVerifyMode = 0;
+            int idwInOutMode = 0;
+            int idwYear = 0;
+            int idwMonth = 0;
+            int idwDay = 0;
+            int idwHour = 0;
+            int idwMinute = 0;
+            int idwSecond = 0;
+            int idwWorkcode = 0;
+            int iPrivilege = 0;
+            string strName = "";
+            string strCardno = "";
+            string strPassword = "";
+            bool bEnabled = false;
+
+            if (axCZKEM1.ReadTimeGLogData(GetMachineNumber(), fromTime, toTime))
+            {
+                while (axCZKEM1.SSR_GetGeneralLogData(GetMachineNumber(), out sdwEnrollNumber, out idwVerifyMode,
+                            out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))//get records from the memory
+                {
+
+                    axCZKEM1.SSR_GetUserInfo(GetMachineNumber(), sdwEnrollNumber, out strName, out strPassword, out iPrivilege, out bEnabled);//upload the user's information(card number included)
+                    DataRow dr = dt_logPeriod.NewRow();
+                    dr["User ID"] = sdwEnrollNumber;
+                    dr["User Name"] = strName;
+                    dr["Attendance Time"] = idwMonth + "-" + idwDay + " " + idwHour + ":" + idwMinute + ":" + idwSecond;
+                    dr["Verify Type"] = idwVerifyMode;
+                    if (idwInOutMode == 1)
+                    {
+                        dr["Verify State"] = "Check Out";
+                    }
+                    else if (idwInOutMode == 0)
+                    {
+                        dr["Verify State"] = "Check In";
+                    }
+                    dr["WorkCode"] = idwWorkcode;
+
+                    if(sdwEnrollNumber == userID)
+                    {
+                        dt_logPeriod.Rows.Add(dr);
+                    }
+                }
+                ret = 1;
+            }
+            else
+            {
+                axCZKEM1.GetLastError(ref idwErrorCode);
+                ret = idwErrorCode;
+
+                if (idwErrorCode != 0)
+                {
+                    lblOutputInfo.Items.Add("*Read attlog by period failed,ErrorCode: " + idwErrorCode.ToString());
+                }
+                else
+                {
+                    lblOutputInfo.Items.Add("No data from terminal returns!");
+                }
+            }
+
+
+            //lblOutputInfo.Items.Add("[func ReadTimeGLogData]Temporarily unsupported");
+            axCZKEM1.EnableDevice(GetMachineNumber(), true);//enable the device
+
+            return ret;
+        }
+
+
 
         public int sta_DeleteAttLog(ListBox lblOutputInfo)
         {

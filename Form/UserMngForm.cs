@@ -158,6 +158,11 @@ namespace StandaloneSDKDemo
         private void tmUserID_Tick(object sender, EventArgs e)
         {
             //UserMng.SDK.sta_GetAllUserID(false, cbUserID, cbUserID1, cbUserID2, cbUserID3, cbUserID4, txtID2, cbUserID7);
+
+
+            
+
+
         }
 
         private void RefreshUserIDMenuItem_Click(object sender, EventArgs e)
@@ -2129,12 +2134,7 @@ namespace StandaloneSDKDemo
             groupBox3.Enabled = true;
         }
 
-        private void lvUserInfo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage9_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             int index = 0;
 
@@ -2154,11 +2154,10 @@ namespace StandaloneSDKDemo
                             string name = reader.GetString(reader.GetOrdinal("Name"));
                             string cardNo = reader.GetString(reader.GetOrdinal("cnic"));
                             string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
-                            string degree  = reader.GetString(reader.GetOrdinal("Degree"));
+                            string degree = reader.GetString(reader.GetOrdinal("Degree"));
 
                             listView1.Items.Add(userID.ToString());
 
-                            listView1.Items[index].SubItems.Add(userID);
                             listView1.Items[index].SubItems.Add(name);
                             listView1.Items[index].SubItems.Add(cardNo);
                             listView1.Items[index].SubItems.Add(hostel);
@@ -2169,6 +2168,35 @@ namespace StandaloneSDKDemo
                     }
                 }
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var connectionString = "Data Source=ZKTeco.db";
+
+            // Query to get the count of rows in the Users table
+            string query = "SELECT COUNT(*) FROM user";
+
+            // Variable to hold the count
+            int rowCount = 0;
+
+            // Create connection and command
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        rowCount = Convert.ToInt32(command.ExecuteScalar());
+                        userCount.Text = rowCount.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
+
         }
     }
 }

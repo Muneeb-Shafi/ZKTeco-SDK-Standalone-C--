@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserMngForm));
-            this.tmUserID = new System.Windows.Forms.Timer(this.components);
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -80,15 +78,11 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.GetUserInfo = new System.Windows.Forms.Button();
+            this.btnSetUserInfo = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.btnStartEnroll = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtUserID = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
             this.cbFlag = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
             this.cbFingerIndex = new System.Windows.Forms.ComboBox();
@@ -96,11 +90,30 @@
             this.txtUserID1 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.cbUserID2 = new System.Windows.Forms.ComboBox();
             this.btnDeleteEnrollData = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.cbBackupDE = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.degreetext = new System.Windows.Forms.TextBox();
+            this.hosteltext = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.cbPrivilege = new System.Windows.Forms.ComboBox();
+            this.txtCardnumber = new System.Windows.Forms.TextBox();
+            this.Privilege = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.cnictext = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label90 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -135,6 +148,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageUser = new System.Windows.Forms.TabPage();
@@ -225,28 +246,8 @@
             this.txtSMSID2 = new System.Windows.Forms.TextBox();
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
-            this.cnictext = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.cbPrivilege = new System.Windows.Forms.ComboBox();
-            this.txtCardnumber = new System.Windows.Forms.TextBox();
-            this.Privilege = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.degreetext = new System.Windows.Forms.TextBox();
-            this.hosteltext = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cbUserID2 = new System.Windows.Forms.ComboBox();
-            this.GetUserInfo = new System.Windows.Forms.Button();
-            this.btnSetUserInfo = new System.Windows.Forms.Button();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userCount = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -257,14 +258,15 @@
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPageUser.SuspendLayout();
@@ -274,14 +276,7 @@
             this.tabPage11.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tmUserID
-            // 
-            this.tmUserID.Enabled = true;
-            this.tmUserID.Interval = 1000;
-            this.tmUserID.Tick += new System.EventHandler(this.tmUserID_Tick);
             // 
             // tabPage10
             // 
@@ -624,7 +619,6 @@
             this.lvUserInfo.TabIndex = 82;
             this.lvUserInfo.UseCompatibleStateImageBehavior = false;
             this.lvUserInfo.View = System.Windows.Forms.View.Details;
-            this.lvUserInfo.SelectedIndexChanged += new System.EventHandler(this.lvUserInfo_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -725,6 +719,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button6);
+            this.tabPage5.Controls.Add(this.userCount);
             this.tabPage5.Controls.Add(this.GetUserInfo);
             this.tabPage5.Controls.Add(this.btnSetUserInfo);
             this.tabPage5.Controls.Add(this.groupBox13);
@@ -737,6 +733,26 @@
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Add Users";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // GetUserInfo
+            // 
+            this.GetUserInfo.Location = new System.Drawing.Point(799, 182);
+            this.GetUserInfo.Name = "GetUserInfo";
+            this.GetUserInfo.Size = new System.Drawing.Size(97, 25);
+            this.GetUserInfo.TabIndex = 91;
+            this.GetUserInfo.Text = "GetUserInfo";
+            this.GetUserInfo.UseVisualStyleBackColor = true;
+            this.GetUserInfo.Click += new System.EventHandler(this.GetUserInfo_Click_1);
+            // 
+            // btnSetUserInfo
+            // 
+            this.btnSetUserInfo.Location = new System.Drawing.Point(677, 182);
+            this.btnSetUserInfo.Name = "btnSetUserInfo";
+            this.btnSetUserInfo.Size = new System.Drawing.Size(97, 25);
+            this.btnSetUserInfo.TabIndex = 90;
+            this.btnSetUserInfo.Text = "SetUserInfo";
+            this.btnSetUserInfo.UseVisualStyleBackColor = true;
+            this.btnSetUserInfo.Click += new System.EventHandler(this.btnSetUserInfo_Click);
             // 
             // groupBox13
             // 
@@ -773,75 +789,6 @@
             this.label33.Size = new System.Drawing.Size(109, 26);
             this.label33.TabIndex = 72;
             this.label33.Text = "0/1:Normal fingerprint\r\n3:Duress fingerprint";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.degreetext);
-            this.groupBox3.Controls.Add(this.hosteltext);
-            this.groupBox3.Controls.Add(this.label29);
-            this.groupBox3.Controls.Add(this.label31);
-            this.groupBox3.Controls.Add(this.cbPrivilege);
-            this.groupBox3.Controls.Add(this.txtCardnumber);
-            this.groupBox3.Controls.Add(this.Privilege);
-            this.groupBox3.Controls.Add(this.label55);
-            this.groupBox3.Controls.Add(this.cnictext);
-            this.groupBox3.Controls.Add(this.label28);
-            this.groupBox3.Controls.Add(this.txtUserID);
-            this.groupBox3.Controls.Add(this.txtName);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.txtPassword);
-            this.groupBox3.Controls.Add(this.label90);
-            this.groupBox3.Location = new System.Drawing.Point(427, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(479, 170);
-            this.groupBox3.TabIndex = 81;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Upload the Card Number(part of users information)";
-            // 
-            // txtUserID
-            // 
-            this.txtUserID.Location = new System.Drawing.Point(72, 25);
-            this.txtUserID.MaxLength = 24;
-            this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Size = new System.Drawing.Size(142, 20);
-            this.txtUserID.TabIndex = 56;
-            this.txtUserID.TextChanged += new System.EventHandler(this.txtUserID_TextChanged);
-            this.txtUserID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(308, 25);
-            this.txtName.MaxLength = 24;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(114, 20);
-            this.txtName.TabIndex = 57;
-            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(8, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 20);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "User ID";
-            // 
-            // label26
-            // 
-            this.label26.Location = new System.Drawing.Point(237, 30);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(47, 18);
-            this.label26.TabIndex = 64;
-            this.label26.Text = "Name *";
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(8, 65);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(53, 13);
-            this.label90.TabIndex = 68;
-            this.label90.Text = "Password";
             // 
             // cbFlag
             // 
@@ -927,6 +874,15 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Delete Enrolled Data";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(55, 135);
+            this.textBox1.MaxLength = 24;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(51, 20);
+            this.textBox1.TabIndex = 74;
+            this.textBox1.Text = "1";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -945,6 +901,16 @@
             this.label25.Size = new System.Drawing.Size(40, 13);
             this.label25.TabIndex = 18;
             this.label25.Text = "UserID";
+            // 
+            // cbUserID2
+            // 
+            this.cbUserID2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUserID2.FormattingEnabled = true;
+            this.cbUserID2.Location = new System.Drawing.Point(308, 19);
+            this.cbUserID2.Name = "cbUserID2";
+            this.cbUserID2.Size = new System.Drawing.Size(94, 21);
+            this.cbUserID2.TabIndex = 16;
+            this.cbUserID2.Visible = false;
             // 
             // btnDeleteEnrollData
             // 
@@ -987,6 +953,175 @@
             this.cbBackupDE.Name = "cbBackupDE";
             this.cbBackupDE.Size = new System.Drawing.Size(48, 21);
             this.cbBackupDE.TabIndex = 17;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.degreetext);
+            this.groupBox3.Controls.Add(this.hosteltext);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.cbPrivilege);
+            this.groupBox3.Controls.Add(this.txtCardnumber);
+            this.groupBox3.Controls.Add(this.Privilege);
+            this.groupBox3.Controls.Add(this.label55);
+            this.groupBox3.Controls.Add(this.cnictext);
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.txtUserID);
+            this.groupBox3.Controls.Add(this.txtName);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.txtPassword);
+            this.groupBox3.Controls.Add(this.label90);
+            this.groupBox3.Location = new System.Drawing.Point(427, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(479, 170);
+            this.groupBox3.TabIndex = 81;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Upload the Card Number(part of users information)";
+            // 
+            // degreetext
+            // 
+            this.degreetext.Location = new System.Drawing.Point(72, 129);
+            this.degreetext.MaxLength = 24;
+            this.degreetext.Name = "degreetext";
+            this.degreetext.Size = new System.Drawing.Size(142, 20);
+            this.degreetext.TabIndex = 78;
+            // 
+            // hosteltext
+            // 
+            this.hosteltext.Location = new System.Drawing.Point(308, 129);
+            this.hosteltext.MaxLength = 24;
+            this.hosteltext.Name = "hosteltext";
+            this.hosteltext.Size = new System.Drawing.Size(114, 20);
+            this.hosteltext.TabIndex = 79;
+            // 
+            // label29
+            // 
+            this.label29.Location = new System.Drawing.Point(8, 131);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(62, 20);
+            this.label29.TabIndex = 80;
+            this.label29.Text = "Degree *";
+            this.label29.Click += new System.EventHandler(this.label29_Click);
+            // 
+            // label31
+            // 
+            this.label31.Location = new System.Drawing.Point(237, 134);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(47, 18);
+            this.label31.TabIndex = 81;
+            this.label31.Text = "Hostel";
+            // 
+            // cbPrivilege
+            // 
+            this.cbPrivilege.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPrivilege.FormattingEnabled = true;
+            this.cbPrivilege.Items.AddRange(new object[] {
+            "0-Normal",
+            "1-Enroll",
+            "2-Admin",
+            "3-Super Admin",
+            "4-User Defined Role3",
+            "5-Undefine"});
+            this.cbPrivilege.Location = new System.Drawing.Point(72, 94);
+            this.cbPrivilege.Name = "cbPrivilege";
+            this.cbPrivilege.Size = new System.Drawing.Size(142, 21);
+            this.cbPrivilege.TabIndex = 74;
+            // 
+            // txtCardnumber
+            // 
+            this.txtCardnumber.Location = new System.Drawing.Point(308, 93);
+            this.txtCardnumber.MaxLength = 24;
+            this.txtCardnumber.Name = "txtCardnumber";
+            this.txtCardnumber.Size = new System.Drawing.Size(114, 20);
+            this.txtCardnumber.TabIndex = 75;
+            // 
+            // Privilege
+            // 
+            this.Privilege.Location = new System.Drawing.Point(8, 98);
+            this.Privilege.Name = "Privilege";
+            this.Privilege.Size = new System.Drawing.Size(61, 21);
+            this.Privilege.TabIndex = 76;
+            this.Privilege.Text = "Privilege";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(237, 97);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(66, 13);
+            this.label55.TabIndex = 77;
+            this.label55.Text = "CardNumber";
+            // 
+            // cnictext
+            // 
+            this.cnictext.Location = new System.Drawing.Point(239, 61);
+            this.cnictext.MaxLength = 20;
+            this.cnictext.Name = "cnictext";
+            this.cnictext.Size = new System.Drawing.Size(183, 20);
+            this.cnictext.TabIndex = 72;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(197, 64);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(39, 13);
+            this.label28.TabIndex = 73;
+            this.label28.Text = "CNIC *";
+            // 
+            // txtUserID
+            // 
+            this.txtUserID.Location = new System.Drawing.Point(72, 25);
+            this.txtUserID.MaxLength = 24;
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(142, 20);
+            this.txtUserID.TabIndex = 56;
+            this.txtUserID.TextChanged += new System.EventHandler(this.txtUserID_TextChanged);
+            this.txtUserID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(308, 25);
+            this.txtName.MaxLength = 24;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(114, 20);
+            this.txtName.TabIndex = 57;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(8, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "User ID";
+            // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(237, 30);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(47, 18);
+            this.label26.TabIndex = 64;
+            this.label26.Text = "Name *";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(72, 62);
+            this.txtPassword.MaxLength = 8;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(67, 20);
+            this.txtPassword.TabIndex = 58;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(8, 65);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(53, 13);
+            this.label90.TabIndex = 68;
+            this.label90.Text = "Password";
             // 
             // tabPage8
             // 
@@ -1374,6 +1509,70 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(934, 417);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.button3);
+            this.tabPage9.Controls.Add(this.listView1);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(926, 391);
+            this.tabPage9.TabIndex = 12;
+            this.tabPage9.Text = "Users";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(800, 360);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 25);
+            this.button3.TabIndex = 84;
+            this.button3.Text = "Get From DataBase";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader13,
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21,
+            this.columnHeader22});
+            this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
+            this.listView1.LabelEdit = true;
+            this.listView1.Location = new System.Drawing.Point(17, 23);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(892, 331);
+            this.listView1.TabIndex = 83;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "UserID";
+            this.columnHeader13.Width = 70;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Name";
+            this.columnHeader19.Width = 270;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "CNIC";
+            this.columnHeader20.Width = 293;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Degree";
+            this.columnHeader21.Width = 128;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Hostel";
+            this.columnHeader22.Width = 120;
             // 
             // tabPage4
             // 
@@ -2311,198 +2510,25 @@
             this.btnClearSMS.UseVisualStyleBackColor = true;
             this.btnClearSMS.Click += new System.EventHandler(this.btnClearSMS_Click);
             // 
-            // cnictext
+            // userCount
             // 
-            this.cnictext.Location = new System.Drawing.Point(239, 61);
-            this.cnictext.MaxLength = 20;
-            this.cnictext.Name = "cnictext";
-            this.cnictext.Size = new System.Drawing.Size(183, 20);
-            this.cnictext.TabIndex = 72;
+            this.userCount.AutoSize = true;
+            this.userCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.userCount.Location = new System.Drawing.Point(614, 254);
+            this.userCount.Name = "userCount";
+            this.userCount.Size = new System.Drawing.Size(0, 73);
+            this.userCount.TabIndex = 93;
             // 
-            // label28
+            // button6
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(197, 64);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(39, 13);
-            this.label28.TabIndex = 73;
-            this.label28.Text = "CNIC *";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(72, 62);
-            this.txtPassword.MaxLength = 8;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(67, 20);
-            this.txtPassword.TabIndex = 58;
-            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
-            // 
-            // cbPrivilege
-            // 
-            this.cbPrivilege.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPrivilege.FormattingEnabled = true;
-            this.cbPrivilege.Items.AddRange(new object[] {
-            "0-Normal",
-            "1-Enroll",
-            "2-Admin",
-            "3-Super Admin",
-            "4-User Defined Role3",
-            "5-Undefine"});
-            this.cbPrivilege.Location = new System.Drawing.Point(72, 94);
-            this.cbPrivilege.Name = "cbPrivilege";
-            this.cbPrivilege.Size = new System.Drawing.Size(142, 21);
-            this.cbPrivilege.TabIndex = 74;
-            // 
-            // txtCardnumber
-            // 
-            this.txtCardnumber.Location = new System.Drawing.Point(308, 93);
-            this.txtCardnumber.MaxLength = 24;
-            this.txtCardnumber.Name = "txtCardnumber";
-            this.txtCardnumber.Size = new System.Drawing.Size(114, 20);
-            this.txtCardnumber.TabIndex = 75;
-            // 
-            // Privilege
-            // 
-            this.Privilege.Location = new System.Drawing.Point(8, 98);
-            this.Privilege.Name = "Privilege";
-            this.Privilege.Size = new System.Drawing.Size(61, 21);
-            this.Privilege.TabIndex = 76;
-            this.Privilege.Text = "Privilege";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(237, 97);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(66, 13);
-            this.label55.TabIndex = 77;
-            this.label55.Text = "CardNumber";
-            // 
-            // degreetext
-            // 
-            this.degreetext.Location = new System.Drawing.Point(72, 129);
-            this.degreetext.MaxLength = 24;
-            this.degreetext.Name = "degreetext";
-            this.degreetext.Size = new System.Drawing.Size(142, 20);
-            this.degreetext.TabIndex = 78;
-            // 
-            // hosteltext
-            // 
-            this.hosteltext.Location = new System.Drawing.Point(308, 129);
-            this.hosteltext.MaxLength = 24;
-            this.hosteltext.Name = "hosteltext";
-            this.hosteltext.Size = new System.Drawing.Size(114, 20);
-            this.hosteltext.TabIndex = 79;
-            // 
-            // label29
-            // 
-            this.label29.Location = new System.Drawing.Point(8, 131);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(62, 20);
-            this.label29.TabIndex = 80;
-            this.label29.Text = "Degree *";
-            this.label29.Click += new System.EventHandler(this.label29_Click);
-            // 
-            // label31
-            // 
-            this.label31.Location = new System.Drawing.Point(237, 134);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(47, 18);
-            this.label31.TabIndex = 81;
-            this.label31.Text = "Hostel";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(55, 135);
-            this.textBox1.MaxLength = 24;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(51, 20);
-            this.textBox1.TabIndex = 74;
-            this.textBox1.Text = "1";
-            // 
-            // cbUserID2
-            // 
-            this.cbUserID2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUserID2.FormattingEnabled = true;
-            this.cbUserID2.Location = new System.Drawing.Point(308, 19);
-            this.cbUserID2.Name = "cbUserID2";
-            this.cbUserID2.Size = new System.Drawing.Size(94, 21);
-            this.cbUserID2.TabIndex = 16;
-            this.cbUserID2.Visible = false;
-            // 
-            // GetUserInfo
-            // 
-            this.GetUserInfo.Location = new System.Drawing.Point(799, 182);
-            this.GetUserInfo.Name = "GetUserInfo";
-            this.GetUserInfo.Size = new System.Drawing.Size(97, 25);
-            this.GetUserInfo.TabIndex = 91;
-            this.GetUserInfo.Text = "GetUserInfo";
-            this.GetUserInfo.UseVisualStyleBackColor = true;
-            this.GetUserInfo.Click += new System.EventHandler(this.GetUserInfo_Click_1);
-            // 
-            // btnSetUserInfo
-            // 
-            this.btnSetUserInfo.Location = new System.Drawing.Point(677, 182);
-            this.btnSetUserInfo.Name = "btnSetUserInfo";
-            this.btnSetUserInfo.Size = new System.Drawing.Size(97, 25);
-            this.btnSetUserInfo.TabIndex = 90;
-            this.btnSetUserInfo.Text = "SetUserInfo";
-            this.btnSetUserInfo.UseVisualStyleBackColor = true;
-            this.btnSetUserInfo.Click += new System.EventHandler(this.btnSetUserInfo_Click);
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Controls.Add(this.listView1);
-            this.tabPage9.Location = new System.Drawing.Point(4, 22);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(926, 391);
-            this.tabPage9.TabIndex = 12;
-            this.tabPage9.Text = "Users";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader13,
-            this.columnHeader19,
-            this.columnHeader20,
-            this.columnHeader21,
-            this.columnHeader22});
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.LabelEdit = true;
-            this.listView1.Location = new System.Drawing.Point(17, 23);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(892, 344);
-            this.listView1.TabIndex = 83;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "UserID";
-            this.columnHeader13.Width = 70;
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "Name";
-            this.columnHeader19.Width = 270;
-            // 
-            // columnHeader20
-            // 
-            this.columnHeader20.Text = "CNIC";
-            this.columnHeader20.Width = 293;
-            // 
-            // columnHeader21
-            // 
-            this.columnHeader21.Text = "Degree";
-            this.columnHeader21.Width = 128;
-            // 
-            // columnHeader22
-            // 
-            this.columnHeader22.Text = "Hostel";
-            this.columnHeader22.Width = 120;
+            this.button6.Location = new System.Drawing.Point(427, 216);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(112, 25);
+            this.button6.TabIndex = 94;
+            this.button6.Text = "Current User Count";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // UserMngForm
             // 
@@ -2526,12 +2552,13 @@
             this.tabPage1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
@@ -2542,6 +2569,7 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPageUser.ResumeLayout(false);
@@ -2553,14 +2581,11 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            this.tabPage9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer tmUserID;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -2777,5 +2802,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader20;
         private System.Windows.Forms.ColumnHeader columnHeader21;
         private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label userCount;
+        private System.Windows.Forms.Button button6;
     }
 }

@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|c:\\users\\admin\\downloads\\zktech\\zktecostandalonepullsdk-master\\zktecostandalonepullsdk-master\\demo-ver1.1.15\\new\\zkteco-sdk-standalone-c--\\form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\helper\\sdkhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:helper\\sdkhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\form\\accessmngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\accessmngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\form\\accessmngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\accessmngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\helper\\sdkhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:helper\\sdkhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\form\\datamngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\datamngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\form\\datamngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\datamngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,17 +34,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "SDKHelper.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Helper\\SDKHelper.cs",
               "RelativeDocumentMoniker": "Helper\\SDKHelper.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Helper\\SDKHelper.cs",
               "RelativeToolTip": "Helper\\SDKHelper.cs",
-              "ViewState": "AQIAAJ4FAAAAAAAAAAAQwK0FAAAXAAAA",
+              "ViewState": "AQIAAAgRAAAAAAAAAADwvyARAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-22T06:44:28.806Z",
               "IsPinned": true,
@@ -48,54 +52,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Main.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Main.cs",
-              "RelativeDocumentMoniker": "Main.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Main.cs",
-              "RelativeToolTip": "Main.cs",
-              "ViewState": "AQIAAG8BAAAAAAAAAAASwIgBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-26T06:25:39.258Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserMngForm.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs",
-              "RelativeDocumentMoniker": "Form\\UserMngForm.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs",
-              "RelativeToolTip": "Form\\UserMngForm.cs",
-              "ViewState": "AQIAAFUIAAAAAAAAAAAswGoIAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T10:30:20.663Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserMngForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs",
-              "RelativeDocumentMoniker": "Form\\UserMngForm.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs [Design]",
-              "RelativeToolTip": "Form\\UserMngForm.cs [Design]",
+              "Title": "AccessMngForm.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\AccessMngForm.cs",
+              "RelativeDocumentMoniker": "Form\\AccessMngForm.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\AccessMngForm.cs",
+              "RelativeToolTip": "Form\\AccessMngForm.cs",
+              "ViewState": "AQIAANEBAAAAAAAAAAAAAOIBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T09:51:28.142Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-05-01T12:11:41.351Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AccessMngForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\AccessMngForm.cs",
+              "RelativeDocumentMoniker": "Form\\AccessMngForm.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\AccessMngForm.cs [Design]",
+              "RelativeToolTip": "Form\\AccessMngForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T12:05:43.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DataMngForm.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\DataMngForm.cs",
+              "RelativeDocumentMoniker": "Form\\DataMngForm.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\DataMngForm.cs",
+              "RelativeToolTip": "Form\\DataMngForm.cs",
+              "ViewState": "AQIAAAMFAAAAAAAAAAAAAA0FAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T06:22:46.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataMngForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\DataMngForm.cs",
+              "RelativeDocumentMoniker": "Form\\DataMngForm.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Form\\DataMngForm.cs [Design]",
+              "RelativeToolTip": "Form\\DataMngForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T06:21:19.671Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Downloads\\ZKTech\\ZKTecoStandAlonePullSDK-master\\ZKTecoStandAlonePullSDK-master\\Demo-Ver1.1.15\\new\\ZKTeco-SDK-Standalone-C--\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAADwvy4AAAATAAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAAiwD8AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T06:44:28.99Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-02-22T06:44:28.99Z"
             }
           ]
         }

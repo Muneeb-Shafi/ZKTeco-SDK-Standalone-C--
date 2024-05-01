@@ -49,7 +49,30 @@ namespace StandaloneSDKDemo
         cnic TEXT,
         Hostel TEXT,
         Degree TEXT
-    );";
+    );
+    CREATE TABLE IF NOT EXISTS Attendance (
+        AttendanceID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Identifier TEXT UNIQUE,
+        UserID TEXT,
+        UserName TEXT,
+        AttendanceTime TEXT,
+        VerifyType INTEGER,
+        VerifyState TEXT,
+        WorkCode INTEGER
+    );
+
+    CREATE TABLE IF NOT EXISTS Guest (
+        GuestID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Name TEXT NOT NULL,
+        Contact TEXT NOT NULL,
+        CNIC TEXT NOT NULL,
+        Address TEXT NOT NULL,
+        VisiteeName TEXT NOT NULL,
+        VisiteeID TEXT NOT NULL,
+        Relation TEXT NOT NULL,
+        StartDate TEXT NOT NULL,
+        EndDate TEXT NOT NULL
+);";
 
                 using (var command = connection.CreateCommand())
                 {

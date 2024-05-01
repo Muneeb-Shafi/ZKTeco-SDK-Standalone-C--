@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StandaloneSDKDemo
 {
@@ -15,6 +20,45 @@ namespace StandaloneSDKDemo
         {
             InitializeComponent();
             AccesccMng = Parent;
+            loadUsers();
+        }
+
+        private void loadUsers()
+        {
+            userList.Items.Clear();
+            try
+            {
+                // SQL query to retrieve entries from the table
+                string query = "SELECT userID, Name FROM user";
+                var connectionString = "Data Source=ZKTeco.db";
+                // Create connection and command
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        // Open connection
+                        connection.Open();
+
+                        // Execute the query and fill a DataTable
+                        DataTable dataTable = new DataTable();
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+
+                        // Populate the ComboBox with entries from the DataTable
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            userList.Items.Add(row["userID"].ToString() + "-" +row["Name"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
 
         private Main AccesccMng;
@@ -380,6 +424,63 @@ namespace StandaloneSDKDemo
             {
                 e.Handled = true;
             }
+        }
+
+        private void btn_delAttLog_Click(object sender, EventArgs e)
+        {
+            var connectionString = "Data Source=ZKTeco.db";
+
+            string query = @"INSERT INTO Guest (Name, Contact, CNIC, Address, VisiteeName, VisiteeID, Relation, StartDate, EndDate) 
+                         VALUES (@Name, @Contact, @CNIC, @Address, @VisiteeName, @VisiteeID, @Relation, @StartDate, @EndDate)";
+
+            // Create connection and command
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                string[] vistee = userList.SelectedItem.ToString().Split('-');
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    // Add parameters
+                    command.Parameters.AddWithValue("@Name", namebox.Text);
+                    command.Parameters.AddWithValue("@Contact", contactbox.Text);
+                    command.Parameters.AddWithValue("@CNIC", cnicbox.Text);
+                    command.Parameters.AddWithValue("@Address", addressbox.Text);
+                    command.Parameters.AddWithValue("@VisiteeName", vistee[1]);
+                    command.Parameters.AddWithValue("@VisiteeID", vistee[0]);
+                    command.Parameters.AddWithValue("@Relation", relation.Text);
+                    command.Parameters.AddWithValue("@StartDate", dateTimePicker1.Value.Date);
+                    command.Parameters.AddWithValue("@EndDate", dateTimePicker2.Value.Date);
+
+                    try
+                    {
+                        // Open connection
+                        connection.Open();
+
+                        // Execute the command
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Check if rows were affected
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Data inserted successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No rows inserted.");
+                        }
+                    button1.Enabled = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions
+                        MessageBox.Show($"Error Occured {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
