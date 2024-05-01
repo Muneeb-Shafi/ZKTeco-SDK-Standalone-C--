@@ -66,14 +66,12 @@ namespace StandaloneSDKDemo
         private void firstMenu1_MouseSelected(object sender, EventArgs e)
         {
             firstMenu2.BackColor = Color.Transparent;
-            firstMenu3.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
             firstMenu6.BackColor = Color.Transparent;
 
             firstMenu1.TextColor = Color.White;
             firstMenu2.TextColor = Color.Black;
-            firstMenu3.TextColor = Color.Black;
             firstMenu4.TextColor = Color.Black;
             firstMenu5.TextColor = Color.Black;
             firstMenu6.TextColor = Color.Black;
@@ -99,14 +97,12 @@ namespace StandaloneSDKDemo
         private void firstMenu2_MouseSelected(object sender, EventArgs e)
         {
             firstMenu1.BackColor = Color.Transparent;
-            firstMenu3.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
             firstMenu6.BackColor = Color.Transparent;
 
             firstMenu1.TextColor = Color.Black;
             firstMenu2.TextColor = Color.White;
-            firstMenu3.TextColor = Color.Black;
             firstMenu4.TextColor = Color.Black;
             firstMenu5.TextColor = Color.Black;
             firstMenu6.TextColor = Color.Black;
@@ -139,7 +135,6 @@ namespace StandaloneSDKDemo
 
             firstMenu1.TextColor = Color.Black;
             firstMenu2.TextColor = Color.Black;
-            firstMenu3.TextColor = Color.White;
             firstMenu4.TextColor = Color.Black;
             firstMenu5.TextColor = Color.Black;
             firstMenu6.TextColor = Color.Black;
@@ -183,14 +178,12 @@ namespace StandaloneSDKDemo
         {
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
-            firstMenu3.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
             firstMenu6.BackColor = Color.Transparent;
 
             firstMenu1.TextColor = Color.Black;
             firstMenu2.TextColor = Color.Black;
-            firstMenu3.TextColor = Color.Black;
             firstMenu4.TextColor = Color.Black;
             firstMenu5.TextColor = Color.Black;
             firstMenu6.TextColor = Color.Black;
@@ -227,13 +220,11 @@ namespace StandaloneSDKDemo
         {
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
-            firstMenu3.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
             firstMenu6.BackColor = Color.Transparent;
 
             firstMenu1.TextColor = Color.Black;
             firstMenu2.TextColor = Color.Black;
-            firstMenu3.TextColor = Color.Black;
             firstMenu4.TextColor = Color.White;
             firstMenu5.TextColor = Color.Black;
             firstMenu6.TextColor = Color.Black;
@@ -260,13 +251,11 @@ namespace StandaloneSDKDemo
         {
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
-            firstMenu3.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
             firstMenu6.BackColor = Color.Transparent;
 
             firstMenu1.TextColor = Color.Black;
             firstMenu2.TextColor = Color.Black;
-            firstMenu3.TextColor = Color.Black;
             firstMenu4.TextColor = Color.Black;
             firstMenu5.TextColor = Color.White;
             firstMenu6.TextColor = Color.Black;
@@ -293,13 +282,11 @@ namespace StandaloneSDKDemo
         {
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
-            firstMenu3.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
 
             firstMenu1.TextColor = Color.Black;
             firstMenu2.TextColor = Color.Black;
-            firstMenu3.TextColor = Color.Black;
             firstMenu4.TextColor = Color.Black;
             firstMenu5.TextColor = Color.Black;
             firstMenu6.TextColor = Color.White;
@@ -348,11 +335,6 @@ namespace StandaloneSDKDemo
         }
 
         private void firstMenu2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labAD_Click(object sender, EventArgs e)
         {
 
         }
@@ -446,5 +428,9 @@ namespace StandaloneSDKDemo
             }
         }
 
+        private void firstMenu4_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

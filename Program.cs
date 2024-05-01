@@ -17,12 +17,14 @@ namespace StandaloneSDKDemo
         {
             //dataBase Table Creation
             var connectionString = "Data Source=ZKTeco.db";
-            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            try
             {
-                connection.Open();
+                using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+                {
+                    connection.Open();
 
-                // Create a table if it doesn't exist
-                var createTableSql = @"
+                    // Create a table if it doesn't exist
+                    var createTableSql = @"
     CREATE TABLE IF NOT EXISTS Users (
         userID INTEGER PRIMARY KEY,
         Enable INTEGER,
@@ -74,39 +76,43 @@ namespace StandaloneSDKDemo
         EndDate TEXT NOT NULL
 );";
 
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = createTableSql;
-                    command.ExecuteNonQuery();
-                }
-                Console.WriteLine("Table 'Users' and 'Facial' created successfully!");
-
-
-                //using (var command = new SQLiteCommand("DELETE FROM facial", connection))
-                //{
-                //    command.ExecuteNonQuery();
-                //    Console.WriteLine("All data in the 'Facial' table has been deleted.");
-                //}
-                //using (var command = new SQLiteCommand("DELETE FROM user", connection))
-                //{
-                //    command.ExecuteNonQuery();
-                //    Console.WriteLine("All data in the 'Users' table has been deleted.");
-                //}
-                string stm = "SELECT * FROM user";
-                using (var cmd = new SQLiteCommand(stm, connection))
-                {
-                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                    using (var command = connection.CreateCommand())
                     {
+                        command.CommandText = createTableSql;
+                        command.ExecuteNonQuery();
+                    }
+                    Console.WriteLine("Table 'Users' and 'Facial' created successfully!");
 
-                        while (rdr.Read())
+
+                    //using (var command = new SQLiteCommand("DELETE FROM facial", connection))
+                    //{
+                    //    command.ExecuteNonQuery();
+                    //    Console.WriteLine("All data in the 'Facial' table has been deleted.");
+                    //}
+                    //using (var command = new SQLiteCommand("DELETE FROM user", connection))
+                    //{
+                    //    command.ExecuteNonQuery();
+                    //    Console.WriteLine("All data in the 'Users' table has been deleted.");
+                    //}
+                    string stm = "SELECT * FROM user";
+                    using (var cmd = new SQLiteCommand(stm, connection))
+                    {
+                        using (SQLiteDataReader rdr = cmd.ExecuteReader())
                         {
-                            Console.WriteLine($"userID: {rdr["userID"]}, Name: {rdr["Name"]}, CNIC: {rdr["cnic"]}, Hostel: {rdr["Hostel"]}, Degree: {rdr["Degree"]}");
+
+                            while (rdr.Read())
+                            {
+                                Console.WriteLine($"userID: {rdr["userID"]}, Name: {rdr["Name"]}, CNIC: {rdr["cnic"]}, Hostel: {rdr["Hostel"]}, Degree: {rdr["Degree"]}");
+                            }
                         }
                     }
                 }
+
             }
+            catch
+            {
 
-
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());

@@ -9,8 +9,8 @@
     <ProjectGuid>{18AF2E37-B203-400B-8188-606899C00933}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OptimumTechZKTeco</RootNamespace>
-    <AssemblyName>OptimumTechZKTeco</AssemblyName>
+    <RootNamespace>StandaloneSDKDemo</RootNamespace>
+    <AssemblyName>vStandaloneSDKDemo</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>

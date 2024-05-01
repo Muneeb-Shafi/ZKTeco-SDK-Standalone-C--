@@ -42,7 +42,6 @@ namespace StandaloneSDKDemo
             this.firstMenu4 = new StandaloneSDKDemo.FirstMenu();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PicSmall = new System.Windows.Forms.PictureBox();
-            this.firstMenu3 = new StandaloneSDKDemo.FirstMenu();
             this.firstMenu2 = new StandaloneSDKDemo.FirstMenu();
             this.firstMenu1 = new StandaloneSDKDemo.FirstMenu();
             this.PicClose = new System.Windows.Forms.PictureBox();
@@ -122,7 +121,6 @@ namespace StandaloneSDKDemo
             this.PnlTop.Controls.Add(this.firstMenu4);
             this.PnlTop.Controls.Add(this.pictureBox1);
             this.PnlTop.Controls.Add(this.PicSmall);
-            this.PnlTop.Controls.Add(this.firstMenu3);
             this.PnlTop.Controls.Add(this.firstMenu2);
             this.PnlTop.Controls.Add(this.firstMenu1);
             this.PnlTop.Controls.Add(this.PicClose);
@@ -144,7 +142,7 @@ namespace StandaloneSDKDemo
             this.firstMenu6.DefaultColor = System.Drawing.Color.Transparent;
             this.firstMenu6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.firstMenu6.ForeColor = System.Drawing.SystemColors.Control;
-            this.firstMenu6.Location = new System.Drawing.Point(711, 0);
+            this.firstMenu6.Location = new System.Drawing.Point(387, 0);
             this.firstMenu6.Name = "firstMenu6";
             this.firstMenu6.Size = new System.Drawing.Size(110, 44);
             this.firstMenu6.TabIndex = 10;
@@ -178,12 +176,13 @@ namespace StandaloneSDKDemo
             this.firstMenu4.DefaultColor = System.Drawing.Color.Transparent;
             this.firstMenu4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.firstMenu4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu4.Location = new System.Drawing.Point(491, 0);
+            this.firstMenu4.Location = new System.Drawing.Point(503, 0);
             this.firstMenu4.Name = "firstMenu4";
-            this.firstMenu4.Size = new System.Drawing.Size(110, 44);
+            this.firstMenu4.Size = new System.Drawing.Size(98, 44);
             this.firstMenu4.TabIndex = 8;
             this.firstMenu4.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstMenu4.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu4_MouseSelected);
+            this.firstMenu4.Load += new System.EventHandler(this.firstMenu4_Load);
             // 
             // pictureBox1
             // 
@@ -207,23 +206,6 @@ namespace StandaloneSDKDemo
             this.PicSmall.TabIndex = 6;
             this.PicSmall.TabStop = false;
             this.PicSmall.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PicSmall_MouseClick);
-            // 
-            // firstMenu3
-            // 
-            this.firstMenu3.ActiveColor = System.Drawing.Color.Transparent;
-            this.firstMenu3.BackColor = System.Drawing.Color.Transparent;
-            this.firstMenu3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.firstMenu3.Caption = "Personalize";
-            this.firstMenu3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.firstMenu3.DefaultColor = System.Drawing.Color.Transparent;
-            this.firstMenu3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.firstMenu3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu3.Location = new System.Drawing.Point(381, 0);
-            this.firstMenu3.Name = "firstMenu3";
-            this.firstMenu3.Size = new System.Drawing.Size(110, 44);
-            this.firstMenu3.TabIndex = 5;
-            this.firstMenu3.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstMenu3.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu3_MouseSelected);
             // 
             // firstMenu2
             // 
@@ -468,7 +450,6 @@ namespace StandaloneSDKDemo
         private System.Windows.Forms.Panel PnlMiddle;
         private System.Windows.Forms.PictureBox PicClose;
         private FirstMenu firstMenu1;
-        private FirstMenu firstMenu3;
         private FirstMenu firstMenu2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox PicSmall;
