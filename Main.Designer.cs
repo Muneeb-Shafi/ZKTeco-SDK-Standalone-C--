@@ -410,7 +410,7 @@ namespace StandaloneSDKDemo
             // notificationTimer
             // 
             this.notificationTimer.Enabled = true;
-            this.notificationTimer.Interval = 20000;
+            this.notificationTimer.Interval = 1000;
             this.notificationTimer.Tick += new System.EventHandler(this.notificationTimer_Tick);
             // 
             // Main

@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -117,7 +119,19 @@
             this.btn_clearAllFp = new System.Windows.Forms.Button();
             this.btn_clearAllLogs = new System.Windows.Forms.Button();
             this.btn_clearAdmin = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.btnStartEnroll = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_Attlog)).BeginInit();
@@ -134,20 +148,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Records)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_diskFiles)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(934, 417);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
@@ -173,6 +192,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "AttMng";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(134, 193);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 23);
+            this.button2.TabIndex = 111;
+            this.button2.Text = "Absents Check";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -1015,15 +1044,121 @@
             this.btn_clearAdmin.UseVisualStyleBackColor = true;
             this.btn_clearAdmin.Click += new System.EventHandler(this.btn_clearAdmin_Click);
             // 
-            // button2
+            // tabPage7
             // 
-            this.button2.Location = new System.Drawing.Point(134, 193);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 23);
-            this.button2.TabIndex = 111;
-            this.button2.Text = "Absents Check";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.tabPage7.Controls.Add(this.dataGridView1);
+            this.tabPage7.Controls.Add(this.groupBox7);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(926, 391);
+            this.tabPage7.TabIndex = 5;
+            this.tabPage7.Text = "Leaves";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnStartEnroll);
+            this.groupBox7.Controls.Add(this.dateTimePicker2);
+            this.groupBox7.Controls.Add(this.dateTimePicker1);
+            this.groupBox7.Controls.Add(this.textBox2);
+            this.groupBox7.Controls.Add(this.label7);
+            this.groupBox7.Controls.Add(this.label6);
+            this.groupBox7.Controls.Add(this.label5);
+            this.groupBox7.Controls.Add(this.txtUserID);
+            this.groupBox7.Controls.Add(this.label3);
+            this.groupBox7.Location = new System.Drawing.Point(8, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(408, 374);
+            this.groupBox7.TabIndex = 90;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Add Leave";
+            // 
+            // txtUserID
+            // 
+            this.txtUserID.Location = new System.Drawing.Point(60, 30);
+            this.txtUserID.MaxLength = 24;
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(142, 20);
+            this.txtUserID.TabIndex = 64;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(9, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 23);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "User ID";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(9, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 23);
+            this.label5.TabIndex = 66;
+            this.label5.Text = "Date From";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(9, 114);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 23);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "Date To";
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(9, 153);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 23);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Reason / Purpose";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(12, 179);
+            this.textBox2.MaxLength = 24;
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(380, 138);
+            this.textBox2.TabIndex = 69;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(76, 75);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 70;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(76, 108);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 71;
+            // 
+            // btnStartEnroll
+            // 
+            this.btnStartEnroll.Location = new System.Drawing.Point(269, 343);
+            this.btnStartEnroll.Name = "btnStartEnroll";
+            this.btnStartEnroll.Size = new System.Drawing.Size(123, 25);
+            this.btnStartEnroll.TabIndex = 74;
+            this.btnStartEnroll.Text = "Save";
+            this.btnStartEnroll.UseVisualStyleBackColor = true;
+            this.btnStartEnroll.Click += new System.EventHandler(this.btnStartEnroll_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(423, 23);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(495, 348);
+            this.dataGridView1.TabIndex = 91;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // DataMngForm
             // 
@@ -1054,6 +1189,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Records)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_diskFiles)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1150,5 +1289,18 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtUserID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnStartEnroll;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

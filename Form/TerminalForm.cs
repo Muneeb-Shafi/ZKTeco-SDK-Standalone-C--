@@ -294,7 +294,7 @@ namespace StandaloneSDKDemo
             return gv_devlog;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
             button1_Click(sender, e);
             UserMngForm userdata = new UserMngForm(Terminal);

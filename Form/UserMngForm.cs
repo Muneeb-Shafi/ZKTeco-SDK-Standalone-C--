@@ -2198,5 +2198,13 @@ namespace StandaloneSDKDemo
             }
 
         }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage == tabPage7 || e.TabPage == tabPage6 || e.TabPage == tabPage10 || e.TabPage == tabPage11)
+            {
+                e.Cancel = true; // Cancel the event to prevent the tab page from being selected
+            }
+        }
     }
 }

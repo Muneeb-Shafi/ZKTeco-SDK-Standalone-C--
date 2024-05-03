@@ -13,6 +13,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Security.Cryptography.X509Certificates;
 using System.Data.SQLite;
+using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace StandaloneSDKDemo
 {
@@ -1425,6 +1427,97 @@ namespace StandaloneSDKDemo
                 }
             }
             return string.Empty;
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage == tabPage2 || e.TabPage == tabPage3 || e.TabPage == tabPage5)
+            {
+                e.Cancel = true; // Cancel the event to prevent the tab page from being selected
+            }
+        }
+
+        private void btnStartEnroll_Click(object sender, EventArgs e)
+        {
+
+            if (dateTimePicker1.Value <= dateTimePicker2.Value)
+            {
+                var connectionString = "Data Source=ZKTeco.db";
+                string query = "INSERT INTO leaves (userID, date, reason) VALUES (@UserID, @Date, @Reason)";
+                DateTime startDate = dateTimePicker1.Value.Date;
+                DateTime endDate = dateTimePicker2.Value.Date;
+                using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    // Iterate over each day
+                    for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
+                    {
+                        // Do something with the current date
+                        Console.WriteLine(date.ToShortDateString()); // Example: Output the date
+
+                        using (var command = new System.Data.SQLite.SQLiteCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", txtUserID.Text);
+                            command.Parameters.AddWithValue("@Date", date);
+                            command.Parameters.AddWithValue("@Reason", textBox2.Text);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show($"Leave Added for User ID {txtUserID.Text} for date {date}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("No rows inserted.");
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("End Date Must be After Start Date");
+                return;
+            }
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            dataGridView1.Rows.Clear();
+
+            // Add columns to the DataGridView
+            dataGridView1.Columns.Add("LeaveID", "LeaveID");
+            dataGridView1.Columns.Add("UserID", "UserID");
+            dataGridView1.Columns.Add("Reason", "Reason");
+            dataGridView1.Columns.Add("Date", "Date");
+            // ...
+            //dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            var connectionString = "Data Source=ZKTeco.db";
+
+            string query = @"SELECT * FROM leaves";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                row.Cells.Add(new DataGridViewTextBoxCell { Value = reader[i].ToString() });
+                            }
+                            dataGridView1.Rows.Add(row);
+                        }
+                    }
+                }
+
+            }
         }
     }
 }

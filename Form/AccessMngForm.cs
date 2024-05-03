@@ -179,7 +179,7 @@ namespace StandaloneSDKDemo
         private void UserIDTimer_Tick(object sender, EventArgs e)
         {
             UserIDTimer.Enabled = false;
-
+            dataGridView1.Rows.Clear();
 
             // Add columns to the DataGridView
             dataGridView1.Columns.Add("GuestID", "GuestID");
@@ -196,9 +196,11 @@ namespace StandaloneSDKDemo
 
             // Add a new DataGridViewButtonColumn
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.Name = "Pass";
-            buttonColumn.Text = "Print Pass";
+            buttonColumn.HeaderText = "Pass"; // Set the header text (optional)
+            buttonColumn.Text = "Print Pass"; // Set the button text
             buttonColumn.UseColumnTextForButtonValue = true;
+            buttonColumn.FlatStyle = FlatStyle.Popup; // Set button style
+            buttonColumn.DefaultCellStyle.ForeColor = Color.Black; // Set font color
             dataGridView1.Columns.Add(buttonColumn);
             dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
             var connectionString = "Data Source=ZKTeco.db";
@@ -286,10 +288,6 @@ namespace StandaloneSDKDemo
 
                 PersonalizeMngForm print = new PersonalizeMngForm(Name, Contact, CNIC, visiteeName, visiteeContact, visiteeCnic, SDate, EDate);
                 print.ShowDialog();
-
-
-
-
 
             }
         }
@@ -585,7 +583,8 @@ namespace StandaloneSDKDemo
                         // Check if rows were affected
                         if (rowsAffected > 0)
                         {
-                            Console.WriteLine("Data inserted successfully.");
+                            MessageBox.Show("Guest Added Successfully!");
+                            UserIDTimer.Enabled = true;
                         }
                         else
                         {
@@ -651,6 +650,87 @@ namespace StandaloneSDKDemo
         private void tabPage3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = textBox1.Text.Trim();
+
+            // If searchValue is empty, show all data
+            if (string.IsNullOrEmpty(searchValue))
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    row.Visible = true;
+                }
+                return;
+            }
+
+            // Iterate through DataGridView rows to filter based on searchValue
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                // Check if the row is not a new row
+                if (!row.IsNewRow)
+                {
+                    // Check if the DataGridView is in edit mode and the current row is the one being edited
+                    if (dataGridView1.IsCurrentRowDirty && row.Index == dataGridView1.CurrentCell.RowIndex)
+                    {
+                        // Skip toggling visibility for the row being edited
+                        continue;
+                    }
+
+                    // Check if the cell value matches the search value
+                    if (row.Cells["VisiteeId"].Value != null && row.Cells["VisiteeId"].Value.ToString() == searchValue)
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
+                }
+            }
+        }
+
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = textBox2.Text.Trim();
+
+            // If searchValue is empty, show all data
+            if (string.IsNullOrEmpty(searchValue))
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    row.Visible = true;
+                }
+                return;
+            }
+
+            // Iterate through DataGridView rows to filter based on searchValue
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                // Check if the row is not a new row
+                if (!row.IsNewRow)
+                {
+                    // Check if the DataGridView is in edit mode and the current row is the one being edited
+                    if (dataGridView1.IsCurrentRowDirty && row.Index == dataGridView1.CurrentCell.RowIndex)
+                    {
+                        // Skip toggling visibility for the row being edited
+                        continue;
+                    }
+
+                    // Check if the cell value matches the search value
+                    if (row.Cells["VisiteeName"].Value != null && row.Cells["VisiteeName"].Value.ToString().Contains(searchValue))
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
+                }
+            }
         }
     }
 }

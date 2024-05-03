@@ -351,13 +351,18 @@ namespace StandaloneSDKDemo
             TimeSpan endTime = new TimeSpan(18, 05, 0); 
             if (currentTime.TimeOfDay >= startTime && currentTime.TimeOfDay <= endTime && notifyCheck == false)
             {
-                startProcess(sender, e);
+                MessageBox.Show("Auto Device Sync Will Start Immediately. MEANWHILE Please HOLD ON ");
+                TerminalForm sync = new TerminalForm(this);
+                sync.button2_Click(sender, e);
+                notifyCheck = false;
+
+                //startProcess(sender, e);
             }
             TimeSpan startTime2 = new TimeSpan(09, 01, 0); 
             TimeSpan endTime2 = new TimeSpan(17, 0, 0); 
             if (currentTime.TimeOfDay >= startTime2 && currentTime.TimeOfDay <= endTime2 && notifyCheck == true)
             {
-                notifyCheck = false;
+                notifyCheck = true;
             }
         }
 

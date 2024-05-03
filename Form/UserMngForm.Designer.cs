@@ -78,6 +78,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.userCount = new System.Windows.Forms.Label();
             this.GetUserInfo = new System.Windows.Forms.Button();
             this.btnSetUserInfo = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -246,8 +248,6 @@
             this.txtSMSID2 = new System.Windows.Forms.TextBox();
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
-            this.userCount = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -733,6 +733,26 @@
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Add Users";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(427, 216);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(112, 25);
+            this.button6.TabIndex = 94;
+            this.button6.Text = "Current User Count";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // userCount
+            // 
+            this.userCount.AutoSize = true;
+            this.userCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.userCount.Location = new System.Drawing.Point(614, 254);
+            this.userCount.Name = "userCount";
+            this.userCount.Size = new System.Drawing.Size(0, 73);
+            this.userCount.TabIndex = 93;
             // 
             // GetUserInfo
             // 
@@ -1509,6 +1529,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(934, 417);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage9
             // 
@@ -2509,26 +2530,6 @@
             this.btnClearSMS.Text = "ClearSMS";
             this.btnClearSMS.UseVisualStyleBackColor = true;
             this.btnClearSMS.Click += new System.EventHandler(this.btnClearSMS_Click);
-            // 
-            // userCount
-            // 
-            this.userCount.AutoSize = true;
-            this.userCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.userCount.Location = new System.Drawing.Point(614, 254);
-            this.userCount.Name = "userCount";
-            this.userCount.Size = new System.Drawing.Size(0, 73);
-            this.userCount.TabIndex = 93;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(427, 216);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(112, 25);
-            this.button6.TabIndex = 94;
-            this.button6.Text = "Current User Count";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // UserMngForm
             // 
