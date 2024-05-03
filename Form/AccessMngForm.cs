@@ -178,13 +178,122 @@ namespace StandaloneSDKDemo
         #region UserIDTimer,not the stander interface on SDK.
         private void UserIDTimer_Tick(object sender, EventArgs e)
         {
-            AccesccMng.SDK.sta_UserIDTimer(false, cboUAUserIDGroup, cboUAUserIDTZ);
+            UserIDTimer.Enabled = false;
+
+
+            // Add columns to the DataGridView
+            dataGridView1.Columns.Add("GuestID", "GuestID");
+            dataGridView1.Columns.Add("Name", "Name");
+            dataGridView1.Columns.Add("Contact", "Contact");
+            dataGridView1.Columns.Add("CNIC", "CNIC");
+            dataGridView1.Columns.Add("Address", "Address");
+            dataGridView1.Columns.Add("VisiteeName", "Visitee Name");
+            dataGridView1.Columns.Add("VisiteeID", "Visitee ID");
+            dataGridView1.Columns.Add("Relation", "Relation");
+            dataGridView1.Columns.Add("SDate", "Start Date");
+            dataGridView1.Columns.Add("EDate", "End Date");
+            // ...
+
+            // Add a new DataGridViewButtonColumn
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            buttonColumn.Name = "Pass";
+            buttonColumn.Text = "Print Pass";
+            buttonColumn.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(buttonColumn);
+            dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            var connectionString = "Data Source=ZKTeco.db";
+
+            string query = @"SELECT * FROM GUEST";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                row.Cells.Add(new DataGridViewTextBoxCell { Value = reader[i].ToString() });
+                            }
+                            row.Cells.Add(new DataGridViewButtonCell());
+                            dataGridView1.Rows.Add(row);
+                        }
+                    }
+                }
+                
+            }
         }
 
-        private void RefreshUserIDMenuItem_Click(object sender, EventArgs e)
+        void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            AccesccMng.SDK.sta_UserIDTimer(true, cboUAUserIDGroup, cboUAUserIDTZ);
+            // Check if the clicked cell is a button
+            if (e.ColumnIndex == dataGridView1.Columns["Pass"].Index && e.RowIndex >= 0)
+            {
+                // Get the values of the other columns in the same row
+                object column1ValueObj = dataGridView1.Rows[e.RowIndex].Cells["VisiteeID"].Value;
+                object column2ValueObj = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value;
+                object column3ValueObj = dataGridView1.Rows[e.RowIndex].Cells["Contact"].Value;
+                object column4ValueObj = dataGridView1.Rows[e.RowIndex].Cells["CNIC"].Value;
+                object column5ValueObj = dataGridView1.Rows[e.RowIndex].Cells["SDate"].Value;
+                object column6ValueObj = dataGridView1.Rows[e.RowIndex].Cells["EDate"].Value;
+
+                // Check if the cell values are not null before calling ToString()
+                string visiteeId = column1ValueObj != null ? column1ValueObj.ToString() : "null";
+                string Name = column2ValueObj != null ? column2ValueObj.ToString() : "null";
+                string Contact = column3ValueObj != null ? column3ValueObj.ToString() : "null";
+                string CNIC = column4ValueObj != null ? column4ValueObj.ToString() : "null";
+                string SDate = column5ValueObj != null ? column5ValueObj.ToString() : "null";
+                string EDate = column6ValueObj != null ? column6ValueObj.ToString() : "null";
+
+
+                string visiteeName = "", visiteeCnic = "", visiteeContact = "";
+                try
+                {
+                    // SQL query to retrieve entries from the table
+                    string querys = $"SELECT * FROM user where userID == {visiteeId};";
+                    var connectionStrings = "Data Source=ZKTeco.db";
+                    // Create connection and command
+                    using (SQLiteConnection connection = new SQLiteConnection(connectionStrings))
+                    {
+                        using (SQLiteCommand command = new SQLiteCommand(querys, connection))
+                        {
+                            // Open connection
+                            connection.Open();
+                            using (SQLiteDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    // Get the values of the 'userID' and 'Name' columns
+                                    visiteeCnic = reader.GetString(reader.GetOrdinal("cnic"));
+                                    visiteeName = reader.GetString(reader.GetOrdinal("Name"));
+                                    visiteeContact = reader.GetString(reader.GetOrdinal("Hostel"));
+
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+
+
+                PersonalizeMngForm print = new PersonalizeMngForm(Name, Contact, CNIC, visiteeName, visiteeContact, visiteeCnic, SDate, EDate);
+                print.ShowDialog();
+
+
+
+
+
+            }
         }
+
         #endregion
 
         #region Parameter
@@ -265,6 +374,8 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.Default;
         }
         #endregion
+
+        #region idk
 
         private void txtDelay_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -425,9 +536,23 @@ namespace StandaloneSDKDemo
                 e.Handled = true;
             }
         }
+        #endregion
+
 
         private void btn_delAttLog_Click(object sender, EventArgs e)
         {
+
+            if (namebox.Text == "" || contactbox.Text == "" || addressbox.Text == "" || cnicbox.Text == "" || relation.Text == "" || userList.SelectedItem == null)
+            {
+                MessageBox.Show("Please Select All Fields First !");
+                return;
+            }
+
+            string[] vistee = userList.SelectedItem.ToString().Split('-');
+            
+
+
+
             var connectionString = "Data Source=ZKTeco.db";
 
             string query = @"INSERT INTO Guest (Name, Contact, CNIC, Address, VisiteeName, VisiteeID, Relation, StartDate, EndDate) 
@@ -436,7 +561,6 @@ namespace StandaloneSDKDemo
             // Create connection and command
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
-                string[] vistee = userList.SelectedItem.ToString().Split('-');
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     // Add parameters
@@ -480,7 +604,53 @@ namespace StandaloneSDKDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            if(namebox.Text == "" ||  contactbox.Text == "" ||  addressbox.Text == "" || cnicbox.Text == "" || relation.Text == "" || userList.SelectedItem == null)
+            {
+                MessageBox.Show("Please Select All Fields First !");
+                return;
+            }
+            string[] vistee = userList.SelectedItem.ToString().Split('-');
+            string visiteeName = "", visiteeCnic = "", visiteeContact = "";
+            try
+            {
+                // SQL query to retrieve entries from the table
+                string querys = $"SELECT * FROM user where userID == {vistee[0]};";
+                var connectionStrings = "Data Source=ZKTeco.db";
+                // Create connection and command
+                using (SQLiteConnection connection = new SQLiteConnection(connectionStrings))
+                {
+                    using (SQLiteCommand command = new SQLiteCommand(querys, connection))
+                    {
+                        // Open connection
+                        connection.Open();
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Get the values of the 'userID' and 'Name' columns
+                                visiteeCnic = reader.GetString(reader.GetOrdinal("cnic"));
+                                visiteeName = reader.GetString(reader.GetOrdinal("Name"));
+                                visiteeContact = reader.GetString(reader.GetOrdinal("Hostel"));
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+
+
+            PersonalizeMngForm print = new PersonalizeMngForm(namebox.Text, contactbox.Text, cnicbox.Text, visiteeName, visiteeContact, visiteeCnic, dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString());
+            print.ShowDialog();
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

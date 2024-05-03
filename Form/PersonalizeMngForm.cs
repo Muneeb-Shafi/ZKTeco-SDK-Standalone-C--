@@ -18,15 +18,20 @@ namespace StandaloneSDKDemo
             InitializeComponent();
         }
 
-        public PersonalizeMngForm(string name, string contact, string startTime, string endTime)
+        public PersonalizeMngForm(string name, string contact, string cnic, string name2, string contact2, string cnic2, string startTime, string endTime)
         {
             InitializeComponent();
 
             // Set guest details
-            nameLabel.Text = "Name: " + name;
-            contactLabel.Text = "Contact: " + contact;
-            startLabel.Text = "Start Time: " + startTime;
-            endLabel.Text = "End Time: " + endTime;
+
+            visitorName.Text ="Name : " + name;
+            visitorcnic.Text = "CNIC : " + cnic;
+            visitorcontact.Text = "Contact : " + contact;
+            visiteename.Text = "Visitee Name : " + name2;
+            visiteecnic.Text = "Visitee CNIC : " + cnic2;
+            visiteecontact.Text = "Visitee Contact: " + contact2;
+            date.Text = "From : " + startTime + " To : " + endTime;
+
         }
 
         private void PrintDocumentOnPrintPage(object sender, PrintPageEventArgs e)
@@ -36,31 +41,25 @@ namespace StandaloneSDKDemo
             e.Graphics.DrawImage(bitmap, new Point(100, 100));
         }
 
-        private void PassForm_Load(object sender, EventArgs e)
+        private void PersonalizeMngForm_Load(object sender, EventArgs e)
         {
             // Print pass automatically when form loads
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrintPage += PrintDocumentOnPrintPage;
 
-            // Uncomment below line if you want to display the print dialog before printing
-            // PrintDialog printDialog = new PrintDialog {Document = printDocument};
-            // if (printDialog.ShowDialog() == DialogResult.OK)
-            // {
-            //    printDocument.Print();
-            // }
-            // else
-            // {
-            //    Close();
-            // }
+             PrintDialog printDialog = new PrintDialog { Document = printDocument };
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+            else
+            {
+                Close();
+            }
 
-            printDocument.Print(); // Uncomment if you don't want to display the print dialog
             Close();
         }
 
-        private Label nameLabel;
-        private Label contactLabel;
-        private Label startLabel;
-        private Label endLabel;
-        private Bitmap bitmap = new Bitmap(600, 600); // Adjust size as needed
+        private Bitmap bitmap = new Bitmap(550, 250); // Adjust size as needed
     }
 }

@@ -432,5 +432,10 @@ namespace StandaloneSDKDemo
         {
 
         }
+
+        private void firstMenu5_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -142,7 +142,7 @@ namespace StandaloneSDKDemo
             this.firstMenu6.DefaultColor = System.Drawing.Color.Transparent;
             this.firstMenu6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.firstMenu6.ForeColor = System.Drawing.SystemColors.Control;
-            this.firstMenu6.Location = new System.Drawing.Point(387, 0);
+            this.firstMenu6.Location = new System.Drawing.Point(576, 0);
             this.firstMenu6.Name = "firstMenu6";
             this.firstMenu6.Size = new System.Drawing.Size(110, 44);
             this.firstMenu6.TabIndex = 10;
@@ -154,17 +154,18 @@ namespace StandaloneSDKDemo
             this.firstMenu5.ActiveColor = System.Drawing.Color.Transparent;
             this.firstMenu5.BackColor = System.Drawing.Color.Transparent;
             this.firstMenu5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.firstMenu5.Caption = "Access";
+            this.firstMenu5.Caption = "Guests";
             this.firstMenu5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.firstMenu5.DefaultColor = System.Drawing.Color.Transparent;
             this.firstMenu5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.firstMenu5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu5.Location = new System.Drawing.Point(601, 0);
+            this.firstMenu5.Location = new System.Drawing.Point(475, 0);
             this.firstMenu5.Name = "firstMenu5";
             this.firstMenu5.Size = new System.Drawing.Size(110, 44);
             this.firstMenu5.TabIndex = 9;
             this.firstMenu5.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstMenu5.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu5_MouseSelected);
+            this.firstMenu5.Load += new System.EventHandler(this.firstMenu5_Load);
             // 
             // firstMenu4
             // 
@@ -176,7 +177,7 @@ namespace StandaloneSDKDemo
             this.firstMenu4.DefaultColor = System.Drawing.Color.Transparent;
             this.firstMenu4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.firstMenu4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu4.Location = new System.Drawing.Point(503, 0);
+            this.firstMenu4.Location = new System.Drawing.Point(378, 0);
             this.firstMenu4.Name = "firstMenu4";
             this.firstMenu4.Size = new System.Drawing.Size(98, 44);
             this.firstMenu4.TabIndex = 8;

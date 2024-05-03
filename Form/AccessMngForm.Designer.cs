@@ -32,6 +32,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.btn_delAttLog = new System.Windows.Forms.Button();
             this.userList = new System.Windows.Forms.ComboBox();
             this.relation = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -157,12 +163,8 @@
             this.txtGetNoTZ = new System.Windows.Forms.TextBox();
             this.txtSetNoTZ = new System.Windows.Forms.TextBox();
             this.UserIDTimer = new System.Windows.Forms.Timer(this.components);
-            this.btn_delAttLog = new System.Windows.Forms.Button();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -178,6 +180,8 @@
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -194,6 +198,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox6);
             this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -201,6 +206,7 @@
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "Guest Entry";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // groupBox5
             // 
@@ -228,6 +234,59 @@
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Guest Details";
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(251, 262);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 23);
+            this.button1.TabIndex = 110;
+            this.button1.Text = "Print Pass";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(251, 156);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(119, 20);
+            this.dateTimePicker2.TabIndex = 109;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(48, 156);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(119, 20);
+            this.dateTimePicker1.TabIndex = 108;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(220, 159);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(26, 13);
+            this.label33.TabIndex = 107;
+            this.label33.Text = "End";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(14, 159);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(29, 13);
+            this.label34.TabIndex = 105;
+            this.label34.Text = "Start";
+            // 
+            // btn_delAttLog
+            // 
+            this.btn_delAttLog.Location = new System.Drawing.Point(251, 214);
+            this.btn_delAttLog.Name = "btn_delAttLog";
+            this.btn_delAttLog.Size = new System.Drawing.Size(133, 23);
+            this.btn_delAttLog.TabIndex = 104;
+            this.btn_delAttLog.Text = "Add Guest";
+            this.btn_delAttLog.UseVisualStyleBackColor = true;
+            this.btn_delAttLog.Click += new System.EventHandler(this.btn_delAttLog_Click);
             // 
             // userList
             // 
@@ -335,7 +394,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(926, 391);
+            this.tabPage1.Size = new System.Drawing.Size(892, 391);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Access Control";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1642,7 +1701,7 @@
             this.tabPage4.Controls.Add(this.grpUAUserGroup);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(926, 391);
+            this.tabPage4.Size = new System.Drawing.Size(892, 391);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "User Access";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1870,7 +1929,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(926, 391);
+            this.tabPage2.Size = new System.Drawing.Size(892, 391);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Parameter";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2054,61 +2113,27 @@
             // 
             // UserIDTimer
             // 
-            this.UserIDTimer.Interval = 1000;
+            this.UserIDTimer.Enabled = true;
+            this.UserIDTimer.Interval = 500;
             this.UserIDTimer.Tick += new System.EventHandler(this.UserIDTimer_Tick);
             // 
-            // btn_delAttLog
+            // groupBox6
             // 
-            this.btn_delAttLog.Location = new System.Drawing.Point(251, 214);
-            this.btn_delAttLog.Name = "btn_delAttLog";
-            this.btn_delAttLog.Size = new System.Drawing.Size(133, 23);
-            this.btn_delAttLog.TabIndex = 104;
-            this.btn_delAttLog.Text = "Add Guest";
-            this.btn_delAttLog.UseVisualStyleBackColor = true;
-            this.btn_delAttLog.Click += new System.EventHandler(this.btn_delAttLog_Click);
+            this.groupBox6.Controls.Add(this.dataGridView1);
+            this.groupBox6.Location = new System.Drawing.Point(433, 15);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(485, 372);
+            this.groupBox6.TabIndex = 111;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Guest List";
             // 
-            // label33
+            // dataGridView1
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(220, 159);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(26, 13);
-            this.label33.TabIndex = 107;
-            this.label33.Text = "End";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(14, 159);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(29, 13);
-            this.label34.TabIndex = 105;
-            this.label34.Text = "Start";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(48, 156);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(119, 20);
-            this.dateTimePicker1.TabIndex = 108;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(251, 156);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(119, 20);
-            this.dateTimePicker2.TabIndex = 109;
-            // 
-            // button1
-            // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(251, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 23);
-            this.button1.TabIndex = 110;
-            this.button1.Text = "Print Pass";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 20);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(472, 346);
+            this.dataGridView1.TabIndex = 0;
             // 
             // AccessMngForm
             // 
@@ -2145,6 +2170,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2285,5 +2312,7 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Button btn_delAttLog;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
