@@ -32,7 +32,7 @@ namespace StandaloneSDKDemo
             UserMng.SDK.biometricTypes.Add("FingerVein");
             UserMng.SDK.biometricTypes.Add("Palm Vein");
             SDKHelper.onMessage += SDKHelper_onMessage;
-            groupBox3.Enabled = false;
+            //groupBox3.Enabled = false;
 
         }
 
@@ -102,7 +102,8 @@ namespace StandaloneSDKDemo
 
             Cursor = Cursors.Default;
 
-            groupBox3.Enabled = false;
+
+
         }
 
         private void btnStartEnroll_Click(object sender, EventArgs e)
@@ -1988,7 +1989,53 @@ namespace StandaloneSDKDemo
         {
             Cursor = Cursors.WaitCursor;
 
-            UserMng.SDK.sta_DeleteEnrollData(UserMng.lbSysOutputInfo, textBox1.Text, cbBackupDE);
+            if (UserMng.SDK.sta_DeleteEnrollData(UserMng.lbSysOutputInfo, textBox1.Text, cbBackupDE) == 1)
+            {
+
+                var connectionString = "Data Source=ZKTeco.db";
+                string query = "DELETE FROM user WHERE userID = @UserID";
+                string userIDToDelete = txtUserID1.Text;
+                if (cbBackupDE.SelectedItem.ToString() == "12") {
+
+                    using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                    {
+                        connection.Open();
+                        using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", userIDToDelete);
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if (rowsAffected > 0)
+                            {
+                                Console.WriteLine($"Row with UserID '{userIDToDelete}' deleted successfully.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"No rows deleted for UserID '{userIDToDelete}'.");
+                            }
+                        }
+                    }
+                }
+                query = "DELETE FROM Users WHERE userID = @UserID";
+
+                userIDToDelete = txtUserID1.Text;
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", userIDToDelete);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine($"Row with UserID '{userIDToDelete}' deleted successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"No rows deleted for UserID '{userIDToDelete}'.");
+                        }
+                    }
+                }
+            }
 
             Cursor = Cursors.Default;
         }
@@ -2000,6 +2047,7 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.WaitCursor;
 
             UserMng.SDK.sta_OnlineEnroll(UserMng.lbSysOutputInfo, txtUserID1, cbFingerIndex, cbFlag);
+
 
             Cursor = Cursors.Default;
 
