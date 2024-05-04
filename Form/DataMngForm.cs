@@ -1362,7 +1362,7 @@ namespace StandaloneSDKDemo
             var connectionString = "Data Source=ZKTeco.db";
             DateTime currentDate = stime_log.Value.Date;
             DateTime startTime = currentDate.AddHours(8);
-            DateTime endTime = currentDate.AddHours(20);
+            DateTime endTime = etime_log.Value.Date.AddHours(20);
             string query = $"SELECT * FROM Attendance WHERE AttendanceTime BETWEEN '{startTime.ToString("yyyy-M-d HH:mm:ss")}' AND '{endTime.ToString("yyyy-M-d HH:mm:ss")}';";
             Dictionary<string, List<DateTime>> userLogs = new Dictionary<string, List<DateTime>>();
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
