@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Printing;
+using System.Drawing.Drawing2D;
 
 namespace StandaloneSDKDemo
 {
@@ -28,9 +29,7 @@ namespace StandaloneSDKDemo
             visitorcnic.Text = "CNIC : " + cnic;
             visitorcontact.Text = "Contact : " + contact;
             visiteename.Text = "Visitee Name : " + name2;
-            visiteecnic.Text = "Visitee CNIC : " + cnic2;
-            visiteecontact.Text = "Visitee Contact: " + contact2;
-            date.Text = "From : " + startTime + " To : " + endTime;
+            date.Text = "This Pass is only valid From : " + startTime + " To : " + endTime;
 
         }
 
@@ -41,8 +40,32 @@ namespace StandaloneSDKDemo
             e.Graphics.DrawImage(bitmap, new Point(100, 100));
         }
 
+        private void RotateLabel(Label label, float angle)
+        {
+            // Create a bitmap to draw the rotated label
+            Bitmap bmp = new Bitmap(label.Width, label.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                // Clear the bitmap with a transparent color
+                g.Clear(Color.Transparent);
+
+                // Set the rotation angle
+                g.RotateTransform(angle);
+
+                // Draw the label's text on the bitmap
+                StringFormat format = new StringFormat();
+                format.Alignment = StringAlignment.Center;
+                format.LineAlignment = StringAlignment.Center;
+                g.DrawString(label.Text, label.Font, Brushes.Black, label.ClientRectangle, format);
+            }
+
+            // Set the bitmap as the label's background image
+            label.BackgroundImage = bmp;
+        }
+
         private void PersonalizeMngForm_Load(object sender, EventArgs e)
         {
+            RotateLabel(label1, 90);
             // Print pass automatically when form loads
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrintPage += PrintDocumentOnPrintPage;
@@ -61,5 +84,25 @@ namespace StandaloneSDKDemo
         }
 
         private Bitmap bitmap = new Bitmap(550, 250); // Adjust size as needed
+
+        private void visiteename_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void visitorcontact_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void visitorcnic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void visitorName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

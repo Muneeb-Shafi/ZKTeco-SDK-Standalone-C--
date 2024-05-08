@@ -30,6 +30,14 @@ namespace StandaloneSDKDemo
         private static int iDeviceTpye = 1;
         bool bAddControl = true;        //Get all user's ID
 
+        public string connectionString;
+
+
+        public SDKHelper(Main Parent)
+        {
+            connectionString = Parent.connectionString;
+        }
+
         #region UserBioTypeClass
 
         private string _biometricType = string.Empty;
@@ -1429,7 +1437,6 @@ namespace StandaloneSDKDemo
         #region UesrFP
         public int sta_GetAllUserFPInfo(ListBox lblOutputInfo, ProgressBar prgSta, ListView lvUserInfo)
         {
-            var connectionString = "Data Source=ZKTeco.db";
 
             if (GetConnectState() == false)
             {
@@ -1809,7 +1816,6 @@ namespace StandaloneSDKDemo
         #region UserFace
         public int sta_GetAllUserFaceInfo(ListBox lblOutputInfo, ProgressBar prgSta, ListView lvUserInfo)
         {
-            var connectionString = "Data Source=ZKTeco.db";
 
             if (GetConnectState() == false)
             {
@@ -3543,6 +3549,10 @@ namespace StandaloneSDKDemo
                 string[] devinfo = devBuffer.Split(new[] { "sn=" }, StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 0; i < devinfo.Length; i++)
                 {
+                    if (i >= 9)
+                    {
+                        break;
+                    }
                     // Extract IP address, MAC address, and status
                     Regex tcpipRegex = new Regex(@"tcpip=(\S+)");
                     Regex macRegex = new Regex(@"mac=(\S+)");
@@ -4344,9 +4354,8 @@ namespace StandaloneSDKDemo
             bool bEnabled = false;
             if (axCZKEM1.ReadGeneralLogData(GetMachineNumber()))
             {
-                string connectionString = @"Data Source=ZKTeco.db;Version=3;";
-                string query = @"INSERT OR IGNORE INTO Attendance (Identifier, UserID, UserName, AttendanceTime, VerifyType, VerifyState, WorkCode) 
-                         VALUES (@Identifier, @UserID, @UserName, @AttendanceTime, @VerifyType, @VerifyState, @WorkCode)";
+                string query = @"INSERT OR IGNORE INTO Attendance (regNo, Identifier, UserID, UserName, AttendanceTime, VerifyType, VerifyState, WorkCode) 
+                         VALUES (@regNo, @Identifier, @UserID, @UserName, @AttendanceTime, @VerifyType, @VerifyState, @WorkCode)";
 
 
                 while (axCZKEM1.SSR_GetGeneralLogData(GetMachineNumber(), out sdwEnrollNumber, out idwVerifyMode,
@@ -4368,12 +4377,37 @@ namespace StandaloneSDKDemo
                     //}
                     //dr["WorkCode"] = idwWorkcode;
                     //dt_log.Rows.Add(dr);
-                
+
                     // Create connection and command
+
+                    string query2 = "SELECT regNo FROM user WHERE userId = @userId";
+                    string regNo;
+                    // Create a command with the query and connection
+                    using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                    {
+
+                        using (SQLiteCommand command = new SQLiteCommand(query2, connection))
+                        {
+                            // Add parameter for userId
+                            command.Parameters.AddWithValue("@userId", sdwEnrollNumber);
+
+                            // Open connection
+                            connection.Open();
+
+                            // Execute the command to retrieve the regNo
+                            object regNoObj = command.ExecuteScalar();
+
+                            // Check if regNo is not null and convert it to string
+                            regNo = regNoObj != null ? regNoObj.ToString() : null;
+
+
+                        }
+                    }
                     using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                     {
                         using (SQLiteCommand command = new SQLiteCommand(query, connection))
                         {
+                            command.Parameters.AddWithValue("@regNo", regNo);
                             command.Parameters.AddWithValue("@Identifier", sdwEnrollNumber + "_" + idwMonth + "-" + idwDay + " " + idwHour + ":" + idwMinute + ":" + idwSecond);
                             command.Parameters.AddWithValue("@UserID", sdwEnrollNumber);
                             command.Parameters.AddWithValue("@UserName", strName);

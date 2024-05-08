@@ -32,7 +32,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -319,6 +319,8 @@
     <None Include="image\reload-vector.png" />
     <Content Include="image\remove-circular.png" />
     <Content Include="ot-logo-256.ico" />
+    <None Include="Resources\sgri.jpeg" />
+    <None Include="Resources\Agriculture_University_Faisalabad_emblem.png" />
     <Content Include="Resources\ZKTeco_Gray_White.png" />
     <None Include="image\ZKTeco_Gray-White.png" />
     <None Include="image\settings-vector.png" />

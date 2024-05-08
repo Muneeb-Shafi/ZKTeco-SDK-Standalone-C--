@@ -10,6 +10,7 @@ using System.Windows.Forms;
 //using System.Data.SQLite;
 using System.Threading;
 using System.Management;
+using System.Drawing.Drawing2D;
 
 namespace StandaloneSDKDemo
 {
@@ -338,5 +339,8 @@ namespace StandaloneSDKDemo
             userdata.Close();   
             MessageBox.Show("ALL DEVICES ARE SYNCED, THANK YOU FOR YOUR PATIENCE");
         }
+
+
+
     }
 }

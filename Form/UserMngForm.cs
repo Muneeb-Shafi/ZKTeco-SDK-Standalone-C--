@@ -21,7 +21,7 @@ namespace StandaloneSDKDemo
         {
             InitializeComponent();
             UserMng = Parent;
-
+            connectionString = Parent.connectionString;
             UserMng.SDK.biometricTypes.Add("General");
             UserMng.SDK.biometricTypes.Add("Finger Printer");
             UserMng.SDK.biometricTypes.Add("Face");
@@ -36,6 +36,7 @@ namespace StandaloneSDKDemo
 
         }
 
+        public string connectionString;
         public UserMngForm()
         {
             InitializeComponent();
@@ -76,7 +77,7 @@ namespace StandaloneSDKDemo
 
             Cursor = Cursors.WaitCursor;
 
-            UserMng.SDK.sta_SetUserInfo(UserMng.lbSysOutputInfo, txtUserID, txtName, cbPrivilege, txtCardnumber, txtPassword);
+            UserMng.SDK.sta_SetUserInfo(UserMng.lbSysOutputInfo, txtUserID1, txtName, cbPrivilege, txtCardnumber, txtPassword);
             UserMng.SDK.sta_GetAllUserID(true, cbUserID, cbUserID1, cbUserID2, cbUserID3, cbUserID4, txtID2, cbUserID7);
 
             var connectionString = "Data Source=ZKTeco.db";
@@ -85,12 +86,13 @@ namespace StandaloneSDKDemo
                 connection.Open();
 
                 // Create a table if it doesn't exist
-                var insertDataQuery = @"INSERT INTO user (userID, Name, cnic, Hostel, Degree) 
-                            VALUES (@userID, @Name, @cnic, @Hostel, @Degree);";
+                var insertDataQuery = @"INSERT INTO user (userID, regNo, Name, cnic, Hostel, Degree) 
+                            VALUES (@userID, @regNo, @Name, @cnic, @Hostel, @Degree);";
 
                 using (var command = new System.Data.SQLite.SQLiteCommand(insertDataQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@userID", txtUserID.Text);
+                    command.Parameters.AddWithValue("@userID", txtUserID1.Text);
+                    command.Parameters.AddWithValue("@regNo", txtUserID.Text);
                     command.Parameters.AddWithValue("@Name", txtName.Text);
                     command.Parameters.AddWithValue("@cnic", cnictext.Text);
                     command.Parameters.AddWithValue("@Hostel", hosteltext.Text);
@@ -1993,7 +1995,7 @@ namespace StandaloneSDKDemo
             {
 
                 var connectionString = "Data Source=ZKTeco.db";
-                string query = "DELETE FROM user WHERE userID = @UserID";
+                string query = "DELETE FROM user WHERE regNo = '@UserID'";
                 string userIDToDelete = txtUserID1.Text;
                 if (cbBackupDE.SelectedItem.ToString() == "12") {
 
@@ -2252,6 +2254,40 @@ namespace StandaloneSDKDemo
             if (e.TabPage == tabPage7 || e.TabPage == tabPage6 || e.TabPage == tabPage10 || e.TabPage == tabPage11)
             {
                 e.Cancel = true; // Cancel the event to prevent the tab page from being selected
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserMngForm_Load(object sender, EventArgs e)
+        {
+            var connectionString = "Data Source=ZKTeco.db";
+
+            // Query to get the count of rows in the Users table
+            string query = "SELECT COUNT(*) FROM user";
+
+            // Variable to hold the count
+            int rowCount = 0;
+
+            // Create connection and command
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        rowCount = Convert.ToInt32(command.ExecuteScalar());
+                        userCount.Text = rowCount.ToString();
+                        txtUserID1.Text = (rowCount+1).ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
             }
         }
     }

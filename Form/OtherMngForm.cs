@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,10 @@ namespace StandaloneSDKDemo
         {
             InitializeComponent();
             OtherMng = parent;
+            connectionString = parent.connectionString;
         }
+        public string connectionString;
+        int roleId;
         private Main OtherMng;
 
         # region SYNCTime
@@ -143,5 +147,74 @@ namespace StandaloneSDKDemo
             }
         }
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radioButton1.Checked)
+            {
+                roleId = 3;
+                radioButton2.Checked = false;
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                roleId = 2;
+                radioButton1.Checked = false;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Define the query with parameters for username, password, and roleId
+            string query = "INSERT INTO systemUsers (username, password, roleId) VALUES (@username, @password, @roleId)";
+
+            if(radioButton1.Checked == false && radioButton2.Checked == false)
+            {
+                MessageBox.Show("Please Check Role");
+                return;
+            }
+
+            if(pass1.Text != pass2.Text)
+            {
+                MessageBox.Show("Passwords Dont Match");
+                pass1.Text = "";
+                pass2.Text = "";
+                return;
+            }
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                // Create a command with the query and connection
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    // Add parameters for username, password, and roleId
+                    command.Parameters.AddWithValue("@username", username.Text);
+                    command.Parameters.AddWithValue("@password", pass1.Text);
+                    command.Parameters.AddWithValue("@roleId", roleId);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Execute the command to insert the values into the systemUsers table
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("User inserted successfully.");
+                        username.Text = "";
+                        pass1.Text = "";
+                        pass2.Text = "";
+                        radioButton1.Checked = false;
+                        radioButton2.Checked = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to insert user.");
+                    }
+                }
+            }
+        }
     }
 }

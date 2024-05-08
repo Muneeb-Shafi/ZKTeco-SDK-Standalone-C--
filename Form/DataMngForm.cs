@@ -15,6 +15,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Data.SQLite;
 using System.Data.SqlClient;
 using System.Xml.Linq;
+using System.Drawing.Printing;
 
 namespace StandaloneSDKDemo
 {
@@ -24,6 +25,7 @@ namespace StandaloneSDKDemo
         {
             InitializeComponent();
             DataMng = Parent;
+            connectionString = DataMng.connectionString;
             udisk = new UDisk();
             LoadUDiskFile();
         }
@@ -37,6 +39,7 @@ namespace StandaloneSDKDemo
 
         private List<DiskFileInfo> faceFileList = new List<DiskFileInfo>();
         private List<DiskFileInfo> attFileList = new List<DiskFileInfo>();
+        string connectionString;
 
         #region AttMng
         private void checkBox_timePeriod_CheckedChanged(object sender, EventArgs e)
@@ -120,6 +123,7 @@ namespace StandaloneSDKDemo
                 gv_Attlog.AutoGenerateColumns = true;
                 gv_Attlog.Columns.Clear();
                 dt_periodLog.Columns.Add("User ID", System.Type.GetType("System.String"));
+                dt_periodLog.Columns.Add("Reg No", System.Type.GetType("System.String"));
                 dt_periodLog.Columns.Add("User Name", System.Type.GetType("System.String"));
                 dt_periodLog.Columns.Add("Attendance Time", System.Type.GetType("System.String"));
                 dt_periodLog.Columns.Add("Verify Type", System.Type.GetType("System.Int32"));
@@ -143,6 +147,7 @@ namespace StandaloneSDKDemo
                 gv_Attlog.AutoGenerateColumns = true;
                 gv_Attlog.Columns.Clear();
                 dt_period.Columns.Add("User ID", System.Type.GetType("System.String"));
+                dt_period.Columns.Add("Reg No", System.Type.GetType("System.String"));
                 dt_period.Columns.Add("User Name", System.Type.GetType("System.String"));
                 dt_period.Columns.Add("Attendance Time", System.Type.GetType("System.String"));
                 dt_period.Columns.Add("Verify Type", System.Type.GetType("System.Int32"));
@@ -1286,7 +1291,6 @@ namespace StandaloneSDKDemo
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string connectionString = @"Data Source=ZKTeco.db;Version=3;";
             string query;
             string stime_lo = stime_log.Value.ToString("yyyy-M-d HH:mm:ss");
             string etime_lo = etime_log.Value.ToString("yyyy-M-d HH:mm:ss");
@@ -1295,12 +1299,12 @@ namespace StandaloneSDKDemo
             {
                 if (checkBox_timePeriod.Checked == true)
                 {
-                    query = $"SELECT * FROM Attendance where UserID = {textBox1.Text} AND AttendanceTime BETWEEN '{stime_lo}' AND '{etime_lo}' order by 'AttendanceTime' ";
+                    query = $"SELECT * FROM Attendance where regNo = '{textBox1.Text}' AND AttendanceTime BETWEEN '{stime_lo}' AND '{etime_lo}' order by 'AttendanceTime' ";
                 }
 
                 else
                 {
-                    query = $"SELECT * FROM Attendance where UserID = {textBox1.Text}";
+                    query = $"SELECT * FROM Attendance where regNo = '{textBox1.Text}'";
                 }
             }
             else
@@ -1359,7 +1363,6 @@ namespace StandaloneSDKDemo
             }
             checkBox_timePeriod.Checked = false;
 
-            var connectionString = "Data Source=ZKTeco.db";
             DateTime currentDate = stime_log.Value.Date;
             DateTime startTime = currentDate.AddHours(8);
             DateTime endTime = etime_log.Value.Date.AddHours(20);
@@ -1372,7 +1375,7 @@ namespace StandaloneSDKDemo
                     gv_Attlog.DataSource = null;
                     gv_Attlog.Rows.Clear();
                     gv_Attlog.Columns.Clear();
-                    gv_Attlog.Columns.Add("UserID", "User ID");
+                    gv_Attlog.Columns.Add("RegNO", "Registration No");
                     gv_Attlog.Columns.Add("Name", "Name");
                     gv_Attlog.Columns.Add("LastCheckout", "Last Checkout");
                     try
@@ -1385,7 +1388,7 @@ namespace StandaloneSDKDemo
                         }
                         foreach (DataRow row in dataTable.Rows)
                         {
-                            string userID = row["UserID"].ToString();
+                            string userID = row["regNo"].ToString();
                             DateTime attendanceTime = System.DateTime.Parse(row["AttendanceTime"].ToString());
 
                             if (!userLogs.ContainsKey(userID))
@@ -1421,7 +1424,7 @@ namespace StandaloneSDKDemo
         {
             foreach (DataRow row in userDataTable.Rows)
             {
-                if (row["UserID"].ToString() == userID)
+                if (row["regNo"].ToString() == userID)
                 {
                     return row["UserName"].ToString();
                 }
@@ -1442,8 +1445,7 @@ namespace StandaloneSDKDemo
 
             if (dateTimePicker1.Value <= dateTimePicker2.Value)
             {
-                var connectionString = "Data Source=ZKTeco.db";
-                string query = "INSERT INTO leaves (userID, date, reason) VALUES (@UserID, @Date, @Reason)";
+                string query = "INSERT INTO leaves (regNo, date, reason) VALUES (@regNo, @Date, @Reason)";
                 DateTime startDate = dateTimePicker1.Value.Date;
                 DateTime endDate = dateTimePicker2.Value.Date;
                 using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
@@ -1457,7 +1459,7 @@ namespace StandaloneSDKDemo
 
                         using (var command = new System.Data.SQLite.SQLiteCommand(query, connection))
                         {
-                            command.Parameters.AddWithValue("@UserID", txtUserID.Text);
+                            command.Parameters.AddWithValue("@regNo", txtUserID.Text);
                             command.Parameters.AddWithValue("@Date", date);
                             command.Parameters.AddWithValue("@Reason", textBox2.Text);
 
@@ -1489,12 +1491,11 @@ namespace StandaloneSDKDemo
 
             // Add columns to the DataGridView
             dataGridView1.Columns.Add("LeaveID", "LeaveID");
-            dataGridView1.Columns.Add("UserID", "UserID");
+            dataGridView1.Columns.Add("regNo", "regNo");
             dataGridView1.Columns.Add("Reason", "Reason");
             dataGridView1.Columns.Add("Date", "Date");
             // ...
             //dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            var connectionString = "Data Source=ZKTeco.db";
 
             string query = @"SELECT * FROM leaves";
 
@@ -1519,5 +1520,58 @@ namespace StandaloneSDKDemo
 
             }
         }
+        private PrintDocument printDocument1;
+        private PrintPreviewDialog printPreviewDialog1;
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DataGridViewPrinter dataGridViewPrinter = new DataGridViewPrinter(gv_Attlog);
+            dataGridViewPrinter.Print();
+
+
+        }
+    }
+
+    public class DataGridViewPrinter
+    {
+        private PrintDocument printDocument = new PrintDocument();
+        private DataGridView dataGridView;
+
+        public DataGridViewPrinter(DataGridView dataGridView)
+        {
+            this.dataGridView = dataGridView;
+
+            // Attach event handlers
+            printDocument.PrintPage += PrintDocument_PrintPage;
+        }
+
+        public void Print()
+        {
+            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = printDocument;
+            printPreviewDialog.ShowDialog();
+        }
+
+        private void PrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int totalWidth = dataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
+            int totalHeight = dataGridView.Rows.GetRowsHeight(DataGridViewElementStates.Visible);
+
+            bool moreRows = dataGridView.FirstDisplayedScrollingRowIndex + dataGridView.DisplayedRowCount(false) < dataGridView.RowCount;
+            bool moreColumns = dataGridView.FirstDisplayedScrollingColumnIndex + dataGridView.DisplayedColumnCount(false) < dataGridView.ColumnCount;
+
+            dataGridView.DrawToBitmap(new Bitmap(totalWidth, totalHeight), new Rectangle(0, 0, totalWidth, totalHeight));
+
+            printDocument.DefaultPageSettings.Landscape = true; // Set landscape mode
+            printDocument.DefaultPageSettings.Margins = new Margins(100, 100, 100, 100); // Set margins
+
+            // Update the FirstDisplayedScrollingColumnIndex after each page is printed
+            if (moreColumns)
+            {
+                dataGridView.FirstDisplayedScrollingColumnIndex += dataGridView.DisplayedColumnCount(false);
+            }
+
+            e.HasMorePages = moreRows || moreColumns;
+        }
+
     }
 }

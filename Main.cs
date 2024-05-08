@@ -10,6 +10,7 @@ using System.Windows;
 using System.Reflection;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.IO;
+using System.Data.SQLite;
 
 namespace StandaloneSDKDemo
 {
@@ -18,18 +19,19 @@ namespace StandaloneSDKDemo
         String demoVersion = "1.9";//Please set correct demo version when code be changed; 
         bool notifyCheck = false;
         private NotifyIcon notifyIcon = new NotifyIcon();
-
+        public int roleID;
         public Main()
         {
             InitializeComponent();
+            SDK = new SDKHelper(this);
             string ver = null;
             SDK.axCZKEM1.GetSDKVersion(ref ver);
             lbVer.Text = "Software Version:" + demoVersion + "  SDK Version:" + ver;
         }
 
         //public bool connected = false;
-        public SDKHelper SDK = new SDKHelper();
-
+        public string connectionString = @"Data Source=ZKTeco.db;Version=3;";
+        public SDKHelper SDK;
         FirstMenu firstMenu = new FirstMenu();
 
         Point mouseOffset;
@@ -65,6 +67,7 @@ namespace StandaloneSDKDemo
 
         private void firstMenu1_MouseSelected(object sender, EventArgs e)
         {
+            this.pictureBox3.Hide();
             firstMenu2.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
@@ -96,6 +99,7 @@ namespace StandaloneSDKDemo
 
         private void firstMenu2_MouseSelected(object sender, EventArgs e)
         {
+            this.pictureBox3.Hide();
             firstMenu1.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
@@ -166,7 +170,7 @@ namespace StandaloneSDKDemo
         {
             //DialogResult dr = MessageBox.Show("Are you sure to exit system?", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             DialogResult dr = ZKMessgeBox.Show("Exit the program?", "Warning!", ZKMessgeBox.I8Buttons.OKCancel);
-           
+
             if (dr == DialogResult.OK)
             {
                 SDK.sta_DisConnect();
@@ -176,6 +180,7 @@ namespace StandaloneSDKDemo
 
         private void PicHome_MouseClick(object sender, MouseEventArgs e)
         {
+            this.pictureBox3.Show();
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
@@ -218,6 +223,7 @@ namespace StandaloneSDKDemo
 
         private void firstMenu4_MouseSelected(object sender, EventArgs e)
         {
+            this.pictureBox3.Hide();
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
             firstMenu5.BackColor = Color.Transparent;
@@ -249,6 +255,8 @@ namespace StandaloneSDKDemo
 
         private void firstMenu5_MouseSelected(object sender, EventArgs e)
         {
+            this.pictureBox3.Hide();
+
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
@@ -280,6 +288,7 @@ namespace StandaloneSDKDemo
 
         private void firstMenu6_MouseSelected(object sender, EventArgs e)
         {
+            this.pictureBox3.Hide();
             firstMenu1.BackColor = Color.Transparent;
             firstMenu2.BackColor = Color.Transparent;
             firstMenu4.BackColor = Color.Transparent;
@@ -317,6 +326,20 @@ namespace StandaloneSDKDemo
 
         private void Main_Load(object sender, EventArgs e)
         {
+
+
+
+            firstMenu.Hide();
+            firstMenu1.Hide();
+            firstMenu2.Hide();
+            firstMenu5.Hide();
+            firstMenu4.Hide();
+            firstMenu6.Hide();
+
+
+
+
+
             Cursor = Cursors.WaitCursor;
 
             SDK.sta_SetRTLogListBox(RealTimeEventListBox);
@@ -346,9 +369,9 @@ namespace StandaloneSDKDemo
 
         private void notificationTimer_Tick(object sender, EventArgs e)
         {
-            DateTime currentTime = DateTime.Now; 
+            DateTime currentTime = DateTime.Now;
             TimeSpan startTime = new TimeSpan(18, 00, 0);
-            TimeSpan endTime = new TimeSpan(18, 05, 0); 
+            TimeSpan endTime = new TimeSpan(18, 05, 0);
             if (currentTime.TimeOfDay >= startTime && currentTime.TimeOfDay <= endTime && notifyCheck == false)
             {
                 MessageBox.Show("Auto Device Sync Will Start Immediately. MEANWHILE Please HOLD ON ");
@@ -358,8 +381,8 @@ namespace StandaloneSDKDemo
 
                 //startProcess(sender, e);
             }
-            TimeSpan startTime2 = new TimeSpan(09, 01, 0); 
-            TimeSpan endTime2 = new TimeSpan(17, 0, 0); 
+            TimeSpan startTime2 = new TimeSpan(09, 01, 0);
+            TimeSpan endTime2 = new TimeSpan(17, 0, 0);
             if (currentTime.TimeOfDay >= startTime2 && currentTime.TimeOfDay <= endTime2 && notifyCheck == true)
             {
                 notifyCheck = true;
@@ -381,7 +404,7 @@ namespace StandaloneSDKDemo
         private void getAttLogs(object sender, EventArgs e)
         {
             DataTable dt = new DataTable("dt");
-            DataMngForm attFrom = new DataMngForm(this);        
+            DataMngForm attFrom = new DataMngForm(this);
             TerminalForm terminal = new TerminalForm(this);
             DataGridView dg = terminal.iterateMachineforAtt(sender, e);
             int i = 1;
@@ -398,7 +421,7 @@ namespace StandaloneSDKDemo
                     terminal.btnTCPConnect_Click(sender, e);
                     i++;
                 }
-                
+
             }
             List<string> students = new List<string>();
             foreach (DataRow row in dt.Rows)
@@ -413,7 +436,7 @@ namespace StandaloneSDKDemo
                 else if (students.Contains(userID))
                 {
                     students.Remove(userID);
-                }               
+                }
             }
 
             string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
@@ -439,6 +462,112 @@ namespace StandaloneSDKDemo
         }
 
         private void firstMenu5_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PnlMiddle_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PnlMiddle_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            // SQLite connection string
+            // SQL query to retrieve data for the given username
+            string query = $"SELECT * FROM systemUsers WHERE username = @username";
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username.Text);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string storedPassword = reader["password"].ToString();
+                                if (storedPassword == password.Text)
+                                {
+                                    MessageBox.Show("Login successful!");
+                                    roleID = Convert.ToInt32(reader["roleId"]);
+                                    hideControls();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Incorrect password!");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("User Not Found");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
+
+
+        private void hideControls()
+        {
+            username.Hide();
+            password.Hide();
+            label6.Hide();
+            label7.Hide();
+            label8.Hide();
+            pictureBox2.Show();
+            button1.Hide();
+
+
+            if(roleID == 1)
+            {
+                firstMenu.Show();
+                firstMenu1.Show();
+                firstMenu2.Show();
+                firstMenu5.Show();
+                firstMenu4.Show();
+                firstMenu6.Show();
+            }
+
+            if (roleID == 2)
+            {
+                firstMenu.Show();
+                firstMenu1.Show();
+                firstMenu2.Show();
+                firstMenu5.Show();
+                firstMenu4.Show();
+            }
+
+            if (roleID == 3)
+            {
+                firstMenu.Show();
+                firstMenu1.Show();
+                firstMenu2.Show();
+                firstMenu5.Show();
+            }
+
+
+
+        }
+
+        private void password_KeyPress(object sender, KeyPressEventArgs e)
         {
 
         }

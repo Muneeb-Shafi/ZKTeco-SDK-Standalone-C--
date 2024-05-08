@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,6 +47,24 @@
             this.etime_log = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.gv_Attlog = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_clearAllData = new System.Windows.Forms.Button();
+            this.btn_clearAllUser = new System.Windows.Forms.Button();
+            this.btn_clearAllFp = new System.Windows.Forms.Button();
+            this.btn_clearAllLogs = new System.Windows.Forms.Button();
+            this.btn_clearAdmin = new System.Windows.Forms.Button();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnStartEnroll = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnClearAllAttPhoto = new System.Windows.Forms.Button();
             this.btn_GetAllAttPhoto = new System.Windows.Forms.Button();
@@ -113,28 +132,14 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btn_clearAllData = new System.Windows.Forms.Button();
-            this.btn_clearAllUser = new System.Windows.Forms.Button();
-            this.btn_clearAllFp = new System.Windows.Forms.Button();
-            this.btn_clearAllLogs = new System.Windows.Forms.Button();
-            this.btn_clearAdmin = new System.Windows.Forms.Button();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.txtUserID = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.btnStartEnroll = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_Attlog)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox7.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OpLog)).BeginInit();
@@ -147,10 +152,6 @@
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Records)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_diskFiles)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -170,6 +171,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.textBox1);
@@ -192,6 +194,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "AttMng";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(765, 358);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(113, 23);
+            this.button3.TabIndex = 112;
+            this.button3.Text = "Print Records";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -254,6 +267,7 @@
             // 
             // btn_readnewlog
             // 
+            this.btn_readnewlog.Enabled = false;
             this.btn_readnewlog.Location = new System.Drawing.Point(49, 319);
             this.btn_readnewlog.Name = "btn_readnewlog";
             this.btn_readnewlog.Size = new System.Drawing.Size(154, 23);
@@ -275,6 +289,7 @@
             // 
             // btn_delAttLog
             // 
+            this.btn_delAttLog.Enabled = false;
             this.btn_delAttLog.Location = new System.Drawing.Point(49, 276);
             this.btn_delAttLog.Name = "btn_delAttLog";
             this.btn_delAttLog.Size = new System.Drawing.Size(154, 23);
@@ -347,8 +362,182 @@
             this.gv_Attlog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gv_Attlog.RowTemplate.Height = 23;
             this.gv_Attlog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gv_Attlog.Size = new System.Drawing.Size(543, 359);
+            this.gv_Attlog.Size = new System.Drawing.Size(543, 326);
             this.gv_Attlog.TabIndex = 97;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.btn_clearAllData);
+            this.tabPage4.Controls.Add(this.btn_clearAllUser);
+            this.tabPage4.Controls.Add(this.btn_clearAllFp);
+            this.tabPage4.Controls.Add(this.btn_clearAllLogs);
+            this.tabPage4.Controls.Add(this.btn_clearAdmin);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(926, 391);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "ClearData";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btn_clearAllData
+            // 
+            this.btn_clearAllData.Location = new System.Drawing.Point(82, 221);
+            this.btn_clearAllData.Name = "btn_clearAllData";
+            this.btn_clearAllData.Size = new System.Drawing.Size(177, 23);
+            this.btn_clearAllData.TabIndex = 0;
+            this.btn_clearAllData.Text = "Clear All Data";
+            this.btn_clearAllData.UseVisualStyleBackColor = true;
+            this.btn_clearAllData.Click += new System.EventHandler(this.btn_clearAllData_Click);
+            // 
+            // btn_clearAllUser
+            // 
+            this.btn_clearAllUser.Location = new System.Drawing.Point(82, 184);
+            this.btn_clearAllUser.Name = "btn_clearAllUser";
+            this.btn_clearAllUser.Size = new System.Drawing.Size(177, 23);
+            this.btn_clearAllUser.TabIndex = 0;
+            this.btn_clearAllUser.Text = "Clear All Users";
+            this.btn_clearAllUser.UseVisualStyleBackColor = true;
+            this.btn_clearAllUser.Click += new System.EventHandler(this.btn_clearAllUser_Click);
+            // 
+            // btn_clearAllFp
+            // 
+            this.btn_clearAllFp.Location = new System.Drawing.Point(82, 146);
+            this.btn_clearAllFp.Name = "btn_clearAllFp";
+            this.btn_clearAllFp.Size = new System.Drawing.Size(177, 23);
+            this.btn_clearAllFp.TabIndex = 0;
+            this.btn_clearAllFp.Text = "Clear All Fingerprints";
+            this.btn_clearAllFp.UseVisualStyleBackColor = true;
+            this.btn_clearAllFp.Click += new System.EventHandler(this.btn_clearAllFp_Click);
+            // 
+            // btn_clearAllLogs
+            // 
+            this.btn_clearAllLogs.Location = new System.Drawing.Point(82, 108);
+            this.btn_clearAllLogs.Name = "btn_clearAllLogs";
+            this.btn_clearAllLogs.Size = new System.Drawing.Size(177, 23);
+            this.btn_clearAllLogs.TabIndex = 0;
+            this.btn_clearAllLogs.Text = "Clear All Records";
+            this.btn_clearAllLogs.UseVisualStyleBackColor = true;
+            this.btn_clearAllLogs.Click += new System.EventHandler(this.btn_clearAllLogs_Click);
+            // 
+            // btn_clearAdmin
+            // 
+            this.btn_clearAdmin.Location = new System.Drawing.Point(82, 70);
+            this.btn_clearAdmin.Name = "btn_clearAdmin";
+            this.btn_clearAdmin.Size = new System.Drawing.Size(177, 23);
+            this.btn_clearAdmin.TabIndex = 0;
+            this.btn_clearAdmin.Text = "Clear Administrator";
+            this.btn_clearAdmin.UseVisualStyleBackColor = true;
+            this.btn_clearAdmin.Click += new System.EventHandler(this.btn_clearAdmin_Click);
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.dataGridView1);
+            this.tabPage7.Controls.Add(this.groupBox7);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(926, 391);
+            this.tabPage7.TabIndex = 5;
+            this.tabPage7.Text = "Leaves";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(423, 23);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(495, 348);
+            this.dataGridView1.TabIndex = 91;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnStartEnroll);
+            this.groupBox7.Controls.Add(this.dateTimePicker2);
+            this.groupBox7.Controls.Add(this.dateTimePicker1);
+            this.groupBox7.Controls.Add(this.textBox2);
+            this.groupBox7.Controls.Add(this.label7);
+            this.groupBox7.Controls.Add(this.label6);
+            this.groupBox7.Controls.Add(this.label5);
+            this.groupBox7.Controls.Add(this.txtUserID);
+            this.groupBox7.Controls.Add(this.label3);
+            this.groupBox7.Location = new System.Drawing.Point(8, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(408, 374);
+            this.groupBox7.TabIndex = 90;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Add Leave";
+            // 
+            // btnStartEnroll
+            // 
+            this.btnStartEnroll.Location = new System.Drawing.Point(269, 343);
+            this.btnStartEnroll.Name = "btnStartEnroll";
+            this.btnStartEnroll.Size = new System.Drawing.Size(123, 25);
+            this.btnStartEnroll.TabIndex = 74;
+            this.btnStartEnroll.Text = "Save";
+            this.btnStartEnroll.UseVisualStyleBackColor = true;
+            this.btnStartEnroll.Click += new System.EventHandler(this.btnStartEnroll_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(76, 108);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 71;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(76, 75);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 70;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(12, 179);
+            this.textBox2.MaxLength = 24;
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(380, 138);
+            this.textBox2.TabIndex = 69;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(9, 153);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 23);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Reason / Purpose";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(9, 114);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 23);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "Date To";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(9, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 23);
+            this.label5.TabIndex = 66;
+            this.label5.Text = "Date From";
+            // 
+            // txtUserID
+            // 
+            this.txtUserID.Location = new System.Drawing.Point(60, 30);
+            this.txtUserID.MaxLength = 24;
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(142, 20);
+            this.txtUserID.TabIndex = 64;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(9, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 23);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "User ID";
             // 
             // tabPage5
             // 
@@ -980,180 +1169,6 @@
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.Width = 50;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.btn_clearAllData);
-            this.tabPage4.Controls.Add(this.btn_clearAllUser);
-            this.tabPage4.Controls.Add(this.btn_clearAllFp);
-            this.tabPage4.Controls.Add(this.btn_clearAllLogs);
-            this.tabPage4.Controls.Add(this.btn_clearAdmin);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(926, 391);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "ClearData";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // btn_clearAllData
-            // 
-            this.btn_clearAllData.Location = new System.Drawing.Point(82, 221);
-            this.btn_clearAllData.Name = "btn_clearAllData";
-            this.btn_clearAllData.Size = new System.Drawing.Size(177, 23);
-            this.btn_clearAllData.TabIndex = 0;
-            this.btn_clearAllData.Text = "Clear All Data";
-            this.btn_clearAllData.UseVisualStyleBackColor = true;
-            this.btn_clearAllData.Click += new System.EventHandler(this.btn_clearAllData_Click);
-            // 
-            // btn_clearAllUser
-            // 
-            this.btn_clearAllUser.Location = new System.Drawing.Point(82, 184);
-            this.btn_clearAllUser.Name = "btn_clearAllUser";
-            this.btn_clearAllUser.Size = new System.Drawing.Size(177, 23);
-            this.btn_clearAllUser.TabIndex = 0;
-            this.btn_clearAllUser.Text = "Clear All Users";
-            this.btn_clearAllUser.UseVisualStyleBackColor = true;
-            this.btn_clearAllUser.Click += new System.EventHandler(this.btn_clearAllUser_Click);
-            // 
-            // btn_clearAllFp
-            // 
-            this.btn_clearAllFp.Location = new System.Drawing.Point(82, 146);
-            this.btn_clearAllFp.Name = "btn_clearAllFp";
-            this.btn_clearAllFp.Size = new System.Drawing.Size(177, 23);
-            this.btn_clearAllFp.TabIndex = 0;
-            this.btn_clearAllFp.Text = "Clear All Fingerprints";
-            this.btn_clearAllFp.UseVisualStyleBackColor = true;
-            this.btn_clearAllFp.Click += new System.EventHandler(this.btn_clearAllFp_Click);
-            // 
-            // btn_clearAllLogs
-            // 
-            this.btn_clearAllLogs.Location = new System.Drawing.Point(82, 108);
-            this.btn_clearAllLogs.Name = "btn_clearAllLogs";
-            this.btn_clearAllLogs.Size = new System.Drawing.Size(177, 23);
-            this.btn_clearAllLogs.TabIndex = 0;
-            this.btn_clearAllLogs.Text = "Clear All Records";
-            this.btn_clearAllLogs.UseVisualStyleBackColor = true;
-            this.btn_clearAllLogs.Click += new System.EventHandler(this.btn_clearAllLogs_Click);
-            // 
-            // btn_clearAdmin
-            // 
-            this.btn_clearAdmin.Location = new System.Drawing.Point(82, 70);
-            this.btn_clearAdmin.Name = "btn_clearAdmin";
-            this.btn_clearAdmin.Size = new System.Drawing.Size(177, 23);
-            this.btn_clearAdmin.TabIndex = 0;
-            this.btn_clearAdmin.Text = "Clear Administrator";
-            this.btn_clearAdmin.UseVisualStyleBackColor = true;
-            this.btn_clearAdmin.Click += new System.EventHandler(this.btn_clearAdmin_Click);
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.dataGridView1);
-            this.tabPage7.Controls.Add(this.groupBox7);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(926, 391);
-            this.tabPage7.TabIndex = 5;
-            this.tabPage7.Text = "Leaves";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.btnStartEnroll);
-            this.groupBox7.Controls.Add(this.dateTimePicker2);
-            this.groupBox7.Controls.Add(this.dateTimePicker1);
-            this.groupBox7.Controls.Add(this.textBox2);
-            this.groupBox7.Controls.Add(this.label7);
-            this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Controls.Add(this.label5);
-            this.groupBox7.Controls.Add(this.txtUserID);
-            this.groupBox7.Controls.Add(this.label3);
-            this.groupBox7.Location = new System.Drawing.Point(8, 3);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(408, 374);
-            this.groupBox7.TabIndex = 90;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Add Leave";
-            // 
-            // txtUserID
-            // 
-            this.txtUserID.Location = new System.Drawing.Point(60, 30);
-            this.txtUserID.MaxLength = 24;
-            this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Size = new System.Drawing.Size(142, 20);
-            this.txtUserID.TabIndex = 64;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(9, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 23);
-            this.label3.TabIndex = 65;
-            this.label3.Text = "User ID";
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(9, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 23);
-            this.label5.TabIndex = 66;
-            this.label5.Text = "Date From";
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(9, 114);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 23);
-            this.label6.TabIndex = 67;
-            this.label6.Text = "Date To";
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(9, 153);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 23);
-            this.label7.TabIndex = 68;
-            this.label7.Text = "Reason / Purpose";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(12, 179);
-            this.textBox2.MaxLength = 24;
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(380, 138);
-            this.textBox2.TabIndex = 69;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(76, 75);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 70;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(76, 108);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 71;
-            // 
-            // btnStartEnroll
-            // 
-            this.btnStartEnroll.Location = new System.Drawing.Point(269, 343);
-            this.btnStartEnroll.Name = "btnStartEnroll";
-            this.btnStartEnroll.Size = new System.Drawing.Size(123, 25);
-            this.btnStartEnroll.TabIndex = 74;
-            this.btnStartEnroll.Text = "Save";
-            this.btnStartEnroll.UseVisualStyleBackColor = true;
-            this.btnStartEnroll.Click += new System.EventHandler(this.btnStartEnroll_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(423, 23);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(495, 348);
-            this.dataGridView1.TabIndex = 91;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -1174,6 +1189,11 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_Attlog)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1188,11 +1208,6 @@
             this.tabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Records)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_diskFiles)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1302,5 +1317,6 @@
         private System.Windows.Forms.Button btnStartEnroll;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button3;
     }
 }

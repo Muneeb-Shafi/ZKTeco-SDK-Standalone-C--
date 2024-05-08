@@ -16,10 +16,13 @@ namespace StandaloneSDKDemo
 {
     public partial class AccessMngForm : Form
     {
+        string connectionString;
+
         public AccessMngForm(Main Parent)
         {
             InitializeComponent();
             AccesccMng = Parent;
+            connectionString = AccesccMng.connectionString;
             loadUsers();
         }
 
@@ -29,8 +32,7 @@ namespace StandaloneSDKDemo
             try
             {
                 // SQL query to retrieve entries from the table
-                string query = "SELECT userID, Name FROM user";
-                var connectionString = "Data Source=ZKTeco.db";
+                string query = "SELECT regNo, Name FROM user";
                 // Create connection and command
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
@@ -49,7 +51,7 @@ namespace StandaloneSDKDemo
                         // Populate the ComboBox with entries from the DataTable
                         foreach (DataRow row in dataTable.Rows)
                         {
-                            userList.Items.Add(row["userID"].ToString() + "-" +row["Name"].ToString());
+                            userList.Items.Add(row["regNo"].ToString() + "," +row["Name"].ToString());
                         }
                     }
                 }
@@ -180,6 +182,17 @@ namespace StandaloneSDKDemo
         {
             UserIDTimer.Enabled = false;
             dataGridView1.Rows.Clear();
+            while (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns.RemoveAt(0);
+            }
+            // Add a new DataGridViewButtonColumn
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            buttonColumn.HeaderText = "Pass"; // Set the header text (optional)
+            buttonColumn.Text = "Print Pass"; // Set the button text
+            buttonColumn.UseColumnTextForButtonValue = true;
+            buttonColumn.FlatStyle = FlatStyle.Popup; // Set button style
+            buttonColumn.DefaultCellStyle.ForeColor = Color.Black; // Set font color
 
             // Add columns to the DataGridView
             dataGridView1.Columns.Add("GuestID", "GuestID");
@@ -193,17 +206,9 @@ namespace StandaloneSDKDemo
             dataGridView1.Columns.Add("SDate", "Start Date");
             dataGridView1.Columns.Add("EDate", "End Date");
             // ...
-
-            // Add a new DataGridViewButtonColumn
-            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.HeaderText = "Pass"; // Set the header text (optional)
-            buttonColumn.Text = "Print Pass"; // Set the button text
-            buttonColumn.UseColumnTextForButtonValue = true;
-            buttonColumn.FlatStyle = FlatStyle.Popup; // Set button style
-            buttonColumn.DefaultCellStyle.ForeColor = Color.Black; // Set font color
-            dataGridView1.Columns.Add(buttonColumn);
+            
+            //dataGridView1.Columns.Add(buttonColumn);
             dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            var connectionString = "Data Source=ZKTeco.db";
 
             string query = @"SELECT * FROM GUEST";
 
@@ -220,7 +225,7 @@ namespace StandaloneSDKDemo
                             for (int i = 0; i < reader.FieldCount; i++)
                             {
                                 row.Cells.Add(new DataGridViewTextBoxCell { Value = reader[i].ToString() });
-                            }
+                            }                           
                             row.Cells.Add(new DataGridViewButtonCell());
                             dataGridView1.Rows.Add(row);
                         }
@@ -230,65 +235,85 @@ namespace StandaloneSDKDemo
             }
         }
 
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //// Check if the cell belongs to the button column
+            //if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            //{
+            //    // Access the cell
+            //    DataGridViewButtonCell buttonCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewButtonCell;
+
+            //    // Customize the button properties
+            //    buttonCell.Value = "Print"; // Set the text displayed on the button
+            //    buttonCell.FlatStyle = FlatStyle.Popup; // Set the flat style of the button
+            //    buttonCell.Style.BackColor = Color.Blue; // Set the background color of the button
+            //    buttonCell.Style.ForeColor = Color.White; // Set the text color of the button
+            //}
+        }
+
         void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Check if the clicked cell is a button
-            if (e.ColumnIndex == dataGridView1.Columns["Pass"].Index && e.RowIndex >= 0)
+            try
             {
-                // Get the values of the other columns in the same row
-                object column1ValueObj = dataGridView1.Rows[e.RowIndex].Cells["VisiteeID"].Value;
-                object column2ValueObj = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value;
-                object column3ValueObj = dataGridView1.Rows[e.RowIndex].Cells["Contact"].Value;
-                object column4ValueObj = dataGridView1.Rows[e.RowIndex].Cells["CNIC"].Value;
-                object column5ValueObj = dataGridView1.Rows[e.RowIndex].Cells["SDate"].Value;
-                object column6ValueObj = dataGridView1.Rows[e.RowIndex].Cells["EDate"].Value;
-
-                // Check if the cell values are not null before calling ToString()
-                string visiteeId = column1ValueObj != null ? column1ValueObj.ToString() : "null";
-                string Name = column2ValueObj != null ? column2ValueObj.ToString() : "null";
-                string Contact = column3ValueObj != null ? column3ValueObj.ToString() : "null";
-                string CNIC = column4ValueObj != null ? column4ValueObj.ToString() : "null";
-                string SDate = column5ValueObj != null ? column5ValueObj.ToString() : "null";
-                string EDate = column6ValueObj != null ? column6ValueObj.ToString() : "null";
-
-
-                string visiteeName = "", visiteeCnic = "", visiteeContact = "";
-                try
+                if (true && e.RowIndex >= 0)
                 {
-                    // SQL query to retrieve entries from the table
-                    string querys = $"SELECT * FROM user where userID == {visiteeId};";
-                    var connectionStrings = "Data Source=ZKTeco.db";
-                    // Create connection and command
-                    using (SQLiteConnection connection = new SQLiteConnection(connectionStrings))
-                    {
-                        using (SQLiteCommand command = new SQLiteCommand(querys, connection))
-                        {
-                            // Open connection
-                            connection.Open();
-                            using (SQLiteDataReader reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    // Get the values of the 'userID' and 'Name' columns
-                                    visiteeCnic = reader.GetString(reader.GetOrdinal("cnic"));
-                                    visiteeName = reader.GetString(reader.GetOrdinal("Name"));
-                                    visiteeContact = reader.GetString(reader.GetOrdinal("Hostel"));
+                    // Get the values of the other columns in the same row
+                    object column1ValueObj = dataGridView1.Rows[e.RowIndex].Cells["VisiteeID"].Value;
+                    object column2ValueObj = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value;
+                    object column3ValueObj = dataGridView1.Rows[e.RowIndex].Cells["Contact"].Value;
+                    object column4ValueObj = dataGridView1.Rows[e.RowIndex].Cells["CNIC"].Value;
+                    object column5ValueObj = dataGridView1.Rows[e.RowIndex].Cells["SDate"].Value;
+                    object column6ValueObj = dataGridView1.Rows[e.RowIndex].Cells["EDate"].Value;
 
+                    // Check if the cell values are not null before calling ToString()
+                    string visiteeId = column1ValueObj != null ? column1ValueObj.ToString() : "null";
+                    string Name = column2ValueObj != null ? column2ValueObj.ToString() : "null";
+                    string Contact = column3ValueObj != null ? column3ValueObj.ToString() : "null";
+                    string CNIC = column4ValueObj != null ? column4ValueObj.ToString() : "null";
+                    string SDate = column5ValueObj != null ? column5ValueObj.ToString() : "null";
+                    string EDate = column6ValueObj != null ? column6ValueObj.ToString() : "null";
+
+                    string visiteeName = "", visiteeCnic = "", visiteeContact = "";
+                    try
+                    {
+                        // SQL query to retrieve entries from the table
+                        string querys = $"SELECT * FROM user where userID == {visiteeId};";
+                        // Create connection and command
+                        using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                        {
+                            using (SQLiteCommand command = new SQLiteCommand(querys, connection))
+                            {
+                                // Open connection
+                                connection.Open();
+                                using (SQLiteDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        // Get the values of the 'userID' and 'Name' columns
+                                        visiteeCnic = reader.IsDBNull(reader.GetOrdinal("cnic")) ? "" : reader.GetString(reader.GetOrdinal("cnic"));
+                                        visiteeName = reader.IsDBNull(reader.GetOrdinal("Name")) ? "" : reader.GetString(reader.GetOrdinal("Name"));
+                                        visiteeContact = reader.IsDBNull(reader.GetOrdinal("Hostel")) ? "" : reader.GetString(reader.GetOrdinal("Hostel"));
+
+                                    }
                                 }
                             }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions
+                        MessageBox.Show("An error occurred: " + ex.Message);
+                    }
+
+                    // Instantiate the form for printing
+                    PersonalizeMngForm print = new PersonalizeMngForm(Name, Contact, CNIC, visiteeName, visiteeContact, visiteeCnic, SDate, EDate);
+                    print.ShowDialog();
                 }
-                catch (Exception ex)
-                {
-                    // Handle any exceptions
-                    MessageBox.Show("An error occurred: " + ex.Message);
-                }
-
-
-                PersonalizeMngForm print = new PersonalizeMngForm(Name, Contact, CNIC, visiteeName, visiteeContact, visiteeCnic, SDate, EDate);
-                print.ShowDialog();
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
 
@@ -540,18 +565,19 @@ namespace StandaloneSDKDemo
         private void btn_delAttLog_Click(object sender, EventArgs e)
         {
 
+
+
             if (namebox.Text == "" || contactbox.Text == "" || addressbox.Text == "" || cnicbox.Text == "" || relation.Text == "" || userList.SelectedItem == null)
             {
                 MessageBox.Show("Please Select All Fields First !");
                 return;
             }
 
-            string[] vistee = userList.SelectedItem.ToString().Split('-');
+            string[] vistee = userList.SelectedItem.ToString().Split(',');
             
 
 
 
-            var connectionString = "Data Source=ZKTeco.db";
 
             string query = @"INSERT INTO Guest (Name, Contact, CNIC, Address, VisiteeName, VisiteeID, Relation, StartDate, EndDate) 
                          VALUES (@Name, @Contact, @CNIC, @Address, @VisiteeName, @VisiteeID, @Relation, @StartDate, @EndDate)";
@@ -608,15 +634,14 @@ namespace StandaloneSDKDemo
                 MessageBox.Show("Please Select All Fields First !");
                 return;
             }
-            string[] vistee = userList.SelectedItem.ToString().Split('-');
+            string[] vistee = userList.SelectedItem.ToString().Split(',');
             string visiteeName = "", visiteeCnic = "", visiteeContact = "";
             try
             {
                 // SQL query to retrieve entries from the table
-                string querys = $"SELECT * FROM user where userID == {vistee[0]};";
-                var connectionStrings = "Data Source=ZKTeco.db";
+                string querys = $"SELECT * FROM user where regNo == '{vistee[0]}';";
                 // Create connection and command
-                using (SQLiteConnection connection = new SQLiteConnection(connectionStrings))
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     using (SQLiteCommand command = new SQLiteCommand(querys, connection))
                     {
@@ -643,7 +668,7 @@ namespace StandaloneSDKDemo
             }
 
 
-            PersonalizeMngForm print = new PersonalizeMngForm(namebox.Text, contactbox.Text, cnicbox.Text, visiteeName, visiteeContact, visiteeCnic, dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString());
+            PersonalizeMngForm print = new PersonalizeMngForm(namebox.Text, contactbox.Text, cnicbox.Text, visiteeName, visiteeContact, visiteeCnic, dateTimePicker1.Value.ToString("dd-MM-yyyy"), dateTimePicker2.Value.ToString("dd-MM-yyyy"));
             print.ShowDialog();
         }
 
@@ -731,6 +756,11 @@ namespace StandaloneSDKDemo
                     }
                 }
             }
+        }
+
+        private void AccessMngForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
