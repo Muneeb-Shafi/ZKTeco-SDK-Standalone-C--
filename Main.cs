@@ -31,6 +31,8 @@ namespace StandaloneSDKDemo
 
         //public bool connected = false;
         public string connectionString = @"Data Source=ZKTeco.db;Version=3;";
+       // public string connectionString = @"Data Source=\\10.1.8.42\Database\ZKTeco.db;";
+
         public SDKHelper SDK;
         FirstMenu firstMenu = new FirstMenu();
 
@@ -520,7 +522,7 @@ namespace StandaloneSDKDemo
             catch (Exception ex)
             {
                 // Handle any exceptions
-                Console.WriteLine("An error occurred: " + ex.Message);
+                MessageBox.Show($"An error occurred: " + ex.Message);
             }
         }
 

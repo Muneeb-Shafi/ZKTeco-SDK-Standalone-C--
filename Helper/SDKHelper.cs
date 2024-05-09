@@ -29,6 +29,7 @@ namespace StandaloneSDKDemo
         private static int idwErrorCode = 0;
         private static int iDeviceTpye = 1;
         bool bAddControl = true;        //Get all user's ID
+        public string subnet = "255.255.255.255";
 
         public string connectionString;
 
@@ -3536,7 +3537,6 @@ namespace StandaloneSDKDemo
         ///
         public void getDevices(DataTable dt_devlog)
         {
-            string subnet = "255.255.255.255";
             string devBuffer = "";
             int devBufferSize = 1024;
             bool result = axCZKEM1.SearchDevice("UDP", subnet, out devBuffer, devBufferSize);

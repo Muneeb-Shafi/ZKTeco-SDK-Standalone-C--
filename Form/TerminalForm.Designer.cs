@@ -72,6 +72,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.txtCommKey1 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.gv_devlog = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,9 +86,7 @@
             this.VType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtCommKey1 = new System.Windows.Forms.TextBox();
             this.btnTCPConnect = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.labPort = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
@@ -528,12 +533,17 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.radioButton4);
+            this.tabPage5.Controls.Add(this.radioButton3);
+            this.tabPage5.Controls.Add(this.radioButton2);
+            this.tabPage5.Controls.Add(this.label10);
+            this.tabPage5.Controls.Add(this.radioButton1);
+            this.tabPage5.Controls.Add(this.txtCommKey1);
+            this.tabPage5.Controls.Add(this.label15);
             this.tabPage5.Controls.Add(this.button2);
             this.tabPage5.Controls.Add(this.gv_devlog);
             this.tabPage5.Controls.Add(this.button1);
-            this.tabPage5.Controls.Add(this.txtCommKey1);
             this.tabPage5.Controls.Add(this.btnTCPConnect);
-            this.tabPage5.Controls.Add(this.label15);
             this.tabPage5.Controls.Add(this.txtPort);
             this.tabPage5.Controls.Add(this.labPort);
             this.tabPage5.Controls.Add(this.txtIP);
@@ -545,6 +555,84 @@
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "TCP/IP";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(179, 88);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(58, 17);
+            this.radioButton4.TabIndex = 106;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "0.0.0.0";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(179, 67);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(70, 17);
+            this.radioButton3.TabIndex = 105;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "255.0.0.0";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(179, 45);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(82, 17);
+            this.radioButton2.TabIndex = 104;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "255.255.0.0";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(157, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 103;
+            this.label10.Text = "Subnet";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(179, 24);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(94, 17);
+            this.radioButton1.TabIndex = 102;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "255.255.255.0";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // txtCommKey1
+            // 
+            this.txtCommKey1.Enabled = false;
+            this.txtCommKey1.Location = new System.Drawing.Point(71, 60);
+            this.txtCommKey1.MaxLength = 6;
+            this.txtCommKey1.Name = "txtCommKey1";
+            this.txtCommKey1.Size = new System.Drawing.Size(59, 20);
+            this.txtCommKey1.TabIndex = 101;
+            this.txtCommKey1.Text = "0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(5, 63);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 13);
+            this.label15.TabIndex = 100;
+            this.label15.Text = "CommKey";
             // 
             // button2
             // 
@@ -626,17 +714,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtCommKey1
-            // 
-            this.txtCommKey1.Enabled = false;
-            this.txtCommKey1.Location = new System.Drawing.Point(153, 46);
-            this.txtCommKey1.MaxLength = 6;
-            this.txtCommKey1.Name = "txtCommKey1";
-            this.txtCommKey1.Size = new System.Drawing.Size(59, 20);
-            this.txtCommKey1.TabIndex = 17;
-            this.txtCommKey1.Text = "0";
-            this.txtCommKey1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommKey1_KeyPress);
-            // 
             // btnTCPConnect
             // 
             this.btnTCPConnect.Location = new System.Drawing.Point(7, 84);
@@ -647,21 +724,11 @@
             this.btnTCPConnect.UseVisualStyleBackColor = true;
             this.btnTCPConnect.Click += new System.EventHandler(this.btnTCPConnect_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(87, 49);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(54, 13);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "CommKey";
-            // 
             // txtPort
             // 
             this.txtPort.Enabled = false;
             this.txtPort.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.txtPort.Location = new System.Drawing.Point(201, 10);
+            this.txtPort.Location = new System.Drawing.Point(47, 36);
             this.txtPort.MaxLength = 5;
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(53, 20);
@@ -672,7 +739,7 @@
             // labPort
             // 
             this.labPort.AutoSize = true;
-            this.labPort.Location = new System.Drawing.Point(150, 13);
+            this.labPort.Location = new System.Drawing.Point(5, 39);
             this.labPort.Name = "labPort";
             this.labPort.Size = new System.Drawing.Size(26, 13);
             this.labPort.TabIndex = 15;
@@ -688,7 +755,7 @@
             // labIP
             // 
             this.labIP.AutoSize = true;
-            this.labIP.Location = new System.Drawing.Point(3, 13);
+            this.labIP.Location = new System.Drawing.Point(5, 13);
             this.labIP.Name = "labIP";
             this.labIP.Size = new System.Drawing.Size(17, 13);
             this.labIP.TabIndex = 14;
@@ -1133,9 +1200,7 @@
         private System.Windows.Forms.TextBox txtFPCnt;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtCommKey1;
         private System.Windows.Forms.Button btnTCPConnect;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbBaudRate;
         private System.Windows.Forms.Label labPort;
         private System.Windows.Forms.Label labRate;
@@ -1191,5 +1256,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         public System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox txtCommKey1;
+        private System.Windows.Forms.Label label15;
     }
 }

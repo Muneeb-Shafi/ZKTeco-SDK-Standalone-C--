@@ -340,7 +340,36 @@ namespace StandaloneSDKDemo
             MessageBox.Show("ALL DEVICES ARE SYNCED, THANK YOU FOR YOUR PATIENCE");
         }
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            Terminal.SDK.subnet = radioButton1.Text;
+        }
 
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            Terminal.SDK.subnet = radioButton2.Text;
+        }
 
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton2.Checked = false;
+            radioButton1.Checked = false;
+            radioButton4.Checked = false;
+            Terminal.SDK.subnet = radioButton3.Text;
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton1.Checked = false;
+            Terminal.SDK.subnet = radioButton4.Text;
+        }
     }
 }
