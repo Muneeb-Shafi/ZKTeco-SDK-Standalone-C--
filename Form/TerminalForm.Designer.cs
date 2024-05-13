@@ -127,6 +127,7 @@
             this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.TabTerminal.SuspendLayout();
             this.pDeviceInfo.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -533,6 +534,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.radioButton5);
             this.tabPage5.Controls.Add(this.radioButton4);
             this.tabPage5.Controls.Add(this.radioButton3);
             this.tabPage5.Controls.Add(this.radioButton2);
@@ -571,7 +573,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(179, 67);
+            this.radioButton3.Location = new System.Drawing.Point(179, 71);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(70, 17);
             this.radioButton3.TabIndex = 105;
@@ -583,7 +585,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(179, 45);
+            this.radioButton2.Location = new System.Drawing.Point(179, 54);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(82, 17);
             this.radioButton2.TabIndex = 104;
@@ -596,7 +598,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(157, 8);
+            this.label10.Location = new System.Drawing.Point(157, 5);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 103;
@@ -605,7 +607,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(179, 24);
+            this.radioButton1.Location = new System.Drawing.Point(179, 38);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(94, 17);
             this.radioButton1.TabIndex = 102;
@@ -1130,6 +1132,18 @@
             this.dataGridViewTextBoxColumn10.HeaderText = "Value";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(179, 22);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(106, 17);
+            this.radioButton5.TabIndex = 107;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "255.255.255.255";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            // 
             // TerminalForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1263,5 +1277,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtCommKey1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }

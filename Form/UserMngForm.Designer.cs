@@ -151,6 +151,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -158,6 +160,8 @@
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageUser = new System.Windows.Forms.TabPage();
@@ -248,6 +252,8 @@
             this.txtSMSID2 = new System.Windows.Forms.TextBox();
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -284,7 +290,7 @@
             this.tabPage10.Controls.Add(this.groupBox6);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(926, 391);
+            this.tabPage10.Size = new System.Drawing.Size(926, 378);
             this.tabPage10.TabIndex = 8;
             this.tabPage10.Text = "Photos";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -463,7 +469,7 @@
             this.tabPage3.Controls.Add(this.btnGetAllUserFaceInfo);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(926, 391);
+            this.tabPage3.Size = new System.Drawing.Size(926, 378);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Facials";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -573,7 +579,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(926, 391);
+            this.tabPage2.Size = new System.Drawing.Size(926, 378);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "FingerPrints";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -702,7 +708,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(926, 391);
+            this.tabPage1.Size = new System.Drawing.Size(926, 378);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Users Management";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1151,7 +1157,7 @@
             this.tabPage8.Controls.Add(this.groupBox9);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(902, 350);
+            this.tabPage8.Size = new System.Drawing.Size(902, 353);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Other";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1528,28 +1534,50 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(934, 417);
+            this.tabControl1.Size = new System.Drawing.Size(934, 404);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.textBox3);
+            this.tabPage9.Controls.Add(this.textBox2);
+            this.tabPage9.Controls.Add(this.button7);
             this.tabPage9.Controls.Add(this.button3);
             this.tabPage9.Controls.Add(this.listView1);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(926, 391);
+            this.tabPage9.Size = new System.Drawing.Size(926, 378);
             this.tabPage9.TabIndex = 12;
             this.tabPage9.Text = "Users";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(17, 319);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(198, 20);
+            this.textBox2.TabIndex = 86;
+            // 
+            // button7
+            // 
+            this.button7.ForeColor = System.Drawing.Color.SeaGreen;
+            this.button7.Location = new System.Drawing.Point(221, 319);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(71, 21);
+            this.button7.TabIndex = 85;
+            this.button7.Text = "Open CSV";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(800, 360);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(205, 346);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(109, 25);
             this.button3.TabIndex = 84;
-            this.button3.Text = "Get From DataBase";
+            this.button3.Text = "Import";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -1560,16 +1588,23 @@
             this.columnHeader19,
             this.columnHeader20,
             this.columnHeader21,
-            this.columnHeader22});
+            this.columnHeader22,
+            this.columnHeader18,
+            this.columnHeader23});
+            this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.LabelEdit = true;
-            this.listView1.Location = new System.Drawing.Point(17, 23);
+            this.listView1.Location = new System.Drawing.Point(17, 46);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(892, 331);
+            this.listView1.Size = new System.Drawing.Size(892, 265);
             this.listView1.TabIndex = 83;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
+            this.listView1.Enter += new System.EventHandler(this.listView1_Enter);
+            this.listView1.Leave += new System.EventHandler(this.listView1_Leave);
             // 
             // columnHeader13
             // 
@@ -1579,12 +1614,12 @@
             // columnHeader19
             // 
             this.columnHeader19.Text = "Name";
-            this.columnHeader19.Width = 270;
+            this.columnHeader19.Width = 193;
             // 
             // columnHeader20
             // 
             this.columnHeader20.Text = "CNIC";
-            this.columnHeader20.Width = 293;
+            this.columnHeader20.Width = 164;
             // 
             // columnHeader21
             // 
@@ -1596,13 +1631,23 @@
             this.columnHeader22.Text = "Hostel";
             this.columnHeader22.Width = 120;
             // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Reg Num";
+            this.columnHeader18.Width = 110;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "FingerPrint";
+            this.columnHeader23.Width = 102;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.tabControl3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(926, 391);
+            this.tabPage4.Size = new System.Drawing.Size(926, 378);
             this.tabPage4.TabIndex = 11;
             this.tabPage4.Text = "UserList";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1615,7 +1660,7 @@
             this.tabControl3.Location = new System.Drawing.Point(3, 3);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(920, 385);
+            this.tabControl3.Size = new System.Drawing.Size(920, 372);
             this.tabControl3.TabIndex = 2;
             // 
             // tabPageUser
@@ -1625,7 +1670,7 @@
             this.tabPageUser.Location = new System.Drawing.Point(4, 22);
             this.tabPageUser.Name = "tabPageUser";
             this.tabPageUser.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUser.Size = new System.Drawing.Size(912, 359);
+            this.tabPageUser.Size = new System.Drawing.Size(912, 346);
             this.tabPageUser.TabIndex = 0;
             this.tabPageUser.Text = "User";
             this.tabPageUser.UseVisualStyleBackColor = true;
@@ -1643,7 +1688,7 @@
             this.lstUsers.HideSelection = false;
             this.lstUsers.Location = new System.Drawing.Point(3, 40);
             this.lstUsers.Name = "lstUsers";
-            this.lstUsers.Size = new System.Drawing.Size(906, 316);
+            this.lstUsers.Size = new System.Drawing.Size(906, 303);
             this.lstUsers.TabIndex = 1;
             this.lstUsers.UseCompatibleStateImageBehavior = false;
             this.lstUsers.View = System.Windows.Forms.View.Details;
@@ -1712,7 +1757,7 @@
             this.tabPageTemplate.Location = new System.Drawing.Point(4, 22);
             this.tabPageTemplate.Name = "tabPageTemplate";
             this.tabPageTemplate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTemplate.Size = new System.Drawing.Size(912, 359);
+            this.tabPageTemplate.Size = new System.Drawing.Size(912, 346);
             this.tabPageTemplate.TabIndex = 1;
             this.tabPageTemplate.Text = "Template";
             this.tabPageTemplate.UseVisualStyleBackColor = true;
@@ -1734,7 +1779,7 @@
             this.lstBiometric.HideSelection = false;
             this.lstBiometric.Location = new System.Drawing.Point(3, 37);
             this.lstBiometric.Name = "lstBiometric";
-            this.lstBiometric.Size = new System.Drawing.Size(906, 319);
+            this.lstBiometric.Size = new System.Drawing.Size(906, 306);
             this.lstBiometric.TabIndex = 1;
             this.lstBiometric.UseCompatibleStateImageBehavior = false;
             this.lstBiometric.View = System.Windows.Forms.View.Details;
@@ -1859,7 +1904,7 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(926, 391);
+            this.tabPage11.Size = new System.Drawing.Size(926, 378);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Text = "Roles";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -2148,7 +2193,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(926, 391);
+            this.tabPage6.Size = new System.Drawing.Size(926, 378);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "SMS";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2199,7 +2244,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(926, 391);
+            this.tabPage7.Size = new System.Drawing.Size(926, 378);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "WorkCode";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -2532,6 +2577,18 @@
             this.btnClearSMS.UseVisualStyleBackColor = true;
             this.btnClearSMS.Click += new System.EventHandler(this.btnClearSMS_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(17, 20);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(198, 20);
+            this.textBox3.TabIndex = 87;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
             // UserMngForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2573,6 +2630,7 @@
             this.groupBox9.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPageUser.ResumeLayout(false);
@@ -2808,5 +2866,11 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label userCount;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

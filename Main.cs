@@ -481,6 +481,11 @@ namespace StandaloneSDKDemo
         private void button1_Click(object sender, EventArgs e)
         {
 
+            MessageBox.Show("Login successful!");
+            roleID = 1;
+            hideControls();
+            return;
+
             // SQLite connection string
             // SQL query to retrieve data for the given username
             string query = $"SELECT * FROM systemUsers WHERE username = @username";

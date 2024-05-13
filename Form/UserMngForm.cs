@@ -10,6 +10,10 @@ using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Data.SQLite;
 using System.Reflection;
+using CsvHelper;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.Xml.Linq;
 
 
 namespace StandaloneSDKDemo
@@ -2186,9 +2190,33 @@ namespace StandaloneSDKDemo
 
         private void button3_Click(object sender, EventArgs e)
         {
+            int recs = 0;
+            if(textBox2.Text == "")
+            {
+                MessageBox.Show("Please Import File First");
+                return;
+            }
+            var csvConfig = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HeaderValidated = null
+
+            };
+            using (var reader = new StreamReader(textBox2.Text))
+            using (var csv = new CsvReader(reader, csvConfig))
+            {
+                var records = csv.GetRecords<users>();
+
+                foreach (var user in records)
+                {
+                    InsertIntoDatabase(user);
+                    recs++;
+                }
+            }
+
+            MessageBox.Show($"{recs} records inserted");
+
             int index = 0;
 
-            var connectionString = "Data Source=ZKTeco.db";
             using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
             {
                 connection.Open();
@@ -2200,11 +2228,13 @@ namespace StandaloneSDKDemo
 
                         while (reader.Read())
                         {
-                            string userID = reader.GetString(reader.GetOrdinal("userID"));
+                            int userID = reader.GetInt32(reader.GetOrdinal("machineID"));
                             string name = reader.GetString(reader.GetOrdinal("Name"));
                             string cardNo = reader.GetString(reader.GetOrdinal("cnic"));
                             string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
                             string degree = reader.GetString(reader.GetOrdinal("Degree"));
+                            string regNo = reader.GetString(reader.GetOrdinal("regNo"));
+                            int fpCheck = reader.GetInt32(reader.GetOrdinal("fp"));
 
                             listView1.Items.Add(userID.ToString());
 
@@ -2212,6 +2242,15 @@ namespace StandaloneSDKDemo
                             listView1.Items[index].SubItems.Add(cardNo);
                             listView1.Items[index].SubItems.Add(hostel);
                             listView1.Items[index].SubItems.Add(degree);
+                            listView1.Items[index].SubItems.Add(regNo);
+                            if(fpCheck == 0) {
+                                listView1.Items[index].SubItems.Add("NotAvailable");
+                            }
+                            else if (fpCheck == 1)
+                            {
+                                listView1.Items[index].SubItems.Add("Available");
+                            }
+
                             index++;
                         }
 
@@ -2220,9 +2259,40 @@ namespace StandaloneSDKDemo
             }
         }
 
+        public void InsertIntoDatabase(users user)
+        {
+
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "INSERT INTO User (Name, cnic, Hostel, Degree, RegNo, fp) VALUES (@Name, @cnic, @Hostel, @Degree, @RegNo, @fp)";
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", user.Name);
+                        command.Parameters.AddWithValue("@cnic", user.CNIC);
+                        command.Parameters.AddWithValue("@Hostel", user.Hostel);
+                        command.Parameters.AddWithValue("@Degree", user.Degree);
+                        command.Parameters.AddWithValue("@RegNo", user.RegNo);
+                        command.Parameters.AddWithValue("@fp", user.FPCheck);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+
+
         private void button6_Click(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=ZKTeco.db";
 
             // Query to get the count of rows in the Users table
             string query = "SELECT COUNT(*) FROM user";
@@ -2253,7 +2323,7 @@ namespace StandaloneSDKDemo
         {
             if (e.TabPage == tabPage7 || e.TabPage == tabPage6 || e.TabPage == tabPage10 || e.TabPage == tabPage11)
             {
-                e.Cancel = true; // Cancel the event to prevent the tab page from being selected
+                e.Cancel = true;
             }
         }
 
@@ -2264,31 +2334,228 @@ namespace StandaloneSDKDemo
 
         private void UserMngForm_Load(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=ZKTeco.db";
+            loadData();
+        }
 
-            // Query to get the count of rows in the Users table
-            string query = "SELECT COUNT(*) FROM user";
+        public void loadData()
+        {
+            int index = 0;
 
-            // Variable to hold the count
-            int rowCount = 0;
-
-            // Create connection and command
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
             {
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                connection.Open();
+                string stm = "SELECT * FROM user";
+                using (var cmd = new SQLiteCommand(stm, connection))
                 {
-                    try
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        connection.Open();
-                        rowCount = Convert.ToInt32(command.ExecuteScalar());
-                        userCount.Text = rowCount.ToString();
-                        txtUserID1.Text = (rowCount+1).ToString();
+
+                        while (reader.Read())
+                        {
+                            int userID = reader.GetInt32(reader.GetOrdinal("machineID"));
+                            string name = reader.GetString(reader.GetOrdinal("Name"));
+                            string cardNo = reader.GetString(reader.GetOrdinal("cnic"));
+                            string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
+                            string degree = reader.GetString(reader.GetOrdinal("Degree"));
+                            string regNo = reader.GetString(reader.GetOrdinal("regNo"));
+                            int fpCheck = reader.GetInt32(reader.GetOrdinal("fp"));
+
+                            listView1.Items.Add(userID.ToString());
+
+                            listView1.Items[index].SubItems.Add(name);
+                            listView1.Items[index].SubItems.Add(cardNo);
+                            listView1.Items[index].SubItems.Add(hostel);
+                            listView1.Items[index].SubItems.Add(degree);
+                            listView1.Items[index].SubItems.Add(regNo);
+                            if (fpCheck == 0)
+                            {
+                                listView1.Items[index].SubItems.Add("NotAvailable");
+                            }
+                            else if (fpCheck == 1)
+                            {
+                                listView1.Items[index].SubItems.Add("Available");
+                            }
+
+                            index++;
+                        }
+
                     }
-                    catch (Exception ex)
-                    {
-                    }
+                    userCount.Text = index.ToString();
+                    txtUserID1.Text = (index + 1).ToString();
                 }
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            openFileDialog1.FileName = "StudentsDataFile";
+            openFileDialog1.Filter = "*.csv*|*.csv*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox2.Text = openFileDialog1.FileName;
+            }
+            Cursor = Cursors.Default;
+        }
+        private void listView1_Click(object sender, EventArgs e)
+        {
+            Point mousePosition = listView1.PointToClient(Control.MousePosition);
+
+            ListViewItem clickedItem = listView1.GetItemAt(mousePosition.X, mousePosition.Y);
+            int response = 0;
+            string userID = "";
+            if (clickedItem != null)
+            {
+
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    // Get the selected item
+                    clickedItem = listView1.SelectedItems[0];
+                    int desiredColumnIndex = GetDesiredColumnIndex(listView1, "UserID");
+                    int fpIndex = GetDesiredColumnIndex(listView1, "FingerPrint");
+                    string fpValue = clickedItem.SubItems[fpIndex].Text;
+                    if (fpValue == "Available")
+                    {
+                        MessageBox.Show("FingerPrint Already Registered");
+                        return;
+                    }
+                    string columnValue1 = clickedItem.SubItems[desiredColumnIndex].Text;
+                    Cursor = Cursors.WaitCursor;
+                    cbFingerIndex.SelectedIndex = 0;
+                    cbFlag.SelectedIndex = 0;
+                    cbPrivilege.SelectedIndex = 0;
+                    ListViewItem selectedItem = listView1.SelectedItems[0];
+                    userID = selectedItem.SubItems[0].Text;
+                    string Name = selectedItem.SubItems[1].Text;
+                    txtName.Text = Name;
+                    txtUserID1.Text = userID;
+                    response = UserMng.SDK.sta_OnlineEnroll(UserMng.lbSysOutputInfo, txtUserID1, cbFingerIndex, cbFlag);
+                    UserMng.SDK.sta_SetUserInfo(UserMng.lbSysOutputInfo, txtUserID1, txtName, cbPrivilege, txtCardnumber, txtPassword);
+                    Cursor = Cursors.Default;
+                }
+            }
+
+            if(response == 1)
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "UPDATE user SET fp = 1 WHERE machineID = @userId";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@userId", int.Parse(userID));
+
+                        // Execute the command
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Optionally, you can check the number of rows affected
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Record updated successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No records were updated.");
+                        }
+                    }
+                }
+
+
+
+                foreach (ListViewItem item in listView1.Items)
+                {
+                    listView1.Items.Remove(item);
+                }
+                loadData();
+            }
+
+        }
+
+        private static int GetDesiredColumnIndex(ListView listView, string desiredHeaderText)
+        {
+            for (int i = 0; i < listView.Columns.Count; i++)
+            {
+                if (listView.Columns[i].Text == desiredHeaderText)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private void FilterListView(string searchText, int[] columnIndices)
+        {
+            string searchTextLower = searchText.ToLower();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                bool showItem = false;
+                foreach (int columnIndex in columnIndices)
+                {
+                    string columnText = item.SubItems[columnIndex].Text.ToLower();
+
+                    if (columnText.Contains(searchTextLower))
+                    {
+                        showItem = true;
+                        break;
+                    }
+                }
+                item.Selected = showItem;
+                item.Focused = showItem;
+                item.EnsureVisible();
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBox3.Text.Trim();
+            int[] columnIndices = new int[] { 1, 2, 5 };
+            FilterListView(searchText, columnIndices);
+        }
+
+        private void listView1_Enter(object sender, EventArgs e)
+        {
+            if (listView1.FocusedItem != null)
+            {
+                listView1.FocusedItem.BackColor = Color.Blue; // Change to the desired background color
+                listView1.FocusedItem.ForeColor = Color.White; // Change to the desired foreground (text) color
+            }
+        }
+
+        private void listView1_Leave(object sender, EventArgs e)
+        {
+            if (listView1.FocusedItem != null)
+            {
+                listView1.FocusedItem.BackColor = SystemColors.Window; // Reset to the default background color
+                listView1.FocusedItem.ForeColor = SystemColors.ControlText; // Reset to the default foreground (text) color
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {
+              if(item.Selected == true)
+                {
+                    item.BackColor = Color.White; // Change to the desired background color
+                    item.ForeColor = Color.White; // Change to the desired foreground (text) color
+                }
+                else
+                {
+                    listView1.FocusedItem.BackColor = SystemColors.Window; // Reset to the default background color
+                    listView1.FocusedItem.ForeColor = SystemColors.ControlText; // Reset to the default foreground (text) color
+                }
+            }
+        }
+    }
+
+    public class users
+    {
+        public string Name { get; set; }
+        public string CNIC { get; set; }
+        public string Hostel { get; set; }
+        public string Degree { get; set; }
+        public string RegNo { get; set; }
+        public bool FPCheck { get; set; }
     }
 }

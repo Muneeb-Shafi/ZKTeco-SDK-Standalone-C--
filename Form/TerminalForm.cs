@@ -345,6 +345,7 @@ namespace StandaloneSDKDemo
             radioButton2.Checked = false;
             radioButton3.Checked = false;
             radioButton4.Checked = false;
+            radioButton5.Checked = false;
             Terminal.SDK.subnet = radioButton1.Text;
         }
 
@@ -353,6 +354,7 @@ namespace StandaloneSDKDemo
             radioButton1.Checked = false;
             radioButton3.Checked = false;
             radioButton4.Checked = false;
+            radioButton5.Checked = false;
             Terminal.SDK.subnet = radioButton2.Text;
         }
 
@@ -361,6 +363,7 @@ namespace StandaloneSDKDemo
             radioButton2.Checked = false;
             radioButton1.Checked = false;
             radioButton4.Checked = false;
+            radioButton5.Checked = false;
             Terminal.SDK.subnet = radioButton3.Text;
         }
 
@@ -369,7 +372,17 @@ namespace StandaloneSDKDemo
             radioButton2.Checked = false;
             radioButton3.Checked = false;
             radioButton1.Checked = false;
+            radioButton5.Checked = false;
             Terminal.SDK.subnet = radioButton4.Text;
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton1.Checked = false;
+            radioButton4.Checked = false;
+            Terminal.SDK.subnet = radioButton5.Text;
         }
     }
 }
