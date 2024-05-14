@@ -130,7 +130,6 @@ namespace StandaloneSDKDemo
         {
             Cursor = Cursors.WaitCursor;
 
-            //UserMng.SDK.sta_SetUserValidDate(UserMng.lbSysOutputInfo, cbExpires, cbUserID6, dtStartDate, dtEndDate, txtCount);
             UserMng.SDK.sta_SetUserValidDate(UserMng.lbSysOutputInfo, cbExpires, txtID2, dtStartDate, dtEndDate, txtCount);
             Cursor = Cursors.Default;
         }
@@ -162,15 +161,6 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.Default;
         }
 
-        private void tmUserID_Tick(object sender, EventArgs e)
-        {
-            //UserMng.SDK.sta_GetAllUserID(false, cbUserID, cbUserID1, cbUserID2, cbUserID3, cbUserID4, txtID2, cbUserID7);
-
-
-            
-
-
-        }
 
         private void RefreshUserIDMenuItem_Click(object sender, EventArgs e)
         {
@@ -196,37 +186,17 @@ namespace StandaloneSDKDemo
 
         private void txtUserID_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            //{
-            //    e.Handled = true;
-            //}
+
         }
 
         private void txtUserID_TextChanged(object sender, EventArgs e)
         {
-            //int index = 0;
-            //foreach (char ch in ((TextBox)sender).Text)
-            //{
-            //    if (char.IsDigit(ch) || char.IsLetter(ch))
-            //    {
-            //        index++;
-            //    }
-            //    else
-            //    {
-            //        txtUserID.Text = ((TextBox)sender).Text.Remove(index);
-            //        break;
-            //    }
-            //}
-            //txtUserID.SelectionStart = txtUserID.TextLength; 
+
         }
 
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //e.Handled = true;
-            //if (Char.IsDigit(e.KeyChar) || e.KeyChar == ' ' || char.IsLetter(e.KeyChar) || e.KeyChar == '\b')
-            //{
-            //    e.Handled = false;
-            //}
+            
         }
 
         private void txtCount_KeyPress(object sender, KeyPressEventArgs e)
@@ -235,33 +205,6 @@ namespace StandaloneSDKDemo
             {
                 e.Handled = true;
             }
-        }
-
-        private void txtUserID1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            //{
-            //    e.Handled = true;
-            //}
-        }
-
-
-        private void txtUserID1_TextChanged(object sender, EventArgs e)
-        {
-            //int index = 0;
-            //foreach (char ch in ((TextBox)sender).Text)
-            //{
-            //    if (char.IsDigit(ch) || char.IsLetter(ch))
-            //    {
-            //        index++;
-            //    }
-            //    else
-            //    {
-            //        txtUserID1.Text = ((TextBox)sender).Text.Remove(index);
-            //        break;
-            //    }
-            //}
-            //txtUserID1.SelectionStart = txtUserID1.TextLength; 
         }
 
         #endregion
@@ -2201,16 +2144,23 @@ namespace StandaloneSDKDemo
                 HeaderValidated = null
 
             };
-            using (var reader = new StreamReader(textBox2.Text))
-            using (var csv = new CsvReader(reader, csvConfig))
+            try
             {
-                var records = csv.GetRecords<users>();
-
-                foreach (var user in records)
+                using (var reader = new StreamReader(textBox2.Text))
+                using (var csv = new CsvReader(reader, csvConfig))
                 {
-                    InsertIntoDatabase(user);
-                    recs++;
+                    var records = csv.GetRecords<users>();
+
+                    foreach (var user in records)
+                    {
+                        InsertIntoDatabase(user);
+                        recs++;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
 
             MessageBox.Show($"{recs} records inserted");
@@ -2364,8 +2314,8 @@ namespace StandaloneSDKDemo
 
                             listView1.Items[index].SubItems.Add(name);
                             listView1.Items[index].SubItems.Add(cardNo);
-                            listView1.Items[index].SubItems.Add(hostel);
                             listView1.Items[index].SubItems.Add(degree);
+                            listView1.Items[index].SubItems.Add(hostel);
                             listView1.Items[index].SubItems.Add(regNo);
                             if (fpCheck == 0)
                             {
@@ -2460,16 +2410,12 @@ namespace StandaloneSDKDemo
                         }
                     }
                 }
-
-
-
                 foreach (ListViewItem item in listView1.Items)
                 {
                     listView1.Items.Remove(item);
                 }
                 loadData();
             }
-
         }
 
         private static int GetDesiredColumnIndex(ListView listView, string desiredHeaderText)
@@ -2542,8 +2488,8 @@ namespace StandaloneSDKDemo
                 }
                 else
                 {
-                    listView1.FocusedItem.BackColor = SystemColors.Window; // Reset to the default background color
-                    listView1.FocusedItem.ForeColor = SystemColors.ControlText; // Reset to the default foreground (text) color
+                    listView1.FocusedItem.BackColor = SystemColors.Window;
+                    listView1.FocusedItem.ForeColor = SystemColors.ControlText;
                 }
             }
         }
