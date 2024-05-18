@@ -152,6 +152,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -161,6 +163,7 @@
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
@@ -253,7 +256,7 @@
             this.btnClearUserSMS = new System.Windows.Forms.Button();
             this.btnClearSMS = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.tabPage10.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -1540,8 +1543,10 @@
             // 
             // tabPage9
             // 
-            this.tabPage9.Controls.Add(this.textBox3);
+            this.tabPage9.Controls.Add(this.label41);
             this.tabPage9.Controls.Add(this.textBox2);
+            this.tabPage9.Controls.Add(this.metroComboBox1);
+            this.tabPage9.Controls.Add(this.textBox3);
             this.tabPage9.Controls.Add(this.button7);
             this.tabPage9.Controls.Add(this.button3);
             this.tabPage9.Controls.Add(this.listView1);
@@ -1554,10 +1559,29 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(17, 319);
+            this.textBox2.Location = new System.Drawing.Point(17, 320);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 20);
-            this.textBox2.TabIndex = 86;
+            this.textBox2.Size = new System.Drawing.Size(188, 20);
+            this.textBox2.TabIndex = 90;
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(17, 11);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(178, 29);
+            this.metroComboBox1.TabIndex = 88;
+            this.metroComboBox1.UseSelectable = true;
+            this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(711, 20);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(198, 20);
+            this.textBox3.TabIndex = 87;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // button7
             // 
@@ -1590,6 +1614,7 @@
             this.columnHeader21,
             this.columnHeader22,
             this.columnHeader18,
+            this.columnHeader24,
             this.columnHeader23});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
@@ -1623,23 +1648,30 @@
             // 
             // columnHeader21
             // 
-            this.columnHeader21.Text = "Degree";
-            this.columnHeader21.Width = 128;
+            this.columnHeader21.Text = "Hostel";
+            this.columnHeader21.Width = 111;
             // 
             // columnHeader22
             // 
-            this.columnHeader22.Text = "Hostel";
+            this.columnHeader22.Text = "Degree";
             this.columnHeader22.Width = 120;
             // 
             // columnHeader18
             // 
             this.columnHeader18.Text = "Reg Num";
-            this.columnHeader18.Width = 110;
+            this.columnHeader18.Width = 94;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.DisplayIndex = 7;
+            this.columnHeader24.Text = "Room No";
+            this.columnHeader24.Width = 69;
             // 
             // columnHeader23
             // 
+            this.columnHeader23.DisplayIndex = 6;
             this.columnHeader23.Text = "FingerPrint";
-            this.columnHeader23.Width = 102;
+            this.columnHeader23.Width = 68;
             // 
             // tabPage4
             // 
@@ -2581,13 +2613,15 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // textBox3
+            // label41
             // 
-            this.textBox3.Location = new System.Drawing.Point(17, 20);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(198, 20);
-            this.textBox3.TabIndex = 87;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(202, 13);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(62, 25);
+            this.label41.TabIndex = 91;
+            this.label41.Text = "Hostel";
             // 
             // UserMngForm
             // 
@@ -2868,9 +2902,12 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label41;
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -23,27 +23,35 @@ namespace StandaloneSDKDemo
             InitializeComponent();
             AccesccMng = Parent;
             connectionString = AccesccMng.connectionString;
-            loadUsers();
+            loadUsers("");
         }
 
-        private void loadUsers()
+        private void loadUsers(string text)
         {
             userList.Items.Clear();
+            string query = "";
             try
             {
                 // SQL query to retrieve entries from the table
-                string query = "SELECT regNo, Name FROM user";
-                // Create connection and command
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                if(text == "")
                 {
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    query = "SELECT regNo, Name FROM user";
+                }
+                else
+                {
+                    query = $"SELECT regNo, Name FROM user WHERE Name LIKE '%{text}%' OR regNo LIKE '%{text}%'";
+                }
+                // Create connection and command
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         // Open connection
                         connection.Open();
 
                         // Execute the query and fill a DataTable
                         DataTable dataTable = new DataTable();
-                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             adapter.Fill(dataTable);
                         }
@@ -212,12 +220,12 @@ namespace StandaloneSDKDemo
 
             string query = @"SELECT * FROM GUEST";
 
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -280,13 +288,13 @@ namespace StandaloneSDKDemo
                         // SQL query to retrieve entries from the table
                         string querys = $"SELECT * FROM user where userID == {visiteeId};";
                         // Create connection and command
-                        using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                        using (MySqlConnection connection = new MySqlConnection(connectionString))
                         {
-                            using (SQLiteCommand command = new SQLiteCommand(querys, connection))
+                            using (MySqlCommand command = new MySqlCommand(querys, connection))
                             {
                                 // Open connection
                                 connection.Open();
-                                using (SQLiteDataReader reader = command.ExecuteReader())
+                                using (MySqlDataReader reader = command.ExecuteReader())
                                 {
                                     while (reader.Read())
                                     {
@@ -583,9 +591,9 @@ namespace StandaloneSDKDemo
                          VALUES (@Name, @Contact, @CNIC, @Address, @VisiteeName, @VisiteeID, @Relation, @StartDate, @EndDate)";
 
             // Create connection and command
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     // Add parameters
                     command.Parameters.AddWithValue("@Name", namebox.Text);
@@ -641,13 +649,13 @@ namespace StandaloneSDKDemo
                 // SQL query to retrieve entries from the table
                 string querys = $"SELECT * FROM user where regNo == '{vistee[0]}';";
                 // Create connection and command
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    using (SQLiteCommand command = new SQLiteCommand(querys, connection))
+                    using (MySqlCommand command = new MySqlCommand(querys, connection))
                     {
                         // Open connection
                         connection.Open();
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
@@ -761,6 +769,27 @@ namespace StandaloneSDKDemo
         private void AccessMngForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void userList_TextChanged(object sender, EventArgs e)
+        {
+            if (userList.SelectedIndex == -1)
+            {
+
+                string searchText = userList.Text.ToLower();
+
+                // Clear the current items in the ComboBox
+                userList.Items.Clear();
+
+                // Reload data from the database and filter based on the search text
+                loadUsers(searchText);
+
+                // Show the dropdown list
+                userList.DroppedDown = true;
+
+                // Set the selection to the end of the text
+                userList.SelectionStart = userList.Text.Length;
+            }
         }
     }
 }

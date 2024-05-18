@@ -309,9 +309,9 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(251, 156);
+            this.dateTimePicker2.Location = new System.Drawing.Point(276, 156);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(119, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker2.TabIndex = 109;
             // 
             // dateTimePicker1
@@ -324,7 +324,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(220, 159);
+            this.label33.Location = new System.Drawing.Point(228, 159);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(26, 13);
             this.label33.TabIndex = 107;
@@ -333,7 +333,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(14, 159);
+            this.label34.Location = new System.Drawing.Point(9, 159);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(29, 13);
             this.label34.TabIndex = 105;
@@ -354,12 +354,13 @@
             this.userList.FormattingEnabled = true;
             this.userList.Location = new System.Drawing.Point(48, 114);
             this.userList.Name = "userList";
-            this.userList.Size = new System.Drawing.Size(121, 21);
+            this.userList.Size = new System.Drawing.Size(161, 21);
             this.userList.TabIndex = 22;
+            this.userList.TextChanged += new System.EventHandler(this.userList_TextChanged);
             // 
             // relation
             // 
-            this.relation.Location = new System.Drawing.Point(251, 114);
+            this.relation.Location = new System.Drawing.Point(276, 114);
             this.relation.Name = "relation";
             this.relation.Size = new System.Drawing.Size(133, 20);
             this.relation.TabIndex = 21;
@@ -367,7 +368,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(201, 117);
+            this.label32.Location = new System.Drawing.Point(226, 117);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(46, 13);
             this.label32.TabIndex = 20;
@@ -384,7 +385,7 @@
             // 
             // addressbox
             // 
-            this.addressbox.Location = new System.Drawing.Point(251, 74);
+            this.addressbox.Location = new System.Drawing.Point(276, 74);
             this.addressbox.Name = "addressbox";
             this.addressbox.Size = new System.Drawing.Size(133, 20);
             this.addressbox.TabIndex = 17;
@@ -392,7 +393,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(202, 77);
+            this.label30.Location = new System.Drawing.Point(227, 77);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(45, 13);
             this.label30.TabIndex = 16;
@@ -402,7 +403,7 @@
             // 
             this.cnicbox.Location = new System.Drawing.Point(48, 74);
             this.cnicbox.Name = "cnicbox";
-            this.cnicbox.Size = new System.Drawing.Size(100, 20);
+            this.cnicbox.Size = new System.Drawing.Size(161, 20);
             this.cnicbox.TabIndex = 15;
             // 
             // label29
@@ -416,7 +417,7 @@
             // 
             // contactbox
             // 
-            this.contactbox.Location = new System.Drawing.Point(251, 36);
+            this.contactbox.Location = new System.Drawing.Point(276, 36);
             this.contactbox.Name = "contactbox";
             this.contactbox.Size = new System.Drawing.Size(133, 20);
             this.contactbox.TabIndex = 13;
@@ -424,7 +425,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(203, 39);
+            this.label28.Location = new System.Drawing.Point(228, 39);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(44, 13);
             this.label28.TabIndex = 12;
@@ -434,7 +435,7 @@
             // 
             this.namebox.Location = new System.Drawing.Point(48, 36);
             this.namebox.Name = "namebox";
-            this.namebox.Size = new System.Drawing.Size(100, 20);
+            this.namebox.Size = new System.Drawing.Size(161, 20);
             this.namebox.TabIndex = 11;
             // 
             // label27

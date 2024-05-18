@@ -11,6 +11,7 @@ using System.Reflection;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.IO;
 using System.Data.SQLite;
+using MySql.Data.MySqlClient;
 
 namespace StandaloneSDKDemo
 {
@@ -30,8 +31,10 @@ namespace StandaloneSDKDemo
         }
 
         //public bool connected = false;
-        public string connectionString = @"Data Source=ZKTeco.db;Version=3;";
-       // public string connectionString = @"Data Source=\\10.1.8.42\Database\ZKTeco.db;";
+        //public string connectionString = @"Data Source=ZKTeco.db;Version=3;";
+        // public string connectionString = @"Data Source=\\10.1.8.42\Database\ZKTeco.db;";
+        public string connectionString = "Server=localhost;Database=zkteco;user=root";
+
 
         public SDKHelper SDK;
         FirstMenu firstMenu = new FirstMenu();
@@ -342,11 +345,11 @@ namespace StandaloneSDKDemo
 
 
 
-            Cursor = Cursors.WaitCursor;
+            //Cursor = Cursors.WaitCursor;
 
-            SDK.sta_SetRTLogListBox(RealTimeEventListBox);
+            //SDK.sta_SetRTLogListBox(RealTimeEventListBox);
 
-            Cursor = Cursors.Default;
+            //Cursor = Cursors.Default;
         }
 
         private void ClearInfoMenuItem_Click(object sender, EventArgs e)
@@ -478,58 +481,6 @@ namespace StandaloneSDKDemo
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            MessageBox.Show("Login successful!");
-            roleID = 1;
-            hideControls();
-            return;
-
-            // SQLite connection string
-            // SQL query to retrieve data for the given username
-            string query = $"SELECT * FROM systemUsers WHERE username = @username";
-
-            try
-            {
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@username", username.Text);
-
-                        using (SQLiteDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                string storedPassword = reader["password"].ToString();
-                                if (storedPassword == password.Text)
-                                {
-                                    MessageBox.Show("Login successful!");
-                                    roleID = Convert.ToInt32(reader["roleId"]);
-                                    hideControls();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Incorrect password!");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("User Not Found");
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions
-                MessageBox.Show($"An error occurred: " + ex.Message);
-            }
-        }
 
 
         private void hideControls()
@@ -577,6 +528,58 @@ namespace StandaloneSDKDemo
         private void password_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Login successful!");
+            //roleID = 1;
+            //hideControls();
+            //return;
+
+            // SQLite connection string
+            // SQL query to retrieve data for the given username
+            string query = $"SELECT * FROM systemUsers WHERE username = @username";
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username.Text);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string storedPassword = reader["password"].ToString();
+                                if (storedPassword == password.Text)
+                                {
+                                    MessageBox.Show("Login successful!");
+                                    roleID = Convert.ToInt32(reader["roleId"]);
+                                    hideControls();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Incorrect password!");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("User Not Found");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                MessageBox.Show($"An error occurred: " + ex.Message);
+            }
         }
     }
 }

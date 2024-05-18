@@ -8,12 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using System.Data.SQLite;
 using System.Reflection;
 using CsvHelper;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Xml.Linq;
+using MySql.Data.MySqlClient;
 
 
 namespace StandaloneSDKDemo
@@ -85,7 +85,7 @@ namespace StandaloneSDKDemo
             UserMng.SDK.sta_GetAllUserID(true, cbUserID, cbUserID1, cbUserID2, cbUserID3, cbUserID4, txtID2, cbUserID7);
 
             var connectionString = "Data Source=ZKTeco.db";
-            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
 
@@ -93,7 +93,7 @@ namespace StandaloneSDKDemo
                 var insertDataQuery = @"INSERT INTO user (userID, regNo, Name, cnic, Hostel, Degree) 
                             VALUES (@userID, @regNo, @Name, @cnic, @Hostel, @Degree);";
 
-                using (var command = new System.Data.SQLite.SQLiteCommand(insertDataQuery, connection))
+                using (var command = new MySqlCommand(insertDataQuery, connection))
                 {
                     command.Parameters.AddWithValue("@userID", txtUserID1.Text);
                     command.Parameters.AddWithValue("@regNo", txtUserID.Text);
@@ -1946,10 +1946,10 @@ namespace StandaloneSDKDemo
                 string userIDToDelete = txtUserID1.Text;
                 if (cbBackupDE.SelectedItem.ToString() == "12") {
 
-                    using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
                         connection.Open();
-                        using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@UserID", userIDToDelete);
                             int rowsAffected = command.ExecuteNonQuery();
@@ -1967,10 +1967,10 @@ namespace StandaloneSDKDemo
                 query = "DELETE FROM Users WHERE userID = @UserID";
 
                 userIDToDelete = txtUserID1.Text;
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserID", userIDToDelete);
                         int rowsAffected = command.ExecuteNonQuery();
@@ -2010,7 +2010,7 @@ namespace StandaloneSDKDemo
             lvUserInfo.Items.Clear();
             int index = 0;
             bool enabled = false;
-            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
@@ -2075,9 +2075,8 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.WaitCursor;
             var connectionString = "Data Source=ZKTeco.db";
             listUserInfo.Items.Clear();
-            int index = 0;
-            bool enabled = false;
-            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+
+            using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
@@ -2134,6 +2133,7 @@ namespace StandaloneSDKDemo
         private void button3_Click(object sender, EventArgs e)
         {
             int recs = 0;
+            Cursor = Cursors.WaitCursor;
             if(textBox2.Text == "")
             {
                 MessageBox.Show("Please Import File First");
@@ -2162,18 +2162,18 @@ namespace StandaloneSDKDemo
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-
+            Cursor = Cursors.Default;
             MessageBox.Show($"{recs} records inserted");
 
             int index = 0;
 
-            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+            using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
                 string stm = "SELECT * FROM user";
-                using (var cmd = new SQLiteCommand(stm, connection))
+                using (var cmd = new MySqlCommand(stm, connection))
                 {
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
 
                         while (reader.Read())
@@ -2184,6 +2184,7 @@ namespace StandaloneSDKDemo
                             string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
                             string degree = reader.GetString(reader.GetOrdinal("Degree"));
                             string regNo = reader.GetString(reader.GetOrdinal("regNo"));
+                            string roomNo = reader.GetString(reader.GetOrdinal("RoomNo"));
                             int fpCheck = reader.GetInt32(reader.GetOrdinal("fp"));
 
                             listView1.Items.Add(userID.ToString());
@@ -2193,6 +2194,7 @@ namespace StandaloneSDKDemo
                             listView1.Items[index].SubItems.Add(hostel);
                             listView1.Items[index].SubItems.Add(degree);
                             listView1.Items[index].SubItems.Add(regNo);
+                            listView1.Items[index].SubItems.Add(roomNo);
                             if(fpCheck == 0) {
                                 listView1.Items[index].SubItems.Add("NotAvailable");
                             }
@@ -2211,21 +2213,25 @@ namespace StandaloneSDKDemo
 
         public void InsertIntoDatabase(users user)
         {
-
+            if(user.CNIC == null || user.RegNo == null)
+            {
+                return;
+            }
             try
             {
-                using (var connection = new SQLiteConnection(connectionString))
+                using (var connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO User (Name, cnic, Hostel, Degree, RegNo, fp) VALUES (@Name, @cnic, @Hostel, @Degree, @RegNo, @fp)";
-                    using (var command = new SQLiteCommand(query, connection))
+                    string query = "INSERT INTO User (Name, cnic, Hostel, Degree, RegNo, RoomNo, fp) VALUES (@Name, @cnic, @Hostel, @Degree, @RegNo, @RoomNo, @fp)";
+                    using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@cnic", user.CNIC);
                         command.Parameters.AddWithValue("@Hostel", user.Hostel);
                         command.Parameters.AddWithValue("@Degree", user.Degree);
                         command.Parameters.AddWithValue("@RegNo", user.RegNo);
+                        command.Parameters.AddWithValue("@RoomNo", user.RoomNo);
                         command.Parameters.AddWithValue("@fp", user.FPCheck);
 
                         command.ExecuteNonQuery();
@@ -2234,7 +2240,7 @@ namespace StandaloneSDKDemo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                return;
             }
         }
 
@@ -2251,9 +2257,9 @@ namespace StandaloneSDKDemo
             int rowCount = 0;
 
             // Create connection and command
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     try
                     {
@@ -2291,13 +2297,36 @@ namespace StandaloneSDKDemo
         {
             int index = 0;
 
-            using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string stm = "SELECT DISTINCT Hostel FROM user;";
+                using (var cmd = new MySqlCommand(stm, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
+                            metroComboBox1.Items.Add(hostel);
+                        }
+
+                    }
+                }
+            }
+
+
+
+            using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
                 string stm = "SELECT * FROM user";
-                using (var cmd = new SQLiteCommand(stm, connection))
+                using (var cmd = new MySqlCommand(stm, connection))
                 {
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
 
                         while (reader.Read())
@@ -2308,6 +2337,7 @@ namespace StandaloneSDKDemo
                             string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
                             string degree = reader.GetString(reader.GetOrdinal("Degree"));
                             string regNo = reader.GetString(reader.GetOrdinal("regNo"));
+                            string roomNo = reader.GetString(reader.GetOrdinal("RoomNo"));
                             int fpCheck = reader.GetInt32(reader.GetOrdinal("fp"));
 
                             listView1.Items.Add(userID.ToString());
@@ -2317,6 +2347,7 @@ namespace StandaloneSDKDemo
                             listView1.Items[index].SubItems.Add(degree);
                             listView1.Items[index].SubItems.Add(hostel);
                             listView1.Items[index].SubItems.Add(regNo);
+                            listView1.Items[index].SubItems.Add(roomNo);
                             if (fpCheck == 0)
                             {
                                 listView1.Items[index].SubItems.Add("NotAvailable");
@@ -2350,14 +2381,15 @@ namespace StandaloneSDKDemo
         private void listView1_Click(object sender, EventArgs e)
         {
             Point mousePosition = listView1.PointToClient(Control.MousePosition);
-
             ListViewItem clickedItem = listView1.GetItemAt(mousePosition.X, mousePosition.Y);
             int response = 0;
             string userID = "";
-            if (clickedItem != null)
-            {
 
-                if (listView1.SelectedItems.Count > 0)
+            DialogResult result = MessageBox.Show("Scan User FingerPrints", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (clickedItem != null && listView1.SelectedItems.Count > 0)
+
                 {
                     // Get the selected item
                     clickedItem = listView1.SelectedItems[0];
@@ -2382,39 +2414,44 @@ namespace StandaloneSDKDemo
                     response = UserMng.SDK.sta_OnlineEnroll(UserMng.lbSysOutputInfo, txtUserID1, cbFingerIndex, cbFlag);
                     UserMng.SDK.sta_SetUserInfo(UserMng.lbSysOutputInfo, txtUserID1, txtName, cbPrivilege, txtCardnumber, txtPassword);
                     Cursor = Cursors.Default;
+
                 }
-            }
 
-            if(response == 1)
-            {
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                if (response == 1)
                 {
-                    connection.Open();
-
-                    string query = "UPDATE user SET fp = 1 WHERE machineID = @userId";
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
-                        command.Parameters.AddWithValue("@userId", int.Parse(userID));
+                        connection.Open();
 
-                        // Execute the command
-                        int rowsAffected = command.ExecuteNonQuery();
+                        string query = "UPDATE user SET fp = 1 WHERE machineID = @userId";
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@userId", int.Parse(userID));
 
-                        // Optionally, you can check the number of rows affected
-                        if (rowsAffected > 0)
-                        {
-                            Console.WriteLine("Record updated successfully.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("No records were updated.");
+                            // Execute the command
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            // Optionally, you can check the number of rows affected
+                            if (rowsAffected > 0)
+                            {
+                                Console.WriteLine("Record updated successfully.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("No records were updated.");
+                            }
                         }
                     }
+                    foreach (ListViewItem item in listView1.Items)
+                    {
+                        listView1.Items.Remove(item);
+                    }
+                    loadData();
                 }
-                foreach (ListViewItem item in listView1.Items)
-                {
-                    listView1.Items.Remove(item);
-                }
-                loadData();
+            }
+            else if (result == DialogResult.No)
+            {
+                return;
             }
         }
 
@@ -2430,66 +2467,97 @@ namespace StandaloneSDKDemo
             return -1;
         }
 
-        private void FilterListView(string searchText, int[] columnIndices)
+        private void FilterListView(string searchText)
         {
             string searchTextLower = searchText.ToLower();
             foreach (ListViewItem item in listView1.Items)
             {
-                bool showItem = false;
-                foreach (int columnIndex in columnIndices)
-                {
-                    string columnText = item.SubItems[columnIndex].Text.ToLower();
 
-                    if (columnText.Contains(searchTextLower))
-                    {
-                        showItem = true;
-                        break;
-                    }
+                string columnText = item.SubItems[1].Text.ToLower();
+
+                if (columnText.Contains(searchTextLower))
+                {
+                    item.Selected = true;
+                    item.Focused = true;
+                    item.EnsureVisible();
+                    break;
                 }
-                item.Selected = showItem;
-                item.Focused = showItem;
-                item.EnsureVisible();
+                else
+                {
+                    item.Selected = false;
+                    item.Focused = false;
+                }
+
+
             }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             string searchText = textBox3.Text.Trim();
-            int[] columnIndices = new int[] { 1, 2, 5 };
-            FilterListView(searchText, columnIndices);
+            FilterListView(searchText);
         }
 
         private void listView1_Enter(object sender, EventArgs e)
         {
-            if (listView1.FocusedItem != null)
-            {
-                listView1.FocusedItem.BackColor = Color.Blue; // Change to the desired background color
-                listView1.FocusedItem.ForeColor = Color.White; // Change to the desired foreground (text) color
-            }
+
         }
 
         private void listView1_Leave(object sender, EventArgs e)
         {
-            if (listView1.FocusedItem != null)
-            {
-                listView1.FocusedItem.BackColor = SystemColors.Window; // Reset to the default background color
-                listView1.FocusedItem.ForeColor = SystemColors.ControlText; // Reset to the default foreground (text) color
-            }
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listView1.SelectedItems)
+            
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+            using (var connection = new MySqlConnection(connectionString))
             {
-              if(item.Selected == true)
+                connection.Open();
+                string stm = $"SELECT * FROM user where Hostel = '{metroComboBox1.SelectedItem}'";
+                int index = 0;
+                using (var cmd = new MySqlCommand(stm, connection))
                 {
-                    item.BackColor = Color.White; // Change to the desired background color
-                    item.ForeColor = Color.White; // Change to the desired foreground (text) color
-                }
-                else
-                {
-                    listView1.FocusedItem.BackColor = SystemColors.Window;
-                    listView1.FocusedItem.ForeColor = SystemColors.ControlText;
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            int userID = reader.GetInt32(reader.GetOrdinal("machineID"));
+                            string name = reader.GetString(reader.GetOrdinal("Name"));
+                            string cardNo = reader.GetString(reader.GetOrdinal("cnic"));
+                            string hostel = reader.GetString(reader.GetOrdinal("Hostel"));
+                            string degree = reader.GetString(reader.GetOrdinal("Degree"));
+                            string regNo = reader.GetString(reader.GetOrdinal("regNo"));
+                            string roomNo = reader.GetString(reader.GetOrdinal("RoomNo"));
+                            int fpCheck = reader.GetInt32(reader.GetOrdinal("fp"));
+
+                            listView1.Items.Add(userID.ToString());
+
+                            listView1.Items[index].SubItems.Add(name);
+                            listView1.Items[index].SubItems.Add(cardNo);
+                            listView1.Items[index].SubItems.Add(degree);
+                            listView1.Items[index].SubItems.Add(hostel);
+                            listView1.Items[index].SubItems.Add(regNo);
+                            listView1.Items[index].SubItems.Add(roomNo);
+                            if (fpCheck == 0)
+                            {
+                                listView1.Items[index].SubItems.Add("NotAvailable");
+                            }
+                            else if (fpCheck == 1)
+                            {
+                                listView1.Items[index].SubItems.Add("Available");
+                            }
+
+                            index++;
+                        }
+
+                    }
                 }
             }
         }
@@ -2502,6 +2570,7 @@ namespace StandaloneSDKDemo
         public string Hostel { get; set; }
         public string Degree { get; set; }
         public string RegNo { get; set; }
+        public string RoomNo { get; set; }
         public bool FPCheck { get; set; }
     }
 }

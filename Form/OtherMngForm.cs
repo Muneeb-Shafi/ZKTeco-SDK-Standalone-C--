@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -184,10 +184,10 @@ namespace StandaloneSDKDemo
                 return;
             }
 
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 // Create a command with the query and connection
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     // Add parameters for username, password, and roleId
                     command.Parameters.AddWithValue("@username", username.Text);

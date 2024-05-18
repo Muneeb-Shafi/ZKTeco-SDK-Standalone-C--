@@ -37,8 +37,13 @@ namespace StandaloneSDKDemo
             this.ClearInfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbVer = new System.Windows.Forms.Label();
             this.PnlTop = new System.Windows.Forms.Panel();
+            this.firstMenu6 = new StandaloneSDKDemo.FirstMenu();
+            this.firstMenu5 = new StandaloneSDKDemo.FirstMenu();
+            this.firstMenu4 = new StandaloneSDKDemo.FirstMenu();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PicSmall = new System.Windows.Forms.PictureBox();
+            this.firstMenu2 = new StandaloneSDKDemo.FirstMenu();
+            this.firstMenu1 = new StandaloneSDKDemo.FirstMenu();
             this.PicClose = new System.Windows.Forms.PictureBox();
             this.PnlBottom = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,9 +54,9 @@ namespace StandaloneSDKDemo
             this.PrgSTA = new System.Windows.Forms.ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.PnlMiddle = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.password = new System.Windows.Forms.TextBox();
-            this.username = new System.Windows.Forms.TextBox();
+            this.button1 = new MetroFramework.Controls.MetroButton();
+            this.password = new MetroFramework.Controls.MetroTextBox();
+            this.username = new MetroFramework.Controls.MetroTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,11 +72,6 @@ namespace StandaloneSDKDemo
             this.label4 = new System.Windows.Forms.Label();
             this.propertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificationTimer = new System.Windows.Forms.Timer(this.components);
-            this.firstMenu6 = new StandaloneSDKDemo.FirstMenu();
-            this.firstMenu5 = new StandaloneSDKDemo.FirstMenu();
-            this.firstMenu4 = new StandaloneSDKDemo.FirstMenu();
-            this.firstMenu2 = new StandaloneSDKDemo.FirstMenu();
-            this.firstMenu1 = new StandaloneSDKDemo.FirstMenu();
             this.cmsDemoEvent.SuspendLayout();
             this.PnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,6 +142,59 @@ namespace StandaloneSDKDemo
             this.PnlTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlTop_MouseMove);
             this.PnlTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlTop_MouseUp);
             // 
+            // firstMenu6
+            // 
+            this.firstMenu6.ActiveColor = System.Drawing.Color.Transparent;
+            this.firstMenu6.BackColor = System.Drawing.Color.Transparent;
+            this.firstMenu6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.firstMenu6.Caption = "Misc";
+            this.firstMenu6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.firstMenu6.DefaultColor = System.Drawing.Color.Transparent;
+            this.firstMenu6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.firstMenu6.ForeColor = System.Drawing.SystemColors.Control;
+            this.firstMenu6.Location = new System.Drawing.Point(576, 0);
+            this.firstMenu6.Name = "firstMenu6";
+            this.firstMenu6.Size = new System.Drawing.Size(110, 44);
+            this.firstMenu6.TabIndex = 10;
+            this.firstMenu6.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstMenu6.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu6_MouseSelected);
+            // 
+            // firstMenu5
+            // 
+            this.firstMenu5.ActiveColor = System.Drawing.Color.Transparent;
+            this.firstMenu5.BackColor = System.Drawing.Color.Transparent;
+            this.firstMenu5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.firstMenu5.Caption = "Guests";
+            this.firstMenu5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.firstMenu5.DefaultColor = System.Drawing.Color.Transparent;
+            this.firstMenu5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.firstMenu5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.firstMenu5.Location = new System.Drawing.Point(475, 0);
+            this.firstMenu5.Name = "firstMenu5";
+            this.firstMenu5.Size = new System.Drawing.Size(110, 44);
+            this.firstMenu5.TabIndex = 9;
+            this.firstMenu5.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstMenu5.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu5_MouseSelected);
+            this.firstMenu5.Load += new System.EventHandler(this.firstMenu5_Load);
+            // 
+            // firstMenu4
+            // 
+            this.firstMenu4.ActiveColor = System.Drawing.Color.Transparent;
+            this.firstMenu4.BackColor = System.Drawing.Color.Transparent;
+            this.firstMenu4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.firstMenu4.Caption = "Data";
+            this.firstMenu4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.firstMenu4.DefaultColor = System.Drawing.Color.Transparent;
+            this.firstMenu4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.firstMenu4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.firstMenu4.Location = new System.Drawing.Point(378, 0);
+            this.firstMenu4.Name = "firstMenu4";
+            this.firstMenu4.Size = new System.Drawing.Size(98, 44);
+            this.firstMenu4.TabIndex = 8;
+            this.firstMenu4.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstMenu4.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu4_MouseSelected);
+            this.firstMenu4.Load += new System.EventHandler(this.firstMenu4_Load);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -164,6 +217,42 @@ namespace StandaloneSDKDemo
             this.PicSmall.TabIndex = 6;
             this.PicSmall.TabStop = false;
             this.PicSmall.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PicSmall_MouseClick);
+            // 
+            // firstMenu2
+            // 
+            this.firstMenu2.ActiveColor = System.Drawing.Color.Transparent;
+            this.firstMenu2.BackColor = System.Drawing.Color.Transparent;
+            this.firstMenu2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.firstMenu2.Caption = "User";
+            this.firstMenu2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.firstMenu2.DefaultColor = System.Drawing.Color.Transparent;
+            this.firstMenu2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.firstMenu2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.firstMenu2.Location = new System.Drawing.Point(271, 0);
+            this.firstMenu2.Name = "firstMenu2";
+            this.firstMenu2.Size = new System.Drawing.Size(110, 44);
+            this.firstMenu2.TabIndex = 4;
+            this.firstMenu2.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstMenu2.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu2_MouseSelected);
+            this.firstMenu2.Load += new System.EventHandler(this.firstMenu2_Load);
+            // 
+            // firstMenu1
+            // 
+            this.firstMenu1.ActiveColor = System.Drawing.Color.Transparent;
+            this.firstMenu1.BackColor = System.Drawing.Color.Transparent;
+            this.firstMenu1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.firstMenu1.Caption = "Devices";
+            this.firstMenu1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.firstMenu1.DefaultColor = System.Drawing.Color.Transparent;
+            this.firstMenu1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.firstMenu1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.firstMenu1.Location = new System.Drawing.Point(175, 0);
+            this.firstMenu1.Name = "firstMenu1";
+            this.firstMenu1.Size = new System.Drawing.Size(96, 44);
+            this.firstMenu1.TabIndex = 3;
+            this.firstMenu1.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstMenu1.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu1_MouseSelected);
+            this.firstMenu1.Load += new System.EventHandler(this.firstMenu1_Load);
             // 
             // PicClose
             // 
@@ -281,29 +370,73 @@ namespace StandaloneSDKDemo
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(447, 387);
+            this.button1.Location = new System.Drawing.Point(447, 390);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 92;
+            this.button1.TabIndex = 95;
             this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.UseSelectable = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(416, 361);
+            // 
+            // 
+            // 
+            this.password.CustomButton.Image = null;
+            this.password.CustomButton.Location = new System.Drawing.Point(138, 1);
+            this.password.CustomButton.Name = "";
+            this.password.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.password.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.password.CustomButton.TabIndex = 1;
+            this.password.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.password.CustomButton.UseSelectable = true;
+            this.password.CustomButton.Visible = false;
+            this.password.Lines = new string[0];
+            this.password.Location = new System.Drawing.Point(402, 361);
+            this.password.MaxLength = 32767;
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(137, 20);
-            this.password.TabIndex = 91;
-            this.password.UseSystemPasswordChar = true;
-            this.password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.password_KeyPress);
+            this.password.PasswordChar = '*';
+            this.password.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.password.SelectedText = "";
+            this.password.SelectionLength = 0;
+            this.password.SelectionStart = 0;
+            this.password.ShortcutsEnabled = true;
+            this.password.Size = new System.Drawing.Size(160, 23);
+            this.password.TabIndex = 94;
+            this.password.UseSelectable = true;
+            this.password.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.password.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // username
             // 
-            this.username.Location = new System.Drawing.Point(416, 329);
+            // 
+            // 
+            // 
+            this.username.CustomButton.Image = null;
+            this.username.CustomButton.Location = new System.Drawing.Point(138, 1);
+            this.username.CustomButton.Name = "";
+            this.username.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.username.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.username.CustomButton.TabIndex = 1;
+            this.username.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.username.CustomButton.UseSelectable = true;
+            this.username.CustomButton.Visible = false;
+            this.username.Lines = new string[0];
+            this.username.Location = new System.Drawing.Point(402, 332);
+            this.username.MaxLength = 32767;
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(137, 20);
-            this.username.TabIndex = 90;
+            this.username.PasswordChar = '\0';
+            this.username.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.username.SelectedText = "";
+            this.username.SelectionLength = 0;
+            this.username.SelectionStart = 0;
+            this.username.ShortcutsEnabled = true;
+            this.username.Size = new System.Drawing.Size(160, 23);
+            this.username.TabIndex = 93;
+            this.username.UseSelectable = true;
+            this.username.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.username.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label8
             // 
@@ -430,95 +563,6 @@ namespace StandaloneSDKDemo
             this.notificationTimer.Interval = 1000;
             this.notificationTimer.Tick += new System.EventHandler(this.notificationTimer_Tick);
             // 
-            // firstMenu6
-            // 
-            this.firstMenu6.ActiveColor = System.Drawing.Color.Transparent;
-            this.firstMenu6.BackColor = System.Drawing.Color.Transparent;
-            this.firstMenu6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.firstMenu6.Caption = "Misc";
-            this.firstMenu6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.firstMenu6.DefaultColor = System.Drawing.Color.Transparent;
-            this.firstMenu6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.firstMenu6.ForeColor = System.Drawing.SystemColors.Control;
-            this.firstMenu6.Location = new System.Drawing.Point(576, 0);
-            this.firstMenu6.Name = "firstMenu6";
-            this.firstMenu6.Size = new System.Drawing.Size(110, 44);
-            this.firstMenu6.TabIndex = 10;
-            this.firstMenu6.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstMenu6.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu6_MouseSelected);
-            // 
-            // firstMenu5
-            // 
-            this.firstMenu5.ActiveColor = System.Drawing.Color.Transparent;
-            this.firstMenu5.BackColor = System.Drawing.Color.Transparent;
-            this.firstMenu5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.firstMenu5.Caption = "Guests";
-            this.firstMenu5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.firstMenu5.DefaultColor = System.Drawing.Color.Transparent;
-            this.firstMenu5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.firstMenu5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu5.Location = new System.Drawing.Point(475, 0);
-            this.firstMenu5.Name = "firstMenu5";
-            this.firstMenu5.Size = new System.Drawing.Size(110, 44);
-            this.firstMenu5.TabIndex = 9;
-            this.firstMenu5.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstMenu5.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu5_MouseSelected);
-            this.firstMenu5.Load += new System.EventHandler(this.firstMenu5_Load);
-            // 
-            // firstMenu4
-            // 
-            this.firstMenu4.ActiveColor = System.Drawing.Color.Transparent;
-            this.firstMenu4.BackColor = System.Drawing.Color.Transparent;
-            this.firstMenu4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.firstMenu4.Caption = "Data";
-            this.firstMenu4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.firstMenu4.DefaultColor = System.Drawing.Color.Transparent;
-            this.firstMenu4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.firstMenu4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu4.Location = new System.Drawing.Point(378, 0);
-            this.firstMenu4.Name = "firstMenu4";
-            this.firstMenu4.Size = new System.Drawing.Size(98, 44);
-            this.firstMenu4.TabIndex = 8;
-            this.firstMenu4.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstMenu4.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu4_MouseSelected);
-            this.firstMenu4.Load += new System.EventHandler(this.firstMenu4_Load);
-            // 
-            // firstMenu2
-            // 
-            this.firstMenu2.ActiveColor = System.Drawing.Color.Transparent;
-            this.firstMenu2.BackColor = System.Drawing.Color.Transparent;
-            this.firstMenu2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.firstMenu2.Caption = "User";
-            this.firstMenu2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.firstMenu2.DefaultColor = System.Drawing.Color.Transparent;
-            this.firstMenu2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.firstMenu2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu2.Location = new System.Drawing.Point(271, 0);
-            this.firstMenu2.Name = "firstMenu2";
-            this.firstMenu2.Size = new System.Drawing.Size(110, 44);
-            this.firstMenu2.TabIndex = 4;
-            this.firstMenu2.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstMenu2.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu2_MouseSelected);
-            this.firstMenu2.Load += new System.EventHandler(this.firstMenu2_Load);
-            // 
-            // firstMenu1
-            // 
-            this.firstMenu1.ActiveColor = System.Drawing.Color.Transparent;
-            this.firstMenu1.BackColor = System.Drawing.Color.Transparent;
-            this.firstMenu1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.firstMenu1.Caption = "Devices";
-            this.firstMenu1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.firstMenu1.DefaultColor = System.Drawing.Color.Transparent;
-            this.firstMenu1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.firstMenu1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.firstMenu1.Location = new System.Drawing.Point(175, 0);
-            this.firstMenu1.Name = "firstMenu1";
-            this.firstMenu1.Size = new System.Drawing.Size(96, 44);
-            this.firstMenu1.TabIndex = 3;
-            this.firstMenu1.TextFont = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstMenu1.MouseSelected += new StandaloneSDKDemo.FirstMenu.MouseSelectedEventHandler(this.firstMenu1_MouseSelected);
-            this.firstMenu1.Load += new System.EventHandler(this.firstMenu1_Load);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -592,9 +636,9 @@ namespace StandaloneSDKDemo
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.TextBox username;
+        private MetroFramework.Controls.MetroTextBox password;
+        private MetroFramework.Controls.MetroTextBox username;
+        private MetroFramework.Controls.MetroButton button1;
     }
 }
 

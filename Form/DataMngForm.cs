@@ -12,10 +12,10 @@ using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Security.Cryptography.X509Certificates;
-using System.Data.SQLite;
 using System.Data.SqlClient;
 using System.Xml.Linq;
 using System.Drawing.Printing;
+using MySql.Data.MySqlClient;
 
 namespace StandaloneSDKDemo
 {
@@ -1327,10 +1327,10 @@ namespace StandaloneSDKDemo
 
 
 
-            // Create a SQLiteDataAdapter to execute the query and fill the DataTable
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            // Create a MySqlDataAdapter to execute the query and fill the DataTable
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection))
                 {
                     try
                     {
@@ -1368,9 +1368,9 @@ namespace StandaloneSDKDemo
             DateTime endTime = etime_log.Value.Date.AddHours(20);
             string query = $"SELECT * FROM Attendance WHERE AttendanceTime BETWEEN '{startTime.ToString("yyyy-M-d HH:mm:ss")}' AND '{endTime.ToString("yyyy-M-d HH:mm:ss")}';";
             Dictionary<string, List<DateTime>> userLogs = new Dictionary<string, List<DateTime>>();
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     gv_Attlog.DataSource = null;
                     gv_Attlog.Rows.Clear();
@@ -1382,7 +1382,7 @@ namespace StandaloneSDKDemo
                     {
                         connection.Open();
                         DataTable dataTable = new DataTable();
-                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             adapter.Fill(dataTable);
                         }
@@ -1448,7 +1448,7 @@ namespace StandaloneSDKDemo
                 string query = "INSERT INTO leaves (regNo, date, reason) VALUES (@regNo, @Date, @Reason)";
                 DateTime startDate = dateTimePicker1.Value.Date;
                 DateTime endDate = dateTimePicker2.Value.Date;
-                using (var connection = new System.Data.SQLite.SQLiteConnection(connectionString))
+                using (var connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
                     // Iterate over each day
@@ -1457,7 +1457,7 @@ namespace StandaloneSDKDemo
                         // Do something with the current date
                         Console.WriteLine(date.ToShortDateString()); // Example: Output the date
 
-                        using (var command = new System.Data.SQLite.SQLiteCommand(query, connection))
+                        using (var command = new MySqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@regNo", txtUserID.Text);
                             command.Parameters.AddWithValue("@Date", date);
@@ -1499,12 +1499,12 @@ namespace StandaloneSDKDemo
 
             string query = @"SELECT * FROM leaves";
 
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
