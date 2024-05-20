@@ -173,7 +173,7 @@ namespace StandaloneSDKDemo
 
         private void PicClose_MouseClick(object sender, MouseEventArgs e)
         {
-            //DialogResult dr = MessageBox.Show("Are you sure to exit system?", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //DialogResult dr = ZKMessgeBox.Show("Are you sure to exit system?", "Warning!", ZKMessgeBoxButtons.OKCancel, ZKMessgeBoxIcon.Question);
             DialogResult dr = ZKMessgeBox.Show("Exit the program?", "Warning!", ZKMessgeBox.I8Buttons.OKCancel);
 
             if (dr == DialogResult.OK)
@@ -347,7 +347,7 @@ namespace StandaloneSDKDemo
 
             //Cursor = Cursors.WaitCursor;
 
-            //SDK.sta_SetRTLogListBox(RealTimeEventListBox);
+            SDK.sta_SetRTLogListBox(RealTimeEventListBox);
 
             //Cursor = Cursors.Default;
         }
@@ -379,7 +379,7 @@ namespace StandaloneSDKDemo
             TimeSpan endTime = new TimeSpan(18, 05, 0);
             if (currentTime.TimeOfDay >= startTime && currentTime.TimeOfDay <= endTime && notifyCheck == false)
             {
-                MessageBox.Show("Auto Device Sync Will Start Immediately. MEANWHILE Please HOLD ON ");
+                ZKMessgeBox.Show("Auto Device Sync Will Start Immediately. MEANWHILE Please HOLD ON ");
                 TerminalForm sync = new TerminalForm(this);
                 sync.button2_Click(sender, e);
                 notifyCheck = false;
@@ -532,7 +532,7 @@ namespace StandaloneSDKDemo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //MessageBox.Show("Login successful!");
+            //ZKMessgeBox.Show("Login successful!");
             //roleID = 1;
             //hideControls();
             //return;
@@ -558,18 +558,18 @@ namespace StandaloneSDKDemo
                                 string storedPassword = reader["password"].ToString();
                                 if (storedPassword == password.Text)
                                 {
-                                    MessageBox.Show("Login successful!");
+                                    ZKMessgeBox.Show("Login successful!");
                                     roleID = Convert.ToInt32(reader["roleId"]);
                                     hideControls();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Incorrect password!");
+                                    ZKMessgeBox.Show("Incorrect password!");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("User Not Found");
+                                ZKMessgeBox.Show("User Not Found");
                             }
                         }
                     }
@@ -578,7 +578,7 @@ namespace StandaloneSDKDemo
             catch (Exception ex)
             {
                 // Handle any exceptions
-                MessageBox.Show($"An error occurred: " + ex.Message);
+                ZKMessgeBox.Show($"An error occurred: " + ex.Message);
             }
         }
     }

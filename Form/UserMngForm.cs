@@ -2136,7 +2136,8 @@ namespace StandaloneSDKDemo
             Cursor = Cursors.WaitCursor;
             if(textBox2.Text == "")
             {
-                MessageBox.Show("Please Import File First");
+                ZKMessgeBox.Show("Please Import File First");
+                //MessageBox.Show("Please Import File First");
                 return;
             }
             var csvConfig = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
@@ -2160,10 +2161,10 @@ namespace StandaloneSDKDemo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                ZKMessgeBox.Show(ex.Message.ToString());
             }
             Cursor = Cursors.Default;
-            MessageBox.Show($"{recs} records inserted");
+            ZKMessgeBox.Show($"{recs} records inserted");
 
             int index = 0;
 
@@ -2196,11 +2197,11 @@ namespace StandaloneSDKDemo
                             listView1.Items[index].SubItems.Add(regNo);
                             listView1.Items[index].SubItems.Add(roomNo);
                             if(fpCheck == 0) {
-                                listView1.Items[index].SubItems.Add("NotAvailable");
+                                listView1.Items[index].SubItems.Add("Not Scanned");
                             }
                             else if (fpCheck == 1)
                             {
-                                listView1.Items[index].SubItems.Add("Available");
+                                listView1.Items[index].SubItems.Add("Saved");
                             }
 
                             index++;
@@ -2350,11 +2351,11 @@ namespace StandaloneSDKDemo
                             listView1.Items[index].SubItems.Add(roomNo);
                             if (fpCheck == 0)
                             {
-                                listView1.Items[index].SubItems.Add("NotAvailable");
+                                listView1.Items[index].SubItems.Add("Not Scanned");
                             }
                             else if (fpCheck == 1)
                             {
-                                listView1.Items[index].SubItems.Add("Available");
+                                listView1.Items[index].SubItems.Add("Saved");
                             }
 
                             index++;
@@ -2385,7 +2386,7 @@ namespace StandaloneSDKDemo
             int response = 0;
             string userID = "";
 
-            DialogResult result = MessageBox.Show("Scan User FingerPrints", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = ZKMessgeBox.Show("Scan User FingerPrints", "Confirmation", ZKMessgeBox.I8Buttons.YesNo, ZKMessgeBox.I8Icon.Question);
             if (result == DialogResult.Yes)
             {
                 if (clickedItem != null && listView1.SelectedItems.Count > 0)
@@ -2398,7 +2399,7 @@ namespace StandaloneSDKDemo
                     string fpValue = clickedItem.SubItems[fpIndex].Text;
                     if (fpValue == "Available")
                     {
-                        MessageBox.Show("FingerPrint Already Registered");
+                        ZKMessgeBox.Show("FingerPrint Already Registered");
                         return;
                     }
                     string columnValue1 = clickedItem.SubItems[desiredColumnIndex].Text;
@@ -2547,11 +2548,11 @@ namespace StandaloneSDKDemo
                             listView1.Items[index].SubItems.Add(roomNo);
                             if (fpCheck == 0)
                             {
-                                listView1.Items[index].SubItems.Add("NotAvailable");
+                                listView1.Items[index].SubItems.Add("Not Scanned");
                             }
                             else if (fpCheck == 1)
                             {
-                                listView1.Items[index].SubItems.Add("Available");
+                                listView1.Items[index].SubItems.Add("Saved");
                             }
 
                             index++;

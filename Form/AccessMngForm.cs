@@ -67,7 +67,7 @@ namespace StandaloneSDKDemo
             catch (Exception ex)
             {
                 // Handle any exceptions
-                MessageBox.Show("An error occurred: " + ex.Message);
+                ZKMessgeBox.Show("An error occurred: " + ex.Message);
             }
         }
 
@@ -311,7 +311,7 @@ namespace StandaloneSDKDemo
                     catch (Exception ex)
                     {
                         // Handle any exceptions
-                        MessageBox.Show("An error occurred: " + ex.Message);
+                        ZKMessgeBox.Show("An error occurred: " + ex.Message);
                     }
 
                     // Instantiate the form for printing
@@ -321,7 +321,7 @@ namespace StandaloneSDKDemo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                ZKMessgeBox.Show("An error occurred: " + ex.Message);
             }
         }
 
@@ -577,7 +577,7 @@ namespace StandaloneSDKDemo
 
             if (namebox.Text == "" || contactbox.Text == "" || addressbox.Text == "" || cnicbox.Text == "" || relation.Text == "" || userList.SelectedItem == null)
             {
-                MessageBox.Show("Please Select All Fields First !");
+                ZKMessgeBox.Show("Please Select All Fields First !");
                 return;
             }
 
@@ -617,7 +617,7 @@ namespace StandaloneSDKDemo
                         // Check if rows were affected
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Guest Added Successfully!");
+                            ZKMessgeBox.Show("Guest Added Successfully!");
                             UserIDTimer.Enabled = true;
                         }
                         else
@@ -629,7 +629,7 @@ namespace StandaloneSDKDemo
                     catch (Exception ex)
                     {
                         // Handle any exceptions
-                        MessageBox.Show($"Error Occured {ex.Message}");
+                        ZKMessgeBox.Show($"Error Occured {ex.Message}");
                     }
                 }
             }
@@ -639,7 +639,7 @@ namespace StandaloneSDKDemo
         {
             if(namebox.Text == "" ||  contactbox.Text == "" ||  addressbox.Text == "" || cnicbox.Text == "" || relation.Text == "" || userList.SelectedItem == null)
             {
-                MessageBox.Show("Please Select All Fields First !");
+                ZKMessgeBox.Show("Please Select All Fields First !");
                 return;
             }
             string[] vistee = userList.SelectedItem.ToString().Split(',');
@@ -672,7 +672,7 @@ namespace StandaloneSDKDemo
             catch (Exception ex)
             {
                 // Handle any exceptions
-                MessageBox.Show("An error occurred: " + ex.Message);
+                ZKMessgeBox.Show("An error occurred: " + ex.Message);
             }
 
 

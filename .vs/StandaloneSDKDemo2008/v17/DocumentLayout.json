@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|c:\\users\\admin\\source\\repos\\winformsapp1\\zkteco-sdk-standalone-c--\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|c:\\users\\admin\\source\\repos\\winformsapp1\\zkteco-sdk-standalone-c--\\form\\accessmngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\accessmngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,18 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|c:\\users\\admin\\source\\repos\\winformsapp1\\zkteco-sdk-standalone-c--\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|c:\\users\\admin\\source\\repos\\winformsapp1\\zkteco-sdk-standalone-c--\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|c:\\users\\admin\\source\\repos\\winformsapp1\\zkteco-sdk-standalone-c--\\form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|c:\\users\\admin\\source\\repos\\winformsapp1\\zkteco-sdk-standalone-c--\\form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{18AF2E37-B203-400B-8188-606899C00933}|StandaloneSDKDemo.csproj|solutionrelative:form\\usermngform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,24 +30,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AccessMngForm.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Form\\AccessMngForm.cs",
               "RelativeDocumentMoniker": "Form\\AccessMngForm.cs",
               "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Form\\AccessMngForm.cs",
               "RelativeToolTip": "Form\\AccessMngForm.cs",
-              "ViewState": "AQIAAPkCAAAAAAAAAAAkwAcDAAAoAAAA",
+              "ViewState": "AQIAAI8CAAAAAAAAAAAAAKICAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-18T07:40:17.148Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AccessMngForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Form\\AccessMngForm.cs",
               "RelativeDocumentMoniker": "Form\\AccessMngForm.cs",
@@ -67,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -80,45 +72,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserMngForm.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs",
-              "RelativeDocumentMoniker": "Form\\UserMngForm.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs",
-              "RelativeToolTip": "Form\\UserMngForm.cs",
-              "ViewState": "AQIAAL8HAAAAAAAAAAAAANwHAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T07:05:08.753Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserMngForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs",
-              "RelativeDocumentMoniker": "Form\\UserMngForm.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Form\\UserMngForm.cs [Design]",
-              "RelativeToolTip": "Form\\UserMngForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T07:05:06.037Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Main.cs",
               "RelativeDocumentMoniker": "Main.cs",
               "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Main.cs",
               "RelativeToolTip": "Main.cs",
-              "ViewState": "AQIAAAsCAAAAAAAAAAAAABkCAAAVAAAA",
+              "ViewState": "AQIAAB0CAAAAAAAAAAAAADYCAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-18T06:48:56.54Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Main.cs [Design]",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\WinFormsApp1\\ZKTeco-SDK-Standalone-C--\\Main.cs",
               "RelativeDocumentMoniker": "Main.cs",
